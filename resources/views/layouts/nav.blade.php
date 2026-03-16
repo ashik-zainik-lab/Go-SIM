@@ -26,7 +26,7 @@
                     <div class="serach_field_area">
                         <form action="#">
                             <div class="search_field">
-                                <img class="search-image" src="{{ asset('assets/images/icon/search-1.svg') }}"
+                                <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}"
                                      alt="search icon">
                                 <input type="text" placeholder="{{ __('Search...') }}" name="search">
                             </div>
@@ -37,7 +37,7 @@
                     <div class="dropdown notification_dropdown_wrapper">
                         <button class="notification_dropdown_btn dropdown-toggle" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('assets/images/icon/bell.svg') }}" alt="notifications">
+                            <img src="{{ asset('assets/images/icons/notification.svg') }}" alt="notifications">
                             <div class="notification-count">{{ count(userNotification('unseen')) }}</div>
                         </button>
                         <ul class="dropdown-menu">
@@ -102,21 +102,21 @@
                                 <span class="wellcome">{{ __('Welcome') }}</span>
                                 <div class="admin_name d-flex align-items-center">
                                     {{ auth()->user()->name }}
-                                    <img src="{{ asset('assets/images/icon/angle-down.svg') }}" alt="arrow">
+                                    <img src="{{ asset('assets/images/icons/dropdown-arrow.svg') }}" alt="arrow">
                                 </div>
                             </div>
                         </button>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="dropdown-item" href="{{ route('profile') }}">
-                                    <img src="{{ asset('assets/images/icon/userManagement.svg') }}" alt="user icon">
+                                    <img src="{{ asset('assets/images/icons/user.svg') }}" alt="user icon">
                                     <span>{{ __('Profile') }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <img src="{{ asset('assets/images/icon/logout.svg') }}" alt="logout icon">
+                                    <img src="{{ asset('assets/images/icons/logout.svg') }}" alt="logout icon">
                                     <span>{{ __('Logout') }}</span>
                                 </a>
                             </li>
