@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @push('title')
     {{$pageTitle}}
 @endpush
