@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('layouts.header')
+@include('admin.layouts.header')
 
 <body class="{{ selectedLanguage()->rtl == 1 ? 'direction-rtl' : 'direction-ltr' }}">
     <input type="hidden" id="lang_code" value="{{ session('local') }}">
@@ -15,11 +15,11 @@
     @endif
 
     <!-- Sidebar + Main Content (GoSIM dashboard layout) -->
-    @include('layouts.sidebar')
+    @include('admin.layouts.sidebar')
 
     <section class="main_content dashboard_part">
         <!-- Top header / navbar -->
-        @include('layouts.nav')
+        @include('admin.layouts.nav')
 
         <!-- Page content -->
         <div class="dashboard-content">
@@ -33,7 +33,7 @@
         </div>
     @endif
 
-    @include('layouts.script')
+    @include('admin.layouts.script')
 </body>
 
 </html>

@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/quill.snow.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/scss/style.css') }}?ver={{ env('VERSION' ,0) }}" />
 
-    @include('layouts.dynamic-color')
+    @include('admin.layouts.dynamic-color')
 
     {{-- Optional legacy styles / plugins --}}
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.css') }}" />
