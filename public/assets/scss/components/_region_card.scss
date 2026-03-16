@@ -1,0 +1,121 @@
+/* Region Card Start */
+.region-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Mobile */
+    @media (max-width: 575px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.region_card {
+    background: var(--white);
+    border: 1px solid var(--border_color);
+    padding: 22px;
+
+    .cards-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .icon-container {
+            width: 40px;
+            height: 40px;
+            background: #EEF2FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+
+    }
+
+    .cards-body {
+        min-height: 55px;
+        border-bottom: 1px solid #EDF2F8;
+        margin-bottom: 20px;
+
+        .title {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 100%;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 100%;
+            color: var(--text_ash);
+        }
+    }
+
+    .cards-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .state {
+            label {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 12px;
+                color: var(--text_ash);
+                margin-bottom: 4px;
+            }
+
+            .value {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 20px;
+                color: #000000;
+            }
+        }
+
+    }
+
+    .dropdown-menu {
+        padding: 0;
+        border: 1px solid rgba(226, 232, 240, 1);
+        border-radius: 0px;
+        box-shadow: 0px 9px 24px 0px rgba(0, 0, 0, 0.06);
+
+        li {
+
+            &:last-child {
+                .dropdown-item {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        .dropdown-item {
+            padding: 10px;
+            border-bottom: 1px solid rgba(226, 232, 240, 1);
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+
+            img {
+                margin-right: 8px;
+            }
+
+            &:hover {
+                background: transparent;
+                color: rgba(79, 70, 229, 1);
+            }
+        }
+    }
+}
+
+/* Region Card End */

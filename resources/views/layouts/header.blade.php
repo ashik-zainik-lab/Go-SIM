@@ -44,18 +44,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap"
         rel="stylesheet" />
-    <!-- css file  -->
+    <!-- css file (new dashboard design) -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css?v=1') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.responsive.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/quill.snow.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/scss/style.css') }}?ver={{ env('VERSION' ,0) }}" />
 
     @include('layouts.dynamic-color')
+
+    {{-- Optional legacy styles / plugins --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.responsive.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/summernote/summernote-lite.min.css') }}" />
-    <script src="{{ asset('assets/js/modernizr-3.11.2.min.js') }}"></script>
     @stack('style')
 
     <style>

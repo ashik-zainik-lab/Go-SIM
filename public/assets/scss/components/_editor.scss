@@ -1,0 +1,107 @@
+.common_editor_block {
+    .ql-toolbar.ql-snow {
+        .ql-formats {
+            button.ql-undo,
+            button.ql-redo {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    background-color: var(--text_ash); // Icon Color
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-size: contain;
+                    mask-size: contain;
+                    margin-top: 10px;
+                }
+
+                &:hover::before {
+                    background-color: #007bff; // Hover Color
+                }
+            }
+
+            button.ql-undo::before {
+                -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 9"><path d="M10.5 1C7.85 1 5.45 1.99 3.6 3.6L0 0V9H9L5.38 5.38C6.77 4.22 8.54 3.5 10.5 3.5C14.04 3.5 17.05 5.81 18.1 9L20.47 8.22C19.08 4.03 15.15 1 10.5 1Z"/></svg>');
+            }
+
+            button.ql-redo::before {
+                -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 9"><path d="M16.86 3.6C15.01 1.99 12.61 1 9.96 1C5.31 1 1.38 4.03 0 8.22L2.36 9C3.41 5.81 6.41 3.5 9.96 3.5C11.91 3.5 13.69 4.22 15.08 5.38L11.46 9H20.46V0L16.86 3.6Z"/></svg>');
+            }
+        }
+    }
+
+    .ql-snow .ql-toolbar button svg {
+        width: 18px;
+        height: 18px;
+        float: left; // Helps with vertical centering in some browsers
+    }
+
+    // Optional: Give them a slight hover effect to match your dashboard
+    .ql-toolbar button:hover .ql-stroke {
+        stroke: #007bff !important; // Your primary brand color
+    }
+
+    .ql-toolbar button:hover .ql-fill {
+        fill: #007bff !important;
+    }
+
+    .ql-toolbar.ql-snow {
+        border: 1px solid var(--border_color);
+        border-bottom: 0px;
+        border-radius: 5px 5px 0px 0px;
+        background: #F8FAFC;
+        padding: 0px;
+    }
+
+    .ql-container.ql-snow {
+        border: 1px solid var(--border_color);
+        border-top: none;
+        border-radius: 0 0 5px 5px;
+        font-family: inherit;
+        font-size: 14px;
+    }
+
+    .ql-toolbar.ql-snow {
+        .ql-formats {
+            margin-right: 0;
+            padding: 8px 10px;
+            border-right: 1px solid #E4E6EB;
+
+
+            .ql-picker-label {
+                color: var(--text_ash);
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 24px;
+            }
+
+            .ql-picker-label {
+                line-height: 1px;
+            }
+
+            .ql-stroke {
+                stroke: var(--text_ash);
+            }
+
+            .ql-image {
+                padding: 0px;
+
+                .ql-fill {
+                    fill: var(--text_ash);
+                }
+            }
+
+            button {
+                padding: 0px;
+                width: 24px;
+                margin: 0 4px;
+            }
+        }
+    }
+}

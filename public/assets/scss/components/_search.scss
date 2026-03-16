@@ -1,0 +1,61 @@
+.dashboard_search_addNew_box {
+    padding: 10px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    @media (max-width: 410px) {
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: flex-start;
+
+        .common_button {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
+
+/* COMMON SEARCH START */
+.serach_field_area {
+    max-width: 225px;
+    width: 100%;
+
+    @media (max-width: 410px) {
+        max-width: 100%;
+    }
+
+    .search_field {
+        position: relative;
+        max-width: 225px;
+
+        @media (max-width: 410px) {
+            max-width: 100%;
+        }
+
+        .search-image {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        input {
+            border: 1px solid rgba(226, 232, 240, 1);
+            outline: none;
+            background: rgba(248, 250, 252, 1);
+            border-radius: 0px;
+            padding: 11px 18px 11px 35px;
+            width: 100%;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 24px;
+            color: rgba(97, 107, 128, 1);
+            width: 100%;
+        }
+    }
+}
+
+/* COMMON SEARCH END */

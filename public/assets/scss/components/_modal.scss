@@ -1,0 +1,302 @@
+.dashboard-common-modal {
+    .modal-dialog {
+        max-width: 1148px;
+
+        &.custom-modal-size-1 {
+            max-width: 720px;
+        }
+    }
+
+    .modal-content {
+        border: none;
+        border-radius: 0px;
+        box-shadow: none;
+        padding: 50px 40px 45px;
+
+        @media (max-width: 991px) {
+            padding: 35px 30px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 30px;
+        }
+    }
+
+    /* HEADER */
+    .modal-header {
+        border-bottom: 1px solid var(--border_color);
+        padding: 0px 0px 30px 0px;
+        margin-bottom: 40px;
+
+        @media (max-width: 576px) {
+            padding: 0px 0px 20px 0px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 16px;
+            color: var(--text_dark);
+
+
+            @media (max-width: 576px) {
+                font-size: 20px;
+            }
+        }
+
+        .btn-close {
+            opacity: 1;
+            transform: scale(0.9);
+            
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 0;
+    }
+
+    /* FORM LAYOUT */
+    .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        @media (max-width: 576px) {
+            gap: 20px;
+        }
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+        @media (max-width: 576px) {
+            gap: 20px;
+        }
+    }
+
+
+
+    /* SELECT DROPDOWN LOOK */
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5' fill='none'%3E%3Cpath d='M7.85049 0.775635L4.41907 4.71153C4.18318 4.98211 3.78486 4.98211 3.54896 4.71153L0.117516 0.775635C-0.140291 0.479893 0.0539101 -0.00537109 0.430091 -0.00537109H7.53788C7.91409 -0.00537109 8.1083 0.479893 7.85049 0.775635Z' fill='%230D0D0D'/%3E%3C/svg%3E");
+
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 8px 5px;
+
+        padding-right: 32px; // important
+    }
+
+
+    /* ACTION BUTTONS */
+    .form-actions {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+
+}
+
+.dashboard-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &.full-width {
+        grid-column: span 2;
+
+        @media (max-width: 768px) {
+            grid-column: span 1;
+        }
+    }
+
+    &.no-gap {
+        gap: 0px;
+
+        >label {
+            margin-bottom: 6px;
+        }
+    }
+
+    &.has-selectable-box {
+        .selectable-box {
+            display: flex;
+            align-items: center;
+            column-gap: 8px;
+
+            input {
+                width: calc(100% - 110px);
+            }
+        }
+    }
+
+    label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #0D0D0D;
+
+        span {
+            color: var(--theme_color);
+        }
+
+        @media (max-width: 1180px) {
+            font-size: 12px;            
+        }
+    }
+
+    input,
+    select {
+        height: 45px;
+        padding: 15px 20px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 130%;
+        color: var(--theme_dark);
+        border-radius: 0px;
+        border: 1px solid var(--border_color);
+        background: #F8FAFC;
+
+        &::placeholder {
+            color: var(--text_ash);
+        }
+
+        &:focus {
+            outline: none;
+            background: var(--white);
+            border-color: var(--theme_color);
+        }
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        height: 45px;
+        padding: 15px 20px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 130%;
+        color: var(--theme_dark);
+        border-radius: 0px;
+        border: 1px solid var(--border_color);
+        background: #F8FAFC;
+
+        input[type="checkbox"] {
+            display: none; // Hide the ugly default checkbox
+        }
+
+
+        .custom-box {
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid #D1D5DB;
+            border-radius: 6px;
+            background: transparent;
+            display: inline-block;
+            position: relative;
+            transition: all 0.2s ease;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 2px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+                display: none;
+            }
+        }
+
+        // Logic for Checked State
+        input[type="checkbox"]:checked+.custom-box {
+            background: var(--theme_color);
+            border-color: var(--theme_color);
+
+            &::after {
+                display: block;
+            }
+        }
+
+        .text {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 130%;
+            color: var(--text_ash);
+        }
+    }
+}
+
+.commercial-settings {
+    padding: 25px;
+    border: 1px solid var(--border_color);
+    background: #F7F9FB;
+
+    .title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 16px;
+        margin-bottom: 25px;
+    }
+}
+
+
+// eSimst Details Grid 
+
+.esim-details-grid {
+    display: grid;
+    // Creates 4 equal columns
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+
+    .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .label {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 100%;
+            color: #0D0D0D;
+        }
+
+        .value {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 100%;
+            color: var(--text_ash);
+        }
+    }
+}
+
+.modal-backdrop{
+    background-color: rgba(15, 23, 42);
+}
+
+// Responsive adjustment for smaller screens
+@media (max-width: 768px) {
+    .esim-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+

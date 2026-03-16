@@ -1,0 +1,232 @@
+.dark_sidebar {
+    background: var(--theme_dark);
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-top: 22px;
+    padding-right: 20px;
+    position: fixed;
+    width: 250px;
+    z-index: 999;
+    overflow: hidden;
+    overflow-y: auto;
+    box-shadow: 0 12px 30px rgba(80, 143, 244, 0.1);
+    transition: .3s;
+
+    .logo {
+        margin-bottom: 28px;
+    }
+}
+
+.sidebar {
+    #sidebar_menu>li {
+        margin-bottom: 10px;
+
+        a {
+            padding: 4px 10px;
+            transition: .3s;
+            position: relative;
+            z-index: 0;
+            display: grid;
+            display: flex;
+            column-gap: 10px;
+            align-items: center;
+            position: relative;
+            background: transparent;
+            color: #8F91AA;
+            border-radius: 0;
+
+            .nav_icon_small {
+                width: fit-content;
+
+                svg {
+                    transition: color 0.3s ease;
+
+                    path {
+                        transition: color 0.3s ease;
+                    }
+                }
+            }
+
+            .nav_title {
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--white);
+                transition: all 0.3s ease;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -20px;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: var(--theme_color);
+                transition: all 0.3s ease;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            &.has_arrow {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%) rotate(315deg);
+                    border: solid var(--white);
+                    border-width: 0 2px 2px 0;
+                    padding: 3px;
+                    transition: transform 0.3s ease;
+                }
+            }
+
+            &.active,
+            &:hover {
+                background: #151C3D;
+
+                .nav_title {
+                    color: rgba(79, 70, 229, 1);
+                }
+
+                .nav_icon_small {
+                    svg {
+                        color: var(--theme_color);
+
+                        path {
+                            color: var(--theme_color);
+                            stroke: var(--theme_color);
+                        }
+                    }
+                }
+
+                &::before {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                &.has_arrow {
+                    &::after {
+                        transform: translateY(-50%) rotate(404deg);
+                        border: solid rgba(79, 70, 229, 1);
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+
+            }
+
+        }
+
+        .category_title {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 15px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .settings_title {
+            margin-top: 35px;
+        }
+    }
+}
+
+/* --- RESPONSIVE SIDEBAR LOGIC --- */
+
+// Breakpoint for tablets and mobile (991px is standard)
+@media (max-width: 991px) {
+
+    // 1. Hide the sidebar off-screen by default
+    .dark_sidebar {
+        left: -250px;
+        transition: all 0.3s ease-in-out;
+        z-index: 9999;
+        top: 78px;
+        padding-bottom: 160px;
+
+        // Use this class to slide the menu in via JavaScript
+        &.active_sidebar {
+            left: 0;
+        }
+    }
+
+    // 2. Adjust the main content to fill the screen
+    // Note: Replace '.main_content' with whatever class your main wrapper uses
+    .main_content {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+
+
+}
+
+
+/* --- END RESPONSIVE BLOCK --- */
+
+
+
+
+.menu-icon {
+    cursor: pointer;
+    position: relative;
+    z-index: 111;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    outline: none;
+    border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+    display: none;
+    flex-direction: column;
+    column-gap: 0;
+    row-gap: 0;
+
+    @media (max-width: 991px) {
+        display: flex;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        background-color: var(--theme_dark);
+        transition: 0.4s;
+        border-radius: 0px;
+        width: 21px;
+        height: 2px;
+        min-height: 2px;
+        line-height: 0px;
+        margin-bottom: 4px;
+    }
+
+    .bar3 {
+        margin-bottom: 0px;
+    }
+
+    &.cross {
+        .bar1 {
+            transform: translate(0, 5px) rotate(-45deg);
+        }
+
+        .bar2 {
+            opacity: 0;
+        }
+
+        .bar3 {
+            transform: translate(0, -7px) rotate(45deg);
+        }
+    }
+}

@@ -1,0 +1,74 @@
+/*------------------------------------------------------------------
+1. General
+----------------------------------------------------------------*/
+
+/* Theme Reset Style */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
+:root {
+    scroll-behavior: unset;
+}
+body {
+    font-size: 17px;
+    overflow-x: hidden;
+    font-family: var(--primary-font);
+    padding: 0;
+    margin: 0;
+}
+ul,
+li,
+ol,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/* Global Elements */
+
+p {
+    font-size: 12px;
+    line-height: 24px;
+    margin: 0;
+    font-family: var(--primary-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--primary-font);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+}
+a,
+button {
+    font-family: var(--primary-font);
+}

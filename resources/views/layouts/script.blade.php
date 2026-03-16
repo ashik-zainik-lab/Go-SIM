@@ -14,13 +14,14 @@
 @endif
 
 <!-- js file  -->
-<script src="{{ asset('assets/js/jquery-3.7.0.min.js')}}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('assets/js/plugins.js')}}"></script>
+<script src="{{ asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/js/select2.min.js')}}"></script>
+<script src="{{ asset('assets/js/quill.js')}}"></script>
 <script src="{{ asset('assets/js/dataTables.js')}}"></script>
 <script src="{{ asset('assets/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('assets/css/summernote/summernote-lite.min.js') }}"></script>
-<script src="{{ asset('assets/js/lc_select.min.js') }}"></script>
+<script src="{{ asset('assets/js/script.js')}}"></script>
 <script src="{{ asset('assets/js/main.js')}}?ver={{ env('VERSION', 0) }}"></script>
 <script src="{{ asset('common/js/common.js')}}?ver={{ env('VERSION' ,0) }}"></script>
 
