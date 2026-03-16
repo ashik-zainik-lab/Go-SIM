@@ -22,4 +22,4 @@ composer.lock
 /storage/installed
 /storage/app
 /resources/lang/*.json
-/Gosim-Html
+/html
