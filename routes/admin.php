@@ -45,7 +45,9 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
         Route::get('configuration-settings', [SettingController::class, 'configurationSetting'])->middleware('can:Manage Application Setting')->name('configuration-settings');
         Route::get('configuration-settings/configure', [SettingController::class, 'configurationSettingConfigure'])->middleware('can:Manage Application Setting')->name('configuration-settings.configure');
         Route::get('configuration-settings/help', [SettingController::class, 'configurationSettingHelp'])->middleware('can:Manage Application Setting')->name('configuration-settings.help');
-        Route::post('application-settings-update', [SettingController::class, 'applicationSettingUpdate'])->middleware('can:Manage Application Setting')->name('application-settings.update')->middleware('isDemo');;
+        Route::post('application-settings-update', [SettingController::class, 'applicationSettingUpdate'])
+            ->middleware('can:Manage Application Setting')
+            ->name('application-settings.update');
         Route::post('configuration-settings-update', [SettingController::class, 'configurationSettingUpdate'])->middleware('can:Manage Application Setting')->name('configuration-settings.update')->middleware('isDemo');;
         Route::post('application-env-update', [SettingController::class, 'saveSetting'])->middleware('can:Manage Application Setting')->name('settings_env.update');
         Route::get('logo-settings', [SettingController::class, 'logoSettings'])->middleware('can:Manage Application Setting')->name('logo-settings');

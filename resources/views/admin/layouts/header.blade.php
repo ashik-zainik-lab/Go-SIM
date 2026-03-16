@@ -53,11 +53,13 @@
 
     @include('admin.layouts.dynamic-color')
 
-    {{-- Optional legacy styles / plugins --}}
+    {{-- Optional legacy styles / plugins (commented out – files not present) --}}
+    {{--
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.responsive.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/summernote/summernote-lite.min.css') }}" />
+    --}}
     @stack('style')
 
     <style>

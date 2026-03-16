@@ -18,11 +18,8 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('assets/js/select2.min.js')}}"></script>
 <script src="{{ asset('assets/js/quill.js')}}"></script>
-<script src="{{ asset('assets/js/dataTables.js')}}"></script>
-<script src="{{ asset('assets/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{ asset('assets/css/summernote/summernote-lite.min.js') }}"></script>
+{{-- Optional legacy JS (dataTables, summernote) removed – files not present --}}
 <script src="{{ asset('assets/js/script.js')}}"></script>
-<script src="{{ asset('assets/js/main.js')}}?ver={{ env('VERSION', 0) }}"></script>
 <script src="{{ asset('common/js/common.js')}}?ver={{ env('VERSION' ,0) }}"></script>
 
 @stack('script')
