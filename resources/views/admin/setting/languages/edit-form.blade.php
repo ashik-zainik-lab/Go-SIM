@@ -52,26 +52,7 @@
                 </div>
             </div>
 
-            <div class="primary-form-group">
-                <div class="primary-form-group-wrap">
-                    <label for="attachmentFile" class="form-label">{{ __('Font File') }}
-                        @if ($language->font)
-                        <a href="{{ getFileUrl($language->font) }}"
-                            class="position-absolute top-0 start-100 bg-cdef84 badge border border-light rounded-circle bg-danger p-2"
-                            target="_blank">
-                            <span class="visually-hidden"></span>
-                        </a>
-                        @endif
-                    </label>
-                    <input type="file" class="primary-form-control" id="attachmentFile" accept="application/pdf"
-                        name="font">
-                    @if ($errors->has('font'))
-                    <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('font')
-                        }}</span>
-                    @endif
 
-                </div>
-            </div>
             <div class="col-12">
                 <div class="primary-form-group">
                     <div class="primary-form-group-wrap">
@@ -88,8 +69,8 @@
                 <div class="d-flex form-check">
                     <div class="zCheck form-check form-switch">
                         <input class="form-check-input" type="checkbox" value="1" name="default" {{ $language->default
-                        == STATUS_ACTIVE ? 'checked' : '' }}
-                        role="switch" id="flexSwitchCheckChecked-{{ $language->id }}"/>
+                        == STATUS_ACTIVE ? 'checked' : '' }} role="switch"
+                            id="flexSwitchCheckChecked-{{ $language->id }}" />
                     </div>
                     <label class="form-check-label ps-3" for="flexCheckChecked-{{ $language->id }}">
                         {{ __('Default Language') }}
