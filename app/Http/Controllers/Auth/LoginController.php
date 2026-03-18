@@ -85,10 +85,11 @@ class LoginController extends Controller
         }
 
         $user = auth()->user();
-        if(!in_array($user->role, [USER_ROLE_ADMIN])){
+        if(!in_array($user->role, [USER_ROLE_SUPER_ADMIN])){
             Auth::logout();
             return redirect("login")->withInput()->with('error',  __('Email or password is incorrect'));
         }
+        
 
         if ($user->email_verification_status == STATUS_ACTIVE) {
             if ($user->status == STATUS_SUSPENDED) {

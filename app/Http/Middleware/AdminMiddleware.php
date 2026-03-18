@@ -17,10 +17,9 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         $routeName = $request->route()->getName();
-        if (auth()->user()->role == USER_ROLE_ADMIN) {
+        if (auth()->user()->role == USER_ROLE_SUPER_ADMIN) {
             return $next($request);
-        } elseif (auth()->user()->role == USER_ROLE_BOARD_MEMBER) {
-
+        } else if (auth()->user()->role == USER_ROLE_ADMIN) {
             return $next($request);
         }
         abort('403');

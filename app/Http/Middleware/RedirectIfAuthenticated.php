@@ -22,7 +22,9 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
 
             if (Auth::guard($guard)->check()) {
-                if (Auth::user()->role == USER_ROLE_ADMIN) {
+                if (Auth::user()->role == USER_ROLE_SUPER_ADMIN) {
+                    return redirect(route('super_admin.dashboard'));
+                } else if (Auth::user()->role == USER_ROLE_ADMIN) {
                     return redirect(route('admin.dashboard'));
                 } else if (Auth::user()->role == USER_ROLE_USER) {
                     return redirect(route('home'));

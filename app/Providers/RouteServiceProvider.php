@@ -41,10 +41,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware(['web', 'auth', 'user', 'version.update', 'addon', 'is_email_verify'/*, '2fa_verify'*/, 'common'])
                 ->group(base_path('routes/user.php'));
 
-            Route::middleware(['web', 'auth', 'admin',  'version.update', 'addon', 'is_email_verify'/*, '2fa_verify'*/])
-                ->prefix('admin')
-                ->as('admin.')
-                ->group(base_path('routes/admin.php'));
+            Route::middleware(['web', 'auth', 'super-admin',  'version.update', 'addon', 'is_email_verify'/*, '2fa_verify'*/])
+                ->prefix('super-admin')
+                ->as('super-admin.')
+                ->group(base_path('routes/super_admin.php'));
 
             Route::middleware(['web', 'version.update', 'addon'])
                 ->group(base_path('routes/frontend.php'));
