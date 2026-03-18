@@ -13,7 +13,8 @@
                 <div class="col-12">
                     <div class="dashboard-form-group">
                         <label for="cookie_consent_text" class="form-label">{{ __('Cookie Consent Text') }}</label>
-                        <textarea class="primary-form-control" name="cookie_consent_text" id="cookie_consent_text" rows="6">{{ getOption('cookie_consent_text') }}</textarea>
+                        <textarea class="primary-form-control" name="cookie_consent_text" id="cookie_consent_text"
+                            rows="2">{{ getOption('cookie_consent_text') }}</textarea>
                     </div>
                 </div>
             </div>
