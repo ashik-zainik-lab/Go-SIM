@@ -1,12 +1,26 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="item-top p-4 text-center">
-            <h1 class="p-2">{{ __('Social Login (Facebook)') }}</h1><br>
-            <hr>
-            <h3 class="p-2">{{__('If you enable this. The system will enable for Facebook. User can use our facebook account and sign in')}}</h3>
-            <br>
-            <a class="btn btn-success" target="_blank"
-               href="https://zaialumni-doc.zainikthemes.com/configurable.html#social_loginfacebook">{{ __('View the documentation') }}</a>
+<div>
+    <div class="modal-header">
+        <h2>{{ __('Social Login (Facebook)') }}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="dashboard-form-group">
+                    <p class="mb-0">{{ __('If you enable this. The system will enable for Facebook. User can use our facebook account and sign in') }}</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <a class="primary_button" target="_blank" rel="noopener noreferrer"
+                    href="https://zaialumni-doc.zainikthemes.com/configurable.html#social_loginfacebook">
+                    {{ __('View the documentation') }}
+                </a>
+            </div>
         </div>
+    </div>
+
+    <div class="modal-footer form-actions">
+        <button type="button" class="primary_button cancel" data-bs-dismiss="modal">{{ __('Close') }}</button>
     </div>
 </div>
