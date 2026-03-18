@@ -23,17 +23,16 @@
             <div class="dashboard-settings-card has-min-height">
                 <div class="card-body">
                     <div class="d-flex flex-wrap gap-2 item-title justify-content-end mb-3">
-                        <a class="primary_button"
-                           href="{{route('admin.setting.languages.download', $language->id)}}"
-                           title="{{ __('Download File') }}">
+                        <a class="primary_button" href="{{route('admin.setting.languages.download', $language->id)}}"
+                            title="{{ __('Download File') }}">
                             {{ __('Download File') }}
                         </a>
-                        <button type="button" class="primary_button"
-                                data-bs-toggle="modal" data-bs-target="#importFile" title="{{ __('Import File') }}">
+                        <button type="button" class="primary_button" data-bs-toggle="modal" data-bs-target="#importFile"
+                            title="{{ __('Import File') }}">
                             {{ __('Import File') }}
                         </button>
-                        <button type="button" class="primary_button"
-                                data-bs-toggle="modal" data-bs-target="#importModal" title="{{ __('Import Keywords') }}">
+                        <button type="button" class="primary_button" data-bs-toggle="modal"
+                            data-bs-target="#importModal" title="{{ __('Import Keywords') }}">
                             {{__('Import Keywords')}}
                         </button>
                     </div>
@@ -43,13 +42,13 @@
                         <div class="serach_field_area">
                             <form id="search-form">
                                 <div class="search_field">
-                                    <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}" alt="search icon">
+                                    <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}"
+                                        alt="search icon">
                                     <input type="text" name="search" placeholder="{{__('Search Key or Value')}}">
                                 </div>
                             </form>
                         </div>
-                        <button type="button"
-                                class="primary_button addmore">
+                        <button type="button" class="primary_button addmore">
                             + {{__('Add More')}}
                         </button>
                     </div>
@@ -64,7 +63,7 @@
 </div>
 <!-- Add Modal section start -->
 <div class="modal fade dashboard-common-modal" id="importModal" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-dialog modal-dialog-centered modal-xs">
         <div class="modal-content">
             <form class="ajax" action="{{ route('admin.setting.languages.import') }}" method="POST"
                 data-handler="languageHandler">
@@ -86,20 +85,20 @@
                             <label for="importLanguage" class="form-label">
                                 {{ __('Language') }} <span class="text-danger">*</span>
                             </label>
-                            <select name="import" class="sf-select primary-form-control p-0" id="importLanguage" required>
+                            <select name="import" class="sf-select primary-form-control modal-input-sm"
+                                id="importLanguage" required>
                                 <option value=""> {{ __('Select Option') }} </option>
                                 @foreach ($languages as $lang)
-                                    <option value="{{ $lang->iso_code }}">{{ __($lang->language) }}</option>
+                                <option value="{{ $lang->iso_code }}">{{ __($lang->language) }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-start border-0 pt-0">
-                    <button type="button" class="common_button btn-cancel"
-                            data-bs-dismiss="modal" title="Back">{{ __('Back') }}</button>
-                    <button type="submit" class="primary_button"
-                            title="Submit">{{ __('Import') }}</button>
+                    <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal"
+                        title="Back">{{ __('Back') }}</button>
+                    <button type="submit" class="primary_button" title="Submit">{{ __('Import') }}</button>
                 </div>
             </form>
         </div>
@@ -107,7 +106,7 @@
 </div>
 
 <div class="modal fade dashboard-common-modal" id="importFile" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-dialog modal-dialog-centered modal-xs">
         <div class="modal-content">
             <form class="ajax" action="{{ route('admin.setting.languages.upload', $language->id) }}" method="POST"
                 enctype="multipart/form-data" data-handler="languageHandler">
@@ -126,14 +125,14 @@
                         <label for="translationJsonFile" class="form-label">
                             {{ __('Select JSON File') }}
                         </label>
-                        <input type="file" name="file" id="translationJsonFile" class="primary-form-control" accept=".json" required>
+                        <input type="file" name="file" id="translationJsonFile"
+                            class="primary-form-control modal-input-sm" accept=".json" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-start border-0 pt-0">
-                    <button type="button" class="common_button btn-cancel"
-                            data-bs-dismiss="modal" title="Back">{{ __('Back') }}</button>
-                    <button type="submit" class="primary_button"
-                            title="Submit">{{ __('Upload') }}</button>
+                    <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal"
+                        title="Back">{{ __('Back') }}</button>
+                    <button type="submit" class="primary_button" title="Submit">{{ __('Upload') }}</button>
                 </div>
             </form>
         </div>
@@ -146,6 +145,8 @@
 <input type="hidden" id="language-translate-route"
     value="{{ route('admin.setting.languages.translate', [$language->id]) }}">
 @endsection
+
+
 
 @push('script')
 <script src="{{asset('admin/js/languages.js')}}"></script>
