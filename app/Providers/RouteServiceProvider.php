@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function allWebRoutes(): void
     {
-        Route::middleware([/*'installed'*/])->group(function () {
+        Route::middleware(['installed'])->group(function () {
             Route::middleware(['web', 'version.update'])
                 ->group(base_path('routes/web.php'));
 
