@@ -9,6 +9,7 @@ use App\Http\Middleware\Google2FAAuthentication;
 use App\Http\Middleware\InstallMiddleware;
 use App\Http\Middleware\IsDemo;
 use App\Http\Middleware\IsVerifyMiddleware;
+use App\Http\Middleware\SuperAdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\VersionUpdate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;

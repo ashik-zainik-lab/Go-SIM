@@ -1,7 +1,6 @@
 <?php
 
-
-namespace App\Http\Services;
+namespace App\Http\Services\SuperAdmin;
 
 use App\Models\News;
 use App\Models\Package;
