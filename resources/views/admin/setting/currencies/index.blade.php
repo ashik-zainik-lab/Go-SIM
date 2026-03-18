@@ -62,7 +62,7 @@
                                             <div>{{ __("Placement") }}</div>
                                         </th>
                                         <th scope="col">
-                                            <div class="text-center">{{ __("Action") }}</div>
+                                            <div>{{ __("Action") }}</div>
                                         </th>
                                     </tr>
                                 </thead>

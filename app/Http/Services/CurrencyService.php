@@ -14,7 +14,10 @@ class CurrencyService
 
     public function getAllData()
     {
-        $currencies = Currency::orderBy('id', 'desc')->select('id', 'currency_code', 'current_currency', 'symbol', 'currency_placement');
+        $currencies = Currency::orderBy('id', 'desc')
+            ->select('id', 'currency_code', 'current_currency', 'symbol', 'currency_placement');
+
+    
         return datatables($currencies)
             ->addIndexColumn()
             ->editColumn('currency_code', function ($data) {
@@ -25,17 +28,31 @@ class CurrencyService
                 return $currencyCode;
             })
             ->addColumn('action', function ($data){
+                $editRoute = route('admin.setting.currencies.edit', $data->id);
+                $deleteRoute = route('admin.setting.currencies.delete', $data->id);
 
-                return '<ul class="d-flex align-items-center cg-5 justify-content-center">
-                            <li class="d-flex gap-2">
-                                <button onclick="getEditModal(\'' . route('admin.setting.currencies.edit', $data->id) . '\'' . ', \'#edit-modal\')" class="d-flex justify-content-center align-items-center w-30 h-30 rounded-circle bd-one bd-c-ededed bg-white" data-bs-toggle="modal" data-bs-target="#alumniPhoneNo">
-                                    <img src="' . asset('assets/images/icon/edit.svg') . '" alt="edit" />
-                                </button>
-                                <button onclick="deleteItem(\'' . route('admin.setting.currencies.delete', $data->id) . '\', \'commonDataTable\')" class="d-flex justify-content-center align-items-center w-30 h-30 rounded-circle bd-one bd-c-ededed bg-white" title="'.__('Delete').'">
-                                    <img src="' . asset('assets/images/icon/delete-1.svg') . '" alt="delete">
-                                </button>
+                return '
+                    <div class="language-edit d-flex align-items-center text-nowrap">
+                        <button class="dashboard-menu-dots" data-bs-toggle="dropdown"
+                                aria-expanded="false" type="button">
+                            <img src="' . asset('assets/images/icons/dots.svg') . '" alt="dots">
+                        </button>
+                        <ul class="dropdown-menu dashboared-table-dropdown dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="getEditModal(\'' . $editRoute . '\', \'#edit-modal\')">
+                                    <span>' . __("Edit") . '</span>
+                                </a>
                             </li>
-                        </ul>';
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="deleteItem(\'' . $deleteRoute . '\', \'commonDataTable\')">
+                                    <span>' . __("Delete") . '</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                ';
 
             })
             ->rawColumns(['action', 'currency_code'])
