@@ -3,7 +3,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <form class="ajax reset" action="{{ route('admin.setting.currencies.update', $currency->id) }}" method="post"
-      data-handler="commonResponseForModal">
+    data-handler="commonResponseForModal">
     @csrf
     @method('PATCH')
     <div class="modal-body">
@@ -14,11 +14,11 @@
                         <label for="currency_code" class="form-label">{{ __('Currency ISO Code') }} <span
                                 class="text-danger">*</span></label>
                         <select class="sf-select-edit-modal primary-form-control" id="currency_code"
-                                name="currency_code" required>
+                            name="currency_code" required>
                             @foreach(getCurrency() as $code => $currencyItem)
-                                <option value="{{ $code }}" {{ $code == $currency->currency_code ? 'selected' : '' }}>
-                                    {{ $currencyItem }}
-                                </option>
+                            <option value="{{ $code }}" {{ $code == $currency->currency_code ? 'selected' : '' }}>
+                                {{ $currencyItem }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -31,7 +31,7 @@
                         <label for="symbol" class="form-label">{{ __('Symbol') }} <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="primary-form-control" name="symbol"
-                               placeholder="{{ __('Type symbol') }}" value="{{ $currency->symbol }}" required>
+                            placeholder="{{ __('Type symbol') }}" value="{{ $currency->symbol }}" required>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,8 @@
                     <div class="dashboard-form-group full-width mb-2">
                         <label for="currency_placement" class="form-label">{{ __('Currency Placement') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="sf-select-without-search primary-form-control" name="currency_placement" required>
+                        <select class="sf-select-without-search primary-form-control" name="currency_placement"
+                            required>
                             <option value="">--{{ __('Select Option') }}--</option>
                             <option {{ $currency->currency_placement == "before" ? 'selected' : '' }} value="before">
                                 {{ __('Before Amount') }}
@@ -57,8 +58,8 @@
                     <div class="dashboard-form-group full-width">
                         <label class="checkbox-container">
                             <input type="checkbox" name="current_currency" value="1"
-                                   {{ $currency->current_currency == STATUS_ACTIVE ? 'checked' : '' }}
-                                   id="current_currency_{{ $currency->id }}">
+                                {{ $currency->current_currency == STATUS_ACTIVE ? 'checked' : '' }}
+                                id="current_currency_{{ $currency->id }}">
                             <span class="custom-box"></span>
                             <span class="text">{{ __('Current Currency') }}</span>
                         </label>
@@ -69,10 +70,10 @@
         </div>
     </div>
     <div class="modal-footer form-actions">
-        <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal">
+        <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
             {{ __('Cancel') }}
         </button>
-        <button type="submit" class="common_button add_new_button">
+        <button type="submit" class="primary_button">
             {{ __('Update') }}
         </button>
     </div>

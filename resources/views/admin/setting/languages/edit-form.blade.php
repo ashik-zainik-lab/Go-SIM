@@ -75,7 +75,7 @@
 
         <!-- Actions -->
         <div class="form-actions">
-            <button type="button" class="primary_button bg-sgy-liter-hover" data-bs-dismiss="modal">
+            <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
                 {{ __('Cancel') }}
             </button>
 

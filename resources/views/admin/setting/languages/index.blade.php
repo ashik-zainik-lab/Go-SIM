@@ -163,11 +163,11 @@
 
                     <!-- Actions -->
                     <div class="form-actions">
-                        <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal">
+                        <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
                             {{ __('Cancel') }}
                         </button>
 
-                        <button type="submit" class="common_button add_new_button">
+                        <button type="submit" class="primary_button">
                             {{ __('Save Language') }}
                         </button>
                     </div>
