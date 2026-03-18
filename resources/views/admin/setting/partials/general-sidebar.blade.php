@@ -29,6 +29,11 @@
         {{ __('Cache Settings') }}
     </a>
 
+    <a class="nav-link {{ @$subGatewaySettingActiveClass }}"
+       href="{{ route('admin.setting.gateway.index') }}">
+        {{ __('Gateway Settings') }}
+    </a>
+
     <a class="nav-link {{ @$subLanguageSettingActiveClass }}"
        href="{{ route('admin.setting.languages.index') }}">
         {{ __('Language Settings') }}

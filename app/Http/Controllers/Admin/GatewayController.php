@@ -23,7 +23,9 @@ class GatewayController extends Controller
     {
         $data['title'] = __('Gateway');
         $data['showManageApplicationSetting'] = 'show';
-        $data['activeGatewaySetting'] = 'active-color-one';
+        $data['activeApplicationSetting'] = 'active';
+        $data['activeGatewaySetting'] = 'active';
+        $data['subGatewaySettingActiveClass'] = 'active-color-one';
         $data['gateways'] = $this->gatewayService->getAll();
         return view('admin.setting.gateway', $data);
     }
