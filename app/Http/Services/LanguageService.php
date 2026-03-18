@@ -36,7 +36,7 @@ class LanguageService
                 return $return;
             })
             ->addColumn('flag', function ($data) {
-                return '<div class="d-flex align-items-center"><div class="flex-shrink-0 w-25 h-25 rounded-circle overflow-hidden bg-eaeaea d-flex justify-content-center align-items-center"><img src="' . getFileUrl($data->flag_id) . '" alt="icon" class="w-100"></div></div>';
+                return '<div class="flag-div"><img src="' . getFileUrl($data->flag_id) . '" alt="icon"></div>';
             })
             
             ->addColumn('action', function ($data) {
