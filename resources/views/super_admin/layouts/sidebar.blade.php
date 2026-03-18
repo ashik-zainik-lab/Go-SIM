@@ -203,7 +203,7 @@
         </li>
 
         {{-- Settings --}}
-        @can('Manage Application Setting')
+        @if(auth()->user()->role == USER_ROLE_SUPER_ADMIN)
         <li class="">
             <span class="category_title settings_title">{{ __('Settings') }}</span>
             <a class="{{ $activeApplicationSetting ?? '' }} {{ isset($showManageApplicationSetting) ? 'active' : '' }}"
@@ -244,7 +244,7 @@
                 </div>
             </a>
         </li>
-        @endcan
+        @endif
         @endif
     </ul>
 

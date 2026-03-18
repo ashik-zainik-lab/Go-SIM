@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('super_admin.layouts.app')
 @push('title')
 {{ $title }}
 @endpush
@@ -14,7 +14,7 @@
     <div class="d-flex align-items-start settings-grid-container">
         <!-- Left sidebar -->
         <aside class="settings-sidebar">
-            @include('admin.setting.partials.general-sidebar')
+            @include('super_admin.setting.partials.general-sidebar')
         </aside>
 
         <!-- Right content -->
@@ -31,7 +31,7 @@
                             <strong>{{ __('"Storage Driver"') }}</strong>
                         </p>
                         <div class="text-black mt-3">
-                            <a href="{{route('admin.setting.storage.link')}}"
+                            <a href="{{route('super_admin.setting.storage.link')}}"
                                 class="fs-15 fw-500 lh-25 text-black py-10 px-26 bg-cdef84 bd-ra-12 hover-bg-one">
                                 Storage
                                 Link</a>
@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- Form -->
-                    <form class="ajax" action="{{route('admin.setting.storage.update')}}" method="POST"
+                    <form class="ajax" action="{{route('super_admin.setting.storage.update')}}" method="POST"
                         enctype="multipart/form-data" data-handler="settingCommonHandler">
                         @csrf
 
@@ -332,5 +332,5 @@
 </div>
 @endsection
 @push('script')
-<script src="{{ asset('admin/js/storage-settings.js') }}"></script>
+<script src="{{ asset('super_admin/js/storage-settings.js') }}"></script>
 @endpush

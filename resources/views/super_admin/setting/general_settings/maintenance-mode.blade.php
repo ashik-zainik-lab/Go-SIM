@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('super_admin.layouts.app')
 @push('title')
 {{ $title }}
 @endpush
@@ -14,7 +14,7 @@
     <div class="d-flex align-items-start settings-grid-container">
         <!-- Left sidebar -->
         <aside class="settings-sidebar">
-            @include('admin.setting.partials.general-sidebar')
+            @include('super_admin.setting.partials.general-sidebar')
         </aside>
 
         <!-- Right content -->
@@ -55,7 +55,7 @@
                     </div>
 
                     <!-- Form -->
-                    <form class="ajax" action="{{route('admin.setting.maintenance.change')}}" method="POST"
+                    <form class="ajax" action="{{route('super_admin.setting.maintenance.change')}}" method="POST"
                         enctype="multipart/form-data" data-handler="commonResponseForModal">
                         @csrf
 
@@ -115,5 +115,5 @@ let getUrl = "{{ url('') }}";
 const maintenanceSecretKey = "{{ getOption('maintenance_secret_key') }}";
 const maintenanceModeConst = "{{ getOption('maintenance_mode') }}";
 </script>
-<script src="{{ asset('admin/js/maintenance-mode.js') }}"></script>
+<script src="{{ asset('super_admin/js/maintenance-mode.js') }}"></script>
 @endpush

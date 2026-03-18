@@ -1,6 +1,6 @@
-@extends('admin.layouts.app')
+@extends('super_admin.layouts.app')
 @push('admin-style')
-<link rel="stylesheet" href="{{ asset('admin/styles/main.css') }}">
+<link rel="stylesheet" href="{{ asset('super_admin/styles/main.css') }}">
 @endpush
 @push('title')
 {{ $title }}
@@ -13,12 +13,13 @@
             <div class="col-12">
                 <div class="email-inbox__area bg-style form-horizontal__item bg-style admin-general-settings-page">
                     <input type="hidden" id="statusChangeRoute"
-                        value="{{ route('admin.setting.configuration-settings.update') }}">
+                        value="{{ route('super_admin.setting.configuration-settings.update') }}">
                     <input type="hidden" id="configureUrl"
-                        value="{{ route('admin.setting.configuration-settings.configure') }}">
-                    <input type="hidden" id="helpUrl" value="{{ route('admin.setting.configuration-settings.help') }}">
-                    <form class="ajax" action="{{ route('admin.setting.configuration-settings.update') }}" method="POST"
-                        enctype="multipart/form-data" data-handler="settingCommonHandler">
+                        value="{{ route('super_admin.setting.configuration-settings.configure') }}">
+                    <input type="hidden" id="helpUrl"
+                        value="{{ route('super_admin.setting.configuration-settings.help') }}">
+                    <form class="ajax" action="{{ route('super_admin.setting.configuration-settings.update') }}"
+                        method="POST" enctype="multipart/form-data" data-handler="settingCommonHandler">
                         @csrf
 
                         <div class="row">
@@ -458,7 +459,8 @@
                                             <tr>
                                                 <td>
                                                     <h6>{{ __('Force SSL') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this Force SSL will be enable.') }}
+                                                    <small
+                                                        class="fst-italic fw-normal">({{ __('If you enable this Force SSL will be enable.') }}
                                                         )</small>
                                                 </td>
                                                 <td class="text-center pt-17">
@@ -520,7 +522,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Test Mail') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('admin.setting.mail.test') }}">
+            <form method="POST" action="{{ route('super_admin.setting.mail.test') }}">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 text-black">
@@ -559,8 +561,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Test SMS') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="ajax reset" action="{{ route('admin.setting.sms.test') }}" method="post"
-            enctype="multipart/form-data" data-handler="commonResponseForModal" >
+            <form class="ajax reset" action="{{ route('super_admin.setting.sms.test') }}" method="post"
+                enctype="multipart/form-data" data-handler="commonResponseForModal">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3 text-black">
@@ -587,5 +589,5 @@
 <!-- TEST SMS section end -->
 @endsection
 @push('script')
-<script src="{{ asset('admin/js/configuration.js') }}"></script>
+<script src="{{ asset('super_admin/js/configuration.js') }}"></script>
 @endpush

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CurrencyRequest;
-use App\Http\Services\CurrencyService;
+use App\Http\Requests\SuperAdmin\CurrencyRequest;
+use App\Http\Services\SuperAdmin\CurrencyService;
 use App\Models\Currency;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;

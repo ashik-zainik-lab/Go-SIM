@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('super_admin.layouts.app')
 @push('title')
 {{ $title }}
 @endpush
@@ -13,7 +13,7 @@
     <div class="d-flex align-items-start settings-grid-container">
         <!-- Left sidebar -->
         <aside class="settings-sidebar">
-            @include('admin.setting.partials.general-sidebar')
+            @include('super_admin.setting.partials.general-sidebar')
         </aside>
 
         <!-- Right content -->
@@ -22,8 +22,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ __('Logo Settings') }}</h5>
 
-                    <form class="ajax" action="{{route('admin.setting.application-settings.update')}}" method="POST"
-                        enctype="multipart/form-data" data-handler="commonResponseForModal">
+                    <form class="ajax" action="{{route('super_admin.setting.application-settings.update')}}"
+                        method="POST" enctype="multipart/form-data" data-handler="commonResponseForModal">
                         @csrf
 
                         <div class="row g-3">

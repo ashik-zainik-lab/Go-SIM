@@ -41,19 +41,18 @@ Route::post('store-script-file', [VersionUpdateController::class, 'storePathFile
 
 Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
     Route::group(['middleware' => []], function () {
-        Route::get('application-settings', [SettingController::class, 'applicationSetting'])->middleware('can:Manage Application Setting')->name('application-settings');
-        Route::get('configuration-settings', [SettingController::class, 'configurationSetting'])->middleware('can:Manage Application Setting')->name('configuration-settings');
-        Route::get('configuration-settings/configure', [SettingController::class, 'configurationSettingConfigure'])->middleware('can:Manage Application Setting')->name('configuration-settings.configure');
-        Route::get('configuration-settings/help', [SettingController::class, 'configurationSettingHelp'])->middleware('can:Manage Application Setting')->name('configuration-settings.help');
+        Route::get('application-settings', [SettingController::class, 'applicationSetting'])->name('application-settings');
+        Route::get('configuration-settings', [SettingController::class, 'configurationSetting'])->name('configuration-settings');
+        Route::get('configuration-settings/configure', [SettingController::class, 'configurationSettingConfigure'])->name('configuration-settings.configure');
+        Route::get('configuration-settings/help', [SettingController::class, 'configurationSettingHelp'])->name('configuration-settings.help');
         Route::post('application-settings-update', [SettingController::class, 'applicationSettingUpdate'])
-            ->middleware('can:Manage Application Setting')
             ->name('application-settings.update');
-        Route::post('configuration-settings-update', [SettingController::class, 'configurationSettingUpdate'])->middleware('can:Manage Application Setting')->name('configuration-settings.update')->middleware('isDemo');;
-        Route::post('application-env-update', [SettingController::class, 'saveSetting'])->middleware('can:Manage Application Setting')->name('settings_env.update');
-        Route::get('logo-settings', [SettingController::class, 'logoSettings'])->middleware('can:Manage Application Setting')->name('logo-settings');
-        Route::get('color-settings', [SettingController::class, 'colorSettings'])->middleware('can:Manage Application Setting')->name('color-settings');
+        Route::post('configuration-settings-update', [SettingController::class, 'configurationSettingUpdate'])->name('configuration-settings.update')->middleware('isDemo');;
+        Route::post('application-env-update', [SettingController::class, 'saveSetting'])->name('settings_env.update');
+        Route::get('logo-settings', [SettingController::class, 'logoSettings'])->name('logo-settings');
+        Route::get('color-settings', [SettingController::class, 'colorSettings'])->name('color-settings');
 
-        Route::group(['prefix' => 'currency', 'as' => 'currencies.', 'middleware' => ['can:Manage Application Setting']], function () {
+        Route::group(['prefix' => 'currency', 'as' => 'currencies.'], function () {
             Route::get('', [CurrencyController::class, 'index'])->name('index');
             Route::post('currency', [CurrencyController::class, 'store'])->name('store');
             Route::get('edit/{id}', [CurrencyController::class, 'edit'])->name('edit');
@@ -61,10 +60,10 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
             Route::post('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
         });
 
-        Route::get('storage-settings', [SettingController::class, 'storageSetting'])->middleware('can:Manage Application Setting')->name('storage.index');
-        Route::post('storage-settings', [SettingController::class, 'storageSettingsUpdate'])->middleware('can:Manage Application Setting')->name('storage.update');
-        Route::get('google-recaptcha-settings', [SettingController::class, 'googleRecaptchaSetting'])->middleware('can:Manage Application Setting')->name('google-recaptcha');
-        Route::get('google-analytics-settings', [SettingController::class, 'googleAnalyticsSetting'])->middleware('can:Manage Application Setting')->name('google.analytics');
+        Route::get('storage-settings', [SettingController::class, 'storageSetting'])->name('storage.index');
+        Route::post('storage-settings', [SettingController::class, 'storageSettingsUpdate'])->name('storage.update');
+        Route::get('google-recaptcha-settings', [SettingController::class, 'googleRecaptchaSetting'])->name('google-recaptcha');
+        Route::get('google-analytics-settings', [SettingController::class, 'googleAnalyticsSetting'])->name('google.analytics');
     });
 
     Route::get('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration');
@@ -86,7 +85,7 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
     Route::get('storage-link', [SettingController::class, 'storageLink'])->name('storage.link');
     Route::get('security-settings', [SettingController::class, 'securitySettings'])->name('security.settings');
 
-    Route::group(['prefix' => 'gateway', 'as' => 'gateway.', 'middleware' => ['can:Manage Application Setting']], function () {
+    Route::group(['prefix' => 'gateway', 'as' => 'gateway.'], function () {
         Route::get('/', [GatewayController::class, 'index'])->name('index');
         Route::post('store', [GatewayController::class, 'store'])->name('store')->middleware('isDemo');
         Route::get('get-info', [GatewayController::class, 'getInfo'])->name('get.info');
@@ -102,7 +101,7 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
     //common setting update
     Route::post('common-settings-update', [SettingController::class, 'commonSettingUpdate'])->name('common.settings.update')->middleware('isDemo');
 
-    Route::group(['prefix' => 'language', 'as' => 'languages.', 'middleware' => ['can:Manage Application Setting']], function () {
+    Route::group(['prefix' => 'language', 'as' => 'languages.'], function () {
         Route::get('/', [LanguageController::class, 'index'])->name('index');
         Route::post('store', [LanguageController::class, 'store'])->name('store');
         Route::get('edit/{id}/{iso_code?}', [LanguageController::class, 'edit'])->name('edit');

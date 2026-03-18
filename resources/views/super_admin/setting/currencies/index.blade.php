@@ -82,7 +82,7 @@
                 <h2>{{ __('Add Currency') }}</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="ajax reset" action="{{ route('admin.setting.currencies.store') }}" method="post"
+            <form class="ajax reset" action="{{ route('super_admin.setting.currencies.store') }}" method="post"
                 data-handler="commonResponseForModal">
                 @csrf
                 <div class="modal-body">
