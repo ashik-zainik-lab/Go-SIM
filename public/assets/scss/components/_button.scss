@@ -1,6 +1,6 @@
 /* COMMON BUTTON START */
-.common_button,
-a.common_button {
+.primary_button,
+a.primary_button {
     border: none;
     outline: none;
     padding: 5px 10px;
@@ -13,19 +13,16 @@ a.common_button {
     text-align: center;
     text-decoration: none;
     height: 35px;
+    background-color: var(--theme_color);
+    color: var(--white);
 
-
-    &.add_new_button {
-        background-color: var(--theme_color);
+    &:hover {
+        background-color: var(--theme_dark);
         color: var(--white);
-
-        &:hover {
-            background-color: var(--theme_dark);
-            color: var(--white);
-        }
     }
 
-    &.btn-cancel {
+
+    &.cancel {
         background-color: #E3E3E3;
         color: var(--text_dark);
 

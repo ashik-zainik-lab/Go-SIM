@@ -114,7 +114,7 @@
                                 <div class="col-12">
                                     <div class="input__group general-settings-btn text-end">
                                         <button type="submit"
-                                                class="bd-ra-12 bg-cdef84 border-0 fw-500 hover-bg-one lh-25 px-26 py-10">
+                                                class="primary_button">
                                             {{ __('Update') }}
                                         </button>
                                     </div>

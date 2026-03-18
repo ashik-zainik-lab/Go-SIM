@@ -436,8 +436,8 @@ button {
 }
 
 /* COMMON BUTTON START */
-.common_button,
-a.common_button {
+.primary_button,
+a.primary_button {
   border: none;
   outline: none;
   padding: 5px 10px;
@@ -450,24 +450,21 @@ a.common_button {
   text-align: center;
   text-decoration: none;
   height: 35px;
-}
-.common_button.add_new_button,
-a.common_button.add_new_button {
   background-color: var(--theme_color);
   color: var(--white);
 }
-.common_button.add_new_button:hover,
-a.common_button.add_new_button:hover {
+.primary_button:hover,
+a.primary_button:hover {
   background-color: var(--theme_dark);
   color: var(--white);
 }
-.common_button.btn-cancel,
-a.common_button.btn-cancel {
+.primary_button.cancel,
+a.primary_button.cancel {
   background-color: #E3E3E3;
   color: var(--text_dark);
 }
-.common_button.btn-cancel:hover,
-a.common_button.btn-cancel:hover {
+.primary_button.cancel:hover,
+a.primary_button.cancel:hover {
   background-color: #D1D5DB;
   color: #1F2937;
 }
@@ -487,7 +484,7 @@ a.common_button.btn-cancel:hover {
     row-gap: 10px;
     align-items: flex-start;
   }
-  .dashboard_search_addNew_box .common_button {
+  .dashboard_search_addNew_box .primary_button {
     max-width: 100%;
     width: 100%;
   }
