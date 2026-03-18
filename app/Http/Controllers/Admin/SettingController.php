@@ -41,7 +41,8 @@ class SettingController extends Controller
     {
         $data['title'] = __("Configuration Setting");
         $data['showManageApplicationSetting'] = 'show';
-        $data['activeConfigurationSetting'] = 'active-color-one';
+        // Used for highlighting the main sidebar "System configuration" menu
+        $data['activeConfigurationSetting'] = 'active';
         return view('admin.setting.general_settings.configuration')->with($data);
     }
 

@@ -32,6 +32,8 @@ class LanguageController extends Controller
         $data['title'] = __('Manage Language');
         $data['showManageApplicationSetting'] = 'show';
         $data['activeLanguagesSetting'] = 'active';
+        // For the settings sub-sidebar (general-sidebar)
+        $data['subLanguageSettingActiveClass'] = 'active-color-one';
         return view('admin.setting.languages.index', $data);
     }
 
@@ -56,6 +58,8 @@ class LanguageController extends Controller
         $data['title'] = __('Translate');
         $data['showManageApplicationSetting'] = 'show';
         $data['activeLanguagesSetting'] = 'active-color-one';
+        // For the settings sub-sidebar (general-sidebar)
+        $data['subLanguageSettingActiveClass'] = 'active-color-one';
         $language = Language::findOrFail($id);
         $iso_code = $language->iso_code;
 

@@ -226,7 +226,7 @@
             </li>
 
             <li class="">
-                <a class="{{ $activeConfigurationSetting ?? '' }} {{ isset($showManageApplicationSetting) ? 'active' : '' }}"
+                <a class="{{ $activeConfigurationSetting ?? '' }}"
                    href="{{ route('admin.setting.configuration-settings') }}">
                     <div class="nav_icon_small">
                         {{-- Same gear icon (design matches HTML) --}}
