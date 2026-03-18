@@ -46,27 +46,40 @@ class LanguageService
                 }
             })
             ->addColumn('action', function ($data) {
-                if(auth()->user()->role == USER_ROLE_ADMIN){
+                if (auth()->user()->role == USER_ROLE_ADMIN) {
                     $role = 'admin';
-                }else{
+                } else {
                     $role = 'super_admin';
                 }
-                return '<ul class="d-flex align-items-center cg-5 justify-content-center">
-                <li class="align-items-center d-flex gap-2">
-                    <button onclick="getEditModal(\'' . route($role.'.setting.languages.edit', $data->id) . '\'' . ', \'#edit-modal\')" class="d-flex justify-content-center align-items-center w-30 h-30 rounded-circle bd-one bd-c-ededed bg-white" data-bs-toggle="modal" data-bs-target="#alumniPhoneNo">
-                        <img src="' . asset('assets/images/icon/edit.svg') . '" alt="edit" />
-                    </button>
-                    <button onclick="deleteItem(\'' . route($role.'.setting.languages.delete', $data->id) . '\', \'commonDataTable\')" class="d-flex justify-content-center align-items-center w-30 h-30 rounded-circle bd-one bd-c-ededed bg-white" title="'.__('Delete').'">
-                        <img src="' . asset('assets/images/icon/delete-1.svg') . '" alt="delete">
-                    </button>
-                    <a href="' . route($role.'.setting.languages.translate', $data->id) . '"
-                                                                                class="btn-action" title="">
-                                                                                <span class="status-btn status-btn-blue">
-                                                                                    ' . __("Translator") . '</span>
-                                                                            </a>
-                </li>
-            </ul>
 
+                $editRoute      = route($role . '.setting.languages.edit', $data->id);
+                $deleteRoute    = route($role . '.setting.languages.delete', $data->id);
+                $translateRoute = route($role . '.setting.languages.translate', $data->id);
+
+                return '
+                    <div class="language-edit d-flex align-items-center text-nowrap">
+                        <button class="dashboard-menu-dots" data-bs-toggle="dropdown"
+                                aria-expanded="false" type="button">
+                            <img src="' . asset('assets/images/icons/dots.svg') . '" alt="dots">
+                        </button>
+                        <a href="' . $translateRoute . '" class="trans-text">
+                            ' . __("Translator") . '
+                        </a>
+                        <ul class="dropdown-menu dashboared-table-dropdown dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="getEditModal(\'' . $editRoute . '\', \'#edit-modal\')">
+                                    <span>' . __("Edit") . '</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="deleteItem(\'' . $deleteRoute . '\', \'commonDataTable\')">
+                                    <span>' . __("Delete") . '</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 ';
             })
             ->rawColumns(['action', 'language', 'flag', 'font', 'rtl'])

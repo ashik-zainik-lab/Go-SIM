@@ -1,22 +1,25 @@
 (function ($) {
     "use strict";
-    $('#commonDataTable').DataTable({
+    const languageTable = $('#commonDataTable').DataTable({
         pageLength: 25,
         ordering: false,
         serverSide: true,
         processing: true,
         responsive: true,
-        searching: true,
-        ajax: $('#language-route').val(),
+        searching: false, // we are using custom search box like setting.html
+        ajax: {
+            url: $('#language-route').val(),
+            data: function (d) {
+                d.search = $('#languageSearchInput').val();
+            }
+        },
         language: {
             paginate: {
                 previous: "<i class='fa-solid fa-angles-left'></i>",
                 next: "<i class='fa-solid fa-angles-right'></i>",
-            },
-            searchPlaceholder: "Search event",
-            search: "<span class='searchIcon'><i class='fa-solid fa-magnifying-glass'></i></span>",
+            }
         },
-        dom: '<"tableTop"<"row align-items-center"<"col-sm-6"<"tableSearch float-start"f>><"col-sm-6"<"tableLengthInput float-end"l>>>>tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
+        dom: 'tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
         columns: [
             {"data": "flag", "name": "flag", searchable: false, responsivePriority: 1},
             {"data": "language", "name": "language"},
@@ -26,28 +29,8 @@
             {"data": "action", searchable: false, responsivePriority: 2},
         ]
     });
-    $('#add').on('click', function () {
-        var selector = $('#addLanguageModal');
-        selector.find('.is-invalid').removeClass('is-invalid');
-        selector.find('.error-message').remove();
-        selector.modal('show')
-        selector.find('form').trigger("reset");
-    });
-
-    $(document).on('click', '.editLanguageBtn', function () {
-        var selector = $('#editLanguageModal');
-        selector.find('.is-invalid').removeClass('is-invalid');
-        selector.find('.error-message').remove();
-        selector.modal('show');
-        var url = $('#editLanguageRoute').data('route')
-        selector.find('form').attr('action', url.replace("@", $(this).data('data')['id']));
-        selector.find('form input[name=name]').val($(this).data('data')['name']);
-        selector.find('form input[name=code]').val($(this).data('data')['code']);
-        selector.find('form select[name=rtl]').val($(this).data('data')['rtl']);
-        selector.find('form select[name=default]').val($(this).data('data')['default']);
-        selector.find('form select[name=status]').val($(this).data('data')['status']);
-        document.getElementById("editImageShow").src = $(this).data('data')['icon'];
-    });
+    // old manual open/edit handlers are no longer needed for the new design,
+    // Bootstrap data attributes handle opening modals.
 
     // Translate
     $('.addmore').on('click', function (e) {
@@ -140,10 +123,10 @@
         });
     }
 
-    // Debounce timer
+    // Debounce timer for translate page search
     let debounceTimer;
 
-    // Live search on input
+    // Live search on input (translate page)
     $('#search-form input[name="search"]').on('input', function () {
         clearTimeout(debounceTimer);
         let search = $(this).val();
@@ -152,7 +135,7 @@
         }, 500); // 500ms debounce delay
     });
 
-    // Also intercept form submit (optional, for search button)
+    // Also intercept form submit on translate page
     $('#search-form').on('submit', function (e) {
         e.preventDefault();
         let search = $(this).find('input[name="search"]').val();
@@ -164,6 +147,19 @@
         let page = $(this).data('page');
         let search = $('#search-form').find('input[name="search"]').val();
         loadTranslations(page, search);
+    });
+
+    // Language list search (index page) using custom search box like html/setting.html
+    $('#languageSearchForm').on('submit', function (e) {
+        e.preventDefault();
+        languageTable.ajax.reload();
+    });
+
+    $('#languageSearchInput').on('input', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            languageTable.ajax.reload();
+        }, 400);
     });
 
 
