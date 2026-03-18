@@ -76,28 +76,29 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-inner-form-box">
-                        <div class="row">
-                            <div class="mb-30">
-                                <span class="text-danger text-center">{{ __('Note: If you import keywords, your current
-                                    keywords will be deleted and replaced by the imported keywords.') }}</span>
-                            </div>
-                            <div class="col mb-25">
-                                <label for="status" class="label-text-title color-heading font-medium mb-2">
-                                    {{ __('Language') }} </label>
-                                <select name="import" class="sf-select flex-shrink-0 export" id="inputGroupSelect02">
-                                    <option value=""> {{ __('Select Option') }} </option>
-                                    @foreach ($languages as $lang)
+                        <div class="mb-25 text-center">
+                            <span class="text-danger d-inline-block">
+                                {{ __('Note: If you import keywords, your current keywords will be deleted and replaced by the imported keywords.') }}
+                            </span>
+                        </div>
+
+                        <div class="dashboard-form-group mb-25">
+                            <label for="importLanguage" class="form-label">
+                                {{ __('Language') }} <span class="text-danger">*</span>
+                            </label>
+                            <select name="import" class="sf-select primary-form-control p-0" id="importLanguage" required>
+                                <option value=""> {{ __('Select Option') }} </option>
+                                @foreach ($languages as $lang)
                                     <option value="{{ $lang->iso_code }}">{{ __($lang->language) }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-start border-0 pt-0">
                     <button type="button" class="common_button btn-cancel"
                             data-bs-dismiss="modal" title="Back">{{ __('Back') }}</button>
-                    <button type="submit" class="common_button add_new_button"
+                    <button type="submit" class="primary_button"
                             title="Submit">{{ __('Import') }}</button>
                 </div>
             </form>
@@ -121,17 +122,17 @@
                             {{ __('Upload a valid JSON translation file. Existing translations will be merged with the uploaded file. Keys in the uploaded file will overwrite existing keys.') }}
                         </span>
                     </div>
-                    <div class="col-md-12 mb-25">
-                        <label for="file" class="label-text-title color-heading font-medium mb-2">
+                    <div class="dashboard-form-group mb-25">
+                        <label for="translationJsonFile" class="form-label">
                             {{ __('Select JSON File') }}
                         </label>
-                        <input type="file" name="file" class="form-control" accept=".json" required>
+                        <input type="file" name="file" id="translationJsonFile" class="primary-form-control" accept=".json" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-start border-0 pt-0">
                     <button type="button" class="common_button btn-cancel"
                             data-bs-dismiss="modal" title="Back">{{ __('Back') }}</button>
-                    <button type="submit" class="common_button add_new_button"
+                    <button type="submit" class="primary_button"
                             title="Submit">{{ __('Upload') }}</button>
                 </div>
             </form>
