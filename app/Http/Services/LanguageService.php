@@ -16,7 +16,7 @@ class LanguageService
 
     public function getAllData()
     {
-        $currencies = Language::orderBy('id', 'DESC')->select('id', 'language', 'iso_code', 'default', 'rtl', 'flag_id', 'font');
+        $currencies = Language::orderBy('id', 'DESC')->select('id', 'language', 'iso_code', 'default', 'rtl', 'flag_id');
         return datatables($currencies)
             ->addIndexColumn()
             ->editColumn('language', function ($data) {
