@@ -31,6 +31,20 @@
                             </button>
                         </div>
 
+                        <!-- Search like Languages (custom box, not DataTables default search) -->
+                        <div class="dashboard_search_addNew_box mb-3">
+                            <div class="serach_field_area">
+                                <form action="#" id="currencySearchForm">
+                                    <div class="search_field">
+                                        <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}"
+                                            alt="search icon">
+                                        <input type="text" placeholder="{{ __('Search Currencies...') }}" name="search"
+                                            id="currencySearchInput">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                         <div class="dashboard_common_table table-responsive">
                             <table class="table zTable" id="commonDataTable">
                                 <thead class="table-heading">
