@@ -131,7 +131,9 @@
                 //     minimumResultsForSearch: -1,
                 // });
                 // when don't need search field and can use in modal
-                $(".sf-select-without-search").niceSelect();
+                $(".sf-select-without-search").select2({
+                    minimumResultsForSearch: -1,
+                });
                 // when need search in modal
                 // $(".sf-select-modal").select2({
                 //     dropdownCssClass: "sf-select-dropdown",

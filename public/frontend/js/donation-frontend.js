@@ -93,7 +93,7 @@
 
     $(document).on('change', '.paymentItem-input', function () {
         $('#currency').html('');
-        $('#currency').niceSelect('update');
+        $('#currency').val(null).trigger('change');
         commonAjax('GET', $('#getCurrencyByGatewayRoute').val(), getCurrencyRes, getCurrencyRes, {'id': $(this).data('val')});
 
         if ($('input[name="gateway"]:checked').val() == 'bank') {
@@ -116,7 +116,7 @@
             html += `<option value="${currency[1].id}" data-rate="${currency[1].conversion_rate}" data-currency="${currency[1].currency}"> ${gatewayCurrencyPrice(currencyAmount, currency[1].currency)}</option>`;
         });
         $('#currency').html(html);
-        $('#currency').niceSelect('update');
+        $('#currency').val(null).trigger('change');
     }
 
     $(document).on('input', '#amount', function () {
@@ -131,7 +131,7 @@
             }
         });
 
-        $('#currency').niceSelect('update');
+        $('#currency').val(null).trigger('change');
     })
 
     window.addEventListener('load', function () {

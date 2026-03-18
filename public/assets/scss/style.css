@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   /* :::::: Fonts :::::: */
-  --primary-font: 'Poppins', sans-serif;
+  --primary-font: "Poppins", sans-serif;
   /* :::::: Colors :::::: */
   --theme_color: #4F46E5;
   --theme_dark: #0F172A;
@@ -90,7 +90,6 @@ button {
   font-family: var(--primary-font);
 }
 
-/* COMPONENT CONTENT */
 .dark_sidebar {
   background: var(--theme_dark);
   height: 100vh;
@@ -108,6 +107,7 @@ button {
   overflow-y: auto;
   box-shadow: 0 12px 30px rgba(80, 143, 244, 0.1);
   transition: 0.3s;
+  scrollbar-width: none;
 }
 .dark_sidebar .logo {
   margin-bottom: 28px;
@@ -123,8 +123,7 @@ button {
   z-index: 0;
   display: grid;
   display: flex;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  column-gap: 10px;
   align-items: center;
   position: relative;
   background: transparent;
@@ -132,7 +131,6 @@ button {
   border-radius: 0;
 }
 .sidebar #sidebar_menu > li a .nav_icon_small {
-  width: -moz-fit-content;
   width: fit-content;
 }
 .sidebar #sidebar_menu > li a .nav_icon_small svg {
@@ -242,8 +240,7 @@ button {
   transition: all 0.3s ease-in-out;
   display: none;
   flex-direction: column;
-  -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
 }
 @media (max-width: 991px) {
@@ -316,7 +313,6 @@ button {
   text-transform: uppercase;
   padding: 6px 10px;
   text-align: center;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .dashboared-status-badge.active {
@@ -543,14 +539,12 @@ a.common_button.btn-cancel:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   /* Tablet */
+  /* Mobile */
 }
 @media (max-width: 991px) {
   .region-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-.region-grid {
-  /* Mobile */
 }
 @media (max-width: 575px) {
   .region-grid {
@@ -769,8 +763,7 @@ a.common_button.btn-cancel:hover {
   color: var(--text_dark);
 }
 .dashboard_common_table .language-edit {
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  column-gap: 10px;
 }
 .dashboard_common_table .language-edit .trans-text {
   font-weight: 500;
@@ -786,11 +779,16 @@ a.common_button.btn-cancel:hover {
 .dashboard_common_table .action-btns {
   display: flex;
   align-items: center;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
+  column-gap: 10px;
 }
 
 /* DASHBOARD TABLE END */
+.dashboard-common-modal {
+  /* HEADER */
+  /* FORM LAYOUT */
+  /* SELECT DROPDOWN LOOK */
+  /* ACTION BUTTONS */
+}
 .dashboard-common-modal .modal-dialog {
   max-width: 1148px;
 }
@@ -812,9 +810,6 @@ a.common_button.btn-cancel:hover {
   .dashboard-common-modal .modal-content {
     padding: 30px;
   }
-}
-.dashboard-common-modal {
-  /* HEADER */
 }
 .dashboard-common-modal .modal-header {
   border-bottom: 1px solid var(--border_color);
@@ -848,9 +843,6 @@ a.common_button.btn-cancel:hover {
 .dashboard-common-modal .modal-body {
   padding: 0;
 }
-.dashboard-common-modal {
-  /* FORM LAYOUT */
-}
 .dashboard-common-modal .modal-form {
   display: flex;
   flex-direction: column;
@@ -876,9 +868,6 @@ a.common_button.btn-cancel:hover {
     gap: 20px;
   }
 }
-.dashboard-common-modal {
-  /* SELECT DROPDOWN LOOK */
-}
 .dashboard-common-modal select {
   appearance: none;
   -webkit-appearance: none;
@@ -888,9 +877,6 @@ a.common_button.btn-cancel:hover {
   background-position: right 12px center;
   background-size: 8px 5px;
   padding-right: 32px;
-}
-.dashboard-common-modal {
-  /* ACTION BUTTONS */
 }
 .dashboard-common-modal .form-actions {
   display: flex;
@@ -921,8 +907,7 @@ a.common_button.btn-cancel:hover {
 .dashboard-form-group.has-selectable-box .selectable-box {
   display: flex;
   align-items: center;
-  -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
 }
 .dashboard-form-group.has-selectable-box .selectable-box input {
   width: calc(100% - 110px);
@@ -953,9 +938,6 @@ a.common_button.btn-cancel:hover {
   border: 1px solid var(--border_color);
   background: #F8FAFC;
 }
-.dashboard-form-group input::-moz-placeholder, .dashboard-form-group select::-moz-placeholder {
-  color: var(--text_ash);
-}
 .dashboard-form-group input::placeholder,
 .dashboard-form-group select::placeholder {
   color: var(--text_ash);
@@ -969,8 +951,7 @@ a.common_button.btn-cancel:hover {
 .dashboard-form-group .checkbox-container {
   display: flex;
   align-items: center;
-  -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
   height: 45px;
   padding: 15px 20px;
   font-weight: 500;
@@ -1213,8 +1194,7 @@ a.common_button.btn-cancel:hover {
 }
 
 .header_right {
-  -moz-column-gap: 15px;
-       column-gap: 15px;
+  column-gap: 15px;
   width: 70%;
   justify-content: flex-end;
 }
@@ -1227,8 +1207,7 @@ a.common_button.btn-cancel:hover {
 .custom-breadcrumb {
   display: flex;
   align-items: center;
-  -moz-column-gap: 3px;
-       column-gap: 3px;
+  column-gap: 3px;
 }
 @media (max-width: 576px) {
   .custom-breadcrumb {
@@ -1251,8 +1230,7 @@ a.common_button.btn-cancel:hover {
 .admin_dropdown .profile_dropdown {
   display: flex;
   align-items: center;
-  -moz-column-gap: 13px;
-       column-gap: 13px;
+  column-gap: 13px;
   border: none;
   outline: none;
   background: transparent;
@@ -1265,8 +1243,7 @@ a.common_button.btn-cancel:hover {
   height: 40px;
   min-width: 40px;
   border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .admin_dropdown .profile_dropdown .info {
   text-align: left;
@@ -1320,8 +1297,7 @@ a.common_button.btn-cancel:hover {
   position: relative;
   display: flex;
   align-items: center;
-  -moz-column-gap: 7px;
-       column-gap: 7px;
+  column-gap: 7px;
   font-weight: 500;
   font-size: 12px;
   line-height: 24px;
@@ -1358,8 +1334,7 @@ a.common_button.btn-cancel:hover {
 .flag_dropdown_wrapper .dropdown-item {
   display: flex;
   align-items: center;
-  -moz-column-gap: 7px;
-       column-gap: 7px;
+  column-gap: 7px;
 }
 
 .notification_dropdown_wrapper .notification_dropdown_btn {
@@ -1480,10 +1455,8 @@ a.common_button.btn-cancel:hover {
     flex-wrap: nowrap;
   }
   .settings-grid-container .settings-sidebar .flex-column .nav-link {
-    min-width: -moz-max-content;
     min-width: max-content;
-    -moz-column-gap: 15px;
-         column-gap: 15px;
+    column-gap: 15px;
   }
 }
 .settings-grid-container .settings-sidebar .nav-link {
@@ -1566,6 +1539,8 @@ a.common_button.btn-cancel:hover {
 }
 .settings-grid-container .dashboard-settings-card .show-logo-wrap .show-logo img {
   max-width: 150px;
+  height: 100px;
+  object-fit: contain;
 }
 .settings-grid-container .dashboard-settings-card .single-payment {
   width: 100%;
@@ -1604,4 +1579,8 @@ a.common_button.btn-cancel:hover {
 .settings-grid-container .dashboard-settings-card .single-payment .status.active {
   color: #0FA958;
   background: #EBF3EE;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/* COMPONENT CONTENT */
+
+/*# sourceMappingURL=style.css.map */

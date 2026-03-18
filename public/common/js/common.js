@@ -258,6 +258,7 @@
     }
 
     window.settingCommonHandler = function (data) {
+        console.log('Setting Common Handler Called:', data);
         var output = '';
         var type = 'error';
         $('.error-message').remove();
@@ -272,7 +273,12 @@
             if ($('.dataTable ').length) {
                 $('.dataTable').DataTable().ajax.reload();
             }
-            alertAjaxMessage(type, output);
+            // Show toast notification - ensure it fires
+            if (typeof toastr !== 'undefined') {
+                toastr.success(output);
+            } else {
+                alert('Success: ' + output);
+            }
             if ($(document).find('form.reset').length) {
                 $(document).find('form.reset')[0].reset();
                 if ($('.summernoteOne')) {
@@ -281,11 +287,12 @@
                 if ($('.upload-img-box').find('img')) {
                     $('.upload-img-box').find('img').attr('src', '');
                 }
-                if ($('.select2-hidden-accessible')) {
+                if ($('.select2-hidden-accessible').length) {
                     $('.select2-hidden-accessible').val(null).trigger('change');
                 }
-                if ($('.sf-select-without-search')) {
-                    $('.sf-select-without-search').niceSelect('update');
+                // Initialize select2 for sf-select-without-search
+                if ($('.sf-select-without-search').length) {
+                    $('.sf-select-without-search').select2();
                 }
             }
         } else {
@@ -309,7 +316,11 @@
                 }
 
                 if ($(document).find(modalId).find('.sf-select-without-search').length) {
-                    $(document).find(modalId).find('.sf-select-without-search').niceSelect();
+                    $(document).find(modalId).find('.sf-select-without-search').select2({
+                        dropdownCssClass: "sf-select-dropdown",
+                        selectionCssClass: "sf-select-section",
+                        dropdownParent: $(modalId),
+                    });
                 }
 
                 if ($(document).find(modalId).find('.date-time-picker').length) {
@@ -409,11 +420,11 @@
                 if ($('.upload-img-box').find('img')) {
                     $('.upload-img-box').find('img').attr('src', '');
                 }
-                if ($('.select2-hidden-accessible')) {
+                if ($('.select2-hidden-accessible').length) {
                     $('.select2-hidden-accessible').val(null).trigger('change');
                 }
-                if ($('.sf-select-without-search')) {
-                    $('.sf-select-without-search').niceSelect('update');
+                if ($('.sf-select-without-search').length) {
+                    $('.sf-select-without-search').select2();
                 }
             }
 
@@ -455,11 +466,11 @@
                 if ($('.upload-img-box').find('img')) {
                     $('.upload-img-box').find('img').attr('src', '');
                 }
-                if ($('.select2-hidden-accessible')) {
+                if ($('.select2-hidden-accessible').length) {
                     $('.select2-hidden-accessible').val(null).trigger('change');
                 }
-                if ($('.sf-select-without-search')) {
-                    $('.sf-select-without-search').niceSelect('update');
+                if ($('.sf-select-without-search').length) {
+                    $('.sf-select-without-search').select2();
                 }
             }
 
@@ -485,11 +496,11 @@
                 if ($('.upload-img-box').find('img')) {
                     $('.upload-img-box').find('img').attr('src', '');
                 }
-                if ($('.select2-hidden-accessible')) {
+                if ($('.select2-hidden-accessible').length) {
                     $('.select2-hidden-accessible').val(null).trigger('change');
                 }
-                if ($('.sf-select-without-search')) {
-                    $('.sf-select-without-search').niceSelect('update');
+                if ($('.sf-select-without-search').length) {
+                    $('.sf-select-without-search').select2();
                 }
             }
 

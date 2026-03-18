@@ -73,7 +73,10 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
     // Bank
     $('.add-bank').on('click', function () {
         $('.bank-div-append').append(addBank());
-        $('.bank-div-append').find('.sf-select-without-search').niceSelect();
+        $('.bank-div-append').find('.sf-select-without-search').select2({
+            dropdownCssClass: "sf-select-dropdown",
+            selectionCssClass: "sf-select-section",
+        });
     });
 
     $(document).on('click', '.remove-bank', function () {
@@ -97,7 +100,10 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
         selector.find('select[name=mode]').val(response.data.gateway.mode)
         selector.find('input[name=key]').val(response.data.gateway.key)
 
-        $('.sf-select-without-search').niceSelect('update');
+        $('.sf-select-without-search').select2({
+            dropdownCssClass: "sf-select-dropdown",
+            selectionCssClass: "sf-select-section",
+        });
 
         var gatewaySettings = {};
         if ($('#gatewaySettings').length && $('#gatewaySettings').val()) {
@@ -204,7 +210,10 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
             }
 
             $('.bank-div-append').html(bankHtml);
-            $('.bank-div-append').find('.sf-select-without-search').niceSelect();
+            $('.bank-div-append').find('.sf-select-without-search').select2({
+                dropdownCssClass: "sf-select-dropdown",
+                selectionCssClass: "sf-select-section",
+            });
         } else {
             selector.find('.mode-div').show();
             selector.find('.url-div').show();

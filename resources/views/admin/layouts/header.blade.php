@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/quill.snow.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/scss/style.css') }}?ver={{ env('VERSION' ,0) }}" />
 
     @include('admin.layouts.dynamic-color')
