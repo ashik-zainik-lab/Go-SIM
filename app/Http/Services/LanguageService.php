@@ -38,13 +38,7 @@ class LanguageService
             ->addColumn('flag', function ($data) {
                 return '<div class="min-w-160 d-flex align-items-center cg-10"><div class="flex-shrink-0 w-35 h-35 bd-one bd-c-cdef84 rounded-circle overflow-hidden bg-eaeaea d-flex justify-content-center align-items-center"><img src="' . getFileUrl($data->flag_id) . '" alt="icon" class="rounded avatar-xs w-100"></div><p>'.htmlspecialchars($data->name).'</p></div>';
             })
-            ->addColumn('font', function ($data) {
-                if ($data->font != null) {
-                    return '<spna>Yes</spna>';
-                } else {
-                    return '<spna>No</spna>';
-                }
-            })
+            
             ->addColumn('action', function ($data) {
                 if (auth()->user()->role == USER_ROLE_ADMIN) {
                     $role = 'admin';

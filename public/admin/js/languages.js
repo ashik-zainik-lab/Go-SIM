@@ -25,7 +25,6 @@
             {"data": "language", "name": "language"},
             {"data": "iso_code", "name": "iso_code"},
             {"data": "rtl", "name": "rtl", searchable: false},
-            {"data": "font", "name": "font", searchable: false},
             {"data": "action", searchable: false, responsivePriority: 2},
         ]
     });
