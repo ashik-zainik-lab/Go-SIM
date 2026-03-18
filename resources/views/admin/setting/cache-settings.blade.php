@@ -26,14 +26,14 @@
                     <div class="row g-3">
                         <div class="col-xxl-6 col-lg-6 col-md-12">
                             <div class="dashboard-settings-card h-100">
-                                <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="card-body d-flex flex-column justify-content-between text-center">
                                     <div>
                                         <h6 class="card-title mb-1">{{ __('Clear View Cache') }}</h6>
                                         <p class="text-muted mb-3">{{ __('Remove compiled blade views.') }}</p>
                                     </div>
-                                    <div class="text-end">
+                                    <div class="mt-auto w-100">
                                         <a href="{{ route('admin.setting.cache-update', 1) }}"
-                                           class="primary_button">
+                                           class="primary_button w-100">
                                             {{ __('Click Here') }}
                                         </a>
                                     </div>
@@ -43,14 +43,14 @@
 
                         <div class="col-xxl-6 col-lg-6 col-md-12">
                             <div class="dashboard-settings-card h-100">
-                                <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="card-body d-flex flex-column justify-content-between text-center">
                                     <div>
                                         <h6 class="card-title mb-1">{{ __('Clear Route Cache') }}</h6>
                                         <p class="text-muted mb-3">{{ __('Refresh cached routes.') }}</p>
                                     </div>
-                                    <div class="text-end">
+                                    <div class="mt-auto w-100">
                                         <a href="{{ route('admin.setting.cache-update', 2) }}"
-                                           class="primary_button">
+                                           class="primary_button w-100">
                                             {{ __('Click Here') }}
                                         </a>
                                     </div>
@@ -60,14 +60,14 @@
 
                         <div class="col-xxl-6 col-lg-6 col-md-12">
                             <div class="dashboard-settings-card h-100">
-                                <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="card-body d-flex flex-column justify-content-between text-center">
                                     <div>
                                         <h6 class="card-title mb-1">{{ __('Clear Config Cache') }}</h6>
                                         <p class="text-muted mb-3">{{ __('Reload configuration values.') }}</p>
                                     </div>
-                                    <div class="text-end">
+                                    <div class="mt-auto w-100">
                                         <a href="{{ route('admin.setting.cache-update', 3) }}"
-                                           class="primary_button">
+                                           class="primary_button w-100">
                                             {{ __('Click Here') }}
                                         </a>
                                     </div>
@@ -77,14 +77,14 @@
 
                         <div class="col-xxl-6 col-lg-6 col-md-12">
                             <div class="dashboard-settings-card h-100">
-                                <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="card-body d-flex flex-column justify-content-between text-center">
                                     <div>
                                         <h6 class="card-title mb-1">{{ __('Application Clear Cache') }}</h6>
                                         <p class="text-muted mb-3">{{ __('Clear application cache store.') }}</p>
                                     </div>
-                                    <div class="text-end">
+                                    <div class="mt-auto w-100">
                                         <a href="{{ route('admin.setting.cache-update', 4) }}"
-                                           class="primary_button">
+                                           class="primary_button w-100">
                                             {{ __('Click Here') }}
                                         </a>
                                     </div>
@@ -94,14 +94,14 @@
 
                         <div class="col-xxl-6 col-lg-6 col-md-12">
                             <div class="dashboard-settings-card h-100">
-                                <div class="card-body d-flex flex-column justify-content-between">
+                                <div class="card-body d-flex flex-column justify-content-between text-center">
                                     <div>
                                         <h6 class="card-title mb-1">{{ __('Storage Link') }}</h6>
                                         <p class="text-muted mb-3">{{ __('Recreate storage symbolic link.') }}</p>
                                     </div>
-                                    <div class="text-end">
+                                    <div class="mt-auto w-100">
                                         <a href="{{ route('admin.setting.cache-update', 5) }}"
-                                           class="primary_button">
+                                           class="primary_button w-100">
                                             {{ __('Click Here') }}
                                         </a>
                                     </div>
