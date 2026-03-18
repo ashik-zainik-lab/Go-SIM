@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @push('title')
-    {{$title}}
+{{$title}}
 @endpush
 @section('content')
 <!-- Page content area start -->
@@ -25,9 +25,8 @@
                 <div class="card-body">
                     <div class="d-flex flex-wrap item-title justify-content-between align-items-center mb-3">
                         <h5 class="card-title mb-0">{{ __('Language Settings') }}</h5>
-                        <button
-                            class="primary_button d-flex align-items-center gap-2"
-                            type="button" data-bs-toggle="modal" data-bs-target="#add-modal">
+                        <button class="primary_button d-flex align-items-center gap-2" type="button"
+                            data-bs-toggle="modal" data-bs-target="#add-modal">
                             <i class="fa fa-plus me-1"></i> {{ __('Add Language') }}
                         </button>
                     </div>
@@ -66,109 +65,104 @@
 <!-- Page content area end -->
 
 <!-- Add Modal section start -->
-<div class="modal fade" id="add-modal" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade dashboard-common-modal" id="add-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content">
+
+            <!-- Header -->
             <div class="modal-header">
-                <h5 class="modal-title">{{ __('Add Language') }}</h5>
-                <button type="button" class="border-0 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h2>{{ __('Add Language') }}</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
-            <form class="ajax reset" action="{{ route('admin.setting.languages.store') }}" method="post"
-                data-handler="commonResponseForModal" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="row rg-25">
-                        <div class="col-12">
-                            <div class="primary-form-group">
-                                <div class="primary-form-group-wrap">
-                                    <label for="currentPassword" class="form-label">{{ __('Language') }} <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" class="primary-form-control" name="language"
-                                        placeholder="{{ __('Language') }}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="primary-form-group">
-                                <div class="primary-form-group-wrap">
-                                    <label for="iso_code" class="form-label">{{ __('ISO Code') }} <span
-                                            class="text-danger">*</span></label>
-                                    <select name="iso_code" class="primary-form-control" id="sf-select-modal-add">
-                                        <option value="">--{{ __('Select ISO Code') }}--</option>
-                                        @foreach(languageIsoCode() as $code => $isoCountryName)
-                                        <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="primary-form-group">
-                                <div class="primary-form-group-wrap zImage-upload-details mw-100">
-                                    <div class="zImage-inside">
-                                        <div class="d-flex pb-12"><img
-                                                src="{{ asset('assets/images/icon/upload-img-1.svg')}}" alt="" />
-                                        </div>
-                                        <p class="fs-15 fw-500 lh-16 text-1b1c17">{{__('Drag & drop files here')}}</p>
-                                    </div>
-                                    <label for="zImageUpload" class="form-label">{{__('Flag')}} <span
-                                            class="text-mime-type">(jpeg,png,jpg,svg,webp)</span> <span
-                                            class="text-danger">*</span></label>
-                                    <div class="upload-img-box">
-                                        <img src="" />
-                                        <input type="file" name="flag" id="flag" accept="image/*"
-                                            onchange="previewFile(this)" />
-                                    </div>
-                                </div>
-                            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <form class="modal-form ajax reset" action="{{ route('admin.setting.languages.store') }}" method="post"
+                    data-handler="commonResponseForModal" enctype="multipart/form-data">
+                    @csrf
+
+                    <!-- Row 1 -->
+                    <div class="form-row">
+                        <div class="dashboard-form-group">
+                            <label class="form-label">{{ __('Language') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="primary-form-control" name="language"
+                                placeholder="{{ __('Type language name') }}" required>
                         </div>
 
-                        <div class="primary-form-group">
-                            <div class="primary-form-group-wrap">
-                                <label for="attachmentFile" class="form-label">{{ __('Font File') }}</label>
-                                <input type="file" class="primary-form-control" id="attachmentFile"
-                                    accept="application/pdf" name="font">
-                                @if ($errors->has('font'))
-                                <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{
-                                    $errors->first('font') }}</span>
-                                @endif
-                            </div>
+                        <div class="dashboard-form-group">
+                            <label class="form-label">{{ __('ISO Code') }} <span class="text-danger">*</span></label>
+                            <select name="iso_code" class="primary-form-control" id="sf-select-modal-add" required>
+                                <option value="">--{{ __('Select ISO Code') }}--</option>
+                                @foreach(languageIsoCode() as $code => $isoCountryName)
+                                <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-12">
-                            <div class="input__group">
-                                <div class="primary-form-group">
-                                    <div class="primary-form-group-wrap">
-                                        <label class="form-label" for="rtl">{{ __('RTL Supported') }} <span
-                                                class="text-danger">*</span></label>
-                                        <select name="rtl" class="sf-select-without-search">
-                                            <option value="0">{{__("No")}}</option>
-                                            <option value="1">{{__("Yes")}}</option>
-                                        </select>
-                                    </div>
-                                </div>
+                    </div>
 
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex form-check">
-                                <div class="zCheck form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" value="1" name="default"
-                                        role="switch" id="flexCheckChecked" />
+                    <!-- Row 2 -->
+                    <div class="form-row">
+                        <div class="dashboard-form-group full-width">
+                            <label class="form-label d-block">{{ __('Flag') }} <span
+                                    class="text-mime-type">(jpeg,png,jpg,svg,webp)</span> <span
+                                    class="text-danger">*</span></label>
+                            <div class="zImage-upload-details mw-100">
+                                <div class="zImage-inside">
+                                    <div class="d-flex pb-12">
+                                        <img src="{{ asset('assets/images/icon/upload-img-1.svg')}}" alt="upload" />
+                                    </div>
+                                    <p class="fs-15 fw-500 lh-16 text-1b1c17">{{__('Drag & drop files here')}}</p>
                                 </div>
-                                <label class="form-check-label ps-3" for="flexCheckChecked">
-                                    {{ __('Default Language') }}
-                                </label>
+                                <div class="upload-img-box">
+                                    <img src="" />
+                                    <input type="file" name="flag" id="flag" accept="image/*"
+                                        onchange="previewFile(this)" required />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit"
-                            class="primary_button">
-                        {{ __('Save') }}
-                    </button>
-                </div>
-            </form>
+
+                    <!-- Row 3 -->
+                    <div class="form-row">
+
+
+                        <div class="dashboard-form-group">
+                            <label class="form-label" for="rtl">{{ __('RTL Supported') }} <span
+                                    class="text-danger">*</span></label>
+                            <select name="rtl" class="primary-form-control" required>
+                                <option value="0">{{__("No")}}</option>
+                                <option value="1">{{__("Yes")}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="form-row">
+                        <div class="dashboard-form-group full-width">
+                            <label class="form-label d-block">{{ __('Default Language') }}</label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="default" value="1">
+                                <span class="custom-box"></span>
+                                <span class="text">{{ __('Set as default language') }}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal">
+                            {{ __('Cancel') }}
+                        </button>
+
+                        <button type="submit" class="common_button add_new_button">
+                            {{ __('Save Language') }}
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     </div>
 </div>
