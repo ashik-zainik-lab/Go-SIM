@@ -6,493 +6,419 @@
 {{ $title }}
 @endpush
 @section('content')
-<div class="p-30">
-    <div class="">
-        <h4 class="fs-24 fw-500 lh-34 text-black pb-16">{{ __($title) }}</h4>
-        <div class="row">
-            <div class="col-12">
-                <div class="email-inbox__area bg-style form-horizontal__item bg-style admin-general-settings-page">
-                    <input type="hidden" id="statusChangeRoute"
-                        value="{{ route('super_admin.setting.configuration-settings.update') }}">
-                    <input type="hidden" id="configureUrl"
-                        value="{{ route('super_admin.setting.configuration-settings.configure') }}">
-                    <input type="hidden" id="helpUrl"
-                        value="{{ route('super_admin.setting.configuration-settings.help') }}">
-                    <form class="ajax" action="{{ route('super_admin.setting.configuration-settings.update') }}"
-                        method="POST" enctype="multipart/form-data" data-handler="settingCommonHandler">
-                        @csrf
+<div class="dashboard-section-title">
+    <h2 class="title">{{ __($title) }}</h2>
+    <p>{{ __('Track transactions, monitor activations, and manage refunds.') }}</p>
+</div>
 
-                        <div class="row">
-                            <div class="col-md-12 bg-white bd-half bd-c-ebedf0 bd-ra-25 p-30">
-                                <div class="table-responsive zTable-responsive">
-                                    <table class="table zTable">
-                                        <thead>
-                                            <tr>
-                                                <th class="min-w-160">
-                                                    <div>{{ __('Extension') }}</div>
-                                                </th>
-                                                <th class="text-center">
-                                                    <div>{{ __('Status') }}</div>
-                                                </th>
-                                                <th class="text-center">
-                                                    <div>{{ __('Action') }}</div>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Email Verification') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable Email
-                                                        Verification, new user have to verify the email to access this
-                                                        system.') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'email_verification_status')"
-                                                            value="1" {{
-                                                            getOption('email_verification_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="email_verification_status"
-                                                            type="checkbox" role="switch"
-                                                            id="email_verification_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        @if(!isAddonInstalled('ALUSAAS'))
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('email_verification_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        @endif
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('email_verification_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('E-mail credentials status') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for sending email') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'app_mail_status')"
-                                                            value="1" {{ getOption('app_mail_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="app_mail_status" type="checkbox"
-                                                            role="switch" id="app_mail_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        @if(!isAddonInstalled('ALUSAAS'))
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('app_mail_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        @endif
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('app_mail_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('SMS credentials status') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for sending sms') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'app_sms_status')"
-                                                            value="1" {{ getOption('app_sms_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="app_sms_status" type="checkbox"
-                                                            role="switch" id="app_sms_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('app_sms_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('app_sms_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Pusher credentials status') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for pusher') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'pusher_status')"
-                                                            value="1" {{ getOption('pusher_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="pusher_status" type="checkbox"
-                                                            role="switch" id="pusher_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('pusher_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('pusher_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Social Login (Google)') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for Google. User can use our gmail account
-                                                        and sign in') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'google_login_status')"
-                                                            value="1" {{ getOption('google_login_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="google_login_status"
-                                                            type="checkbox" role="switch" id="google_login_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('google_login_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('google_login_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Social Login (Facebook)') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for Facebook. User can use our facebook
-                                                        account and sign in') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'facebook_login_status')"
-                                                            value="1" {{
-                                                            getOption('facebook_login_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="facebook_login_status"
-                                                            type="checkbox" role="switch" id="facebook_login_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('facebook_login_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('facebook_login_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Google Recaptcha Credentials') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for google recaptcha credentials') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'google_recaptcha_status')"
-                                                            value="1" {{
-                                                            getOption('google_recaptcha_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="google_recaptcha_status"
-                                                            type="checkbox" role="switch" id="google_recaptcha_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('google_recaptcha_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('google_recaptcha_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Google Analytics') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for google analytics. ') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'google_analytics_status')"
-                                                            value="1" {{
-                                                            getOption('google_analytics_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="google_analytics_status"
-                                                            type="checkbox" role="switch" id="google_analytics_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('google_analytics_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('google_analytics_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Cookie Consent') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for cookie consent settings. User Can manage
-                                                        cookie consent setting') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'cookie_status')"
-                                                            value="1" {{ getOption('cookie_status')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="cookie_status" type="checkbox"
-                                                            role="switch" id="cookie_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end g-8">
-                                                        <button type="button" class="btn btn-outline-success p-2"
-                                                            onclick="configureModal('cookie_status')"
-                                                            title="{{ __('Configure') }}">
-                                                            {{ __('Configure') }}
-                                                        </button>
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('cookie_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Google 2fa') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for google 2fa. By wearing it you will know
-                                                        how this setting works') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'two_factor_googleauth_status')"
-                                                            value="1" {{
-                                                            getOption('two_factor_googleauth_status', 0)==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="two_factor_googleauth_status"
-                                                            type="checkbox" role="switch"
-                                                            id="two_factor_googleauth_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end">
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('two_factor_googleauth_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Preloader') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable preloader,
-                                                        the preloader will be show before load the content.') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'app_preloader_status')"
-                                                            value="1" {{
-                                                            getOption('app_preloader_status')==STATUS_ACTIVE ? 'checked'
-                                                            : '' }} name="app_preloader_status" type="checkbox"
-                                                            role="switch" id="app_preloader_status">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end">
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('app_preloader_status')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Show Language Switcher') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this. The
-                                                        system will enable for show language switcher. By wearing it you
-                                                        will know how this setting works.') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'show_language_switcher')"
-                                                            value="1" {{
-                                                            getOption('show_language_switcher')==STATUS_ACTIVE
-                                                            ? 'checked' : '' }} name="show_language_switcher"
-                                                            type="checkbox" role="switch" id="show_language_switcher">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end">
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('show_language_switcher')"
-                                                            title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('App Debug') }}</h6>
-                                                    <small class="fst-italic fw-normal">({{ __('If you enable this.No
-                                                        warning message will be shown for any error. By wearing it you
-                                                        will know how this setting works.') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'app_debug')" value="1"
-                                                            {{ getOption('app_debug')==STATUS_ACTIVE ? 'checked' : '' }}
-                                                            name="app_debug" type="checkbox" role="switch"
-                                                            id="app_debug">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end">
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('app_debug')" title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6>{{ __('Force SSL') }}</h6>
-                                                    <small
-                                                        class="fst-italic fw-normal">({{ __('If you enable this Force SSL will be enable.') }}
-                                                        )</small>
-                                                </td>
-                                                <td class="text-center pt-17">
-                                                    <div class="zCheck form-switch">
-                                                        <input class="form-check-input mt-0"
-                                                            onchange="changeSettingStatus(this,'force_ssl')" value="1"
-                                                            {{ getOption('force_ssl')==STATUS_ACTIVE ? 'checked' : '' }}
-                                                            name="force_ssl" type="checkbox" role="switch"
-                                                            id="force_ssl">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action__buttons d-flex justify-content-end">
-                                                        <button type="button"
-                                                            class="btn btn-action btn-outline-dark p-2"
-                                                            onclick="helpModal('force_ssl')" title="{{ __('Help') }}">
-                                                            {{ __('Help') }}
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+<input type="hidden" id="statusChangeRoute" value="{{ route('super_admin.setting.configuration-settings.update') }}">
+<input type="hidden" id="configureUrl" value="{{ route('super_admin.setting.configuration-settings.configure') }}">
+<input type="hidden" id="helpUrl" value="{{ route('super_admin.setting.configuration-settings.help') }}">
+
+<!-- Settings Start -->
+<div class="settings-grid-container">
+    <div class="dashboard-settings-card">
+        <form class="ajax" action="{{ route('super_admin.setting.configuration-settings.update') }}" method="POST"
+            enctype="multipart/form-data" data-handler="settingCommonHandler">
+            @csrf
+
+            <!-- Common Table Start-->
+            <div class="dashboard_common_table table-responsive">
+                <table class="table">
+                    <thead class="table-heading">
+                        <tr>
+                            <th class="col-6" scope="col">{{ __('Extension') }}</th>
+                            <th class="col-4" scope="col">{{ __('Status') }}</th>
+                            <th class="col-2" scope="col">{{ __('Action') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                {{ __('Email Verification') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable Email Verification, new user have to verify the email to access this system.') }})
                                 </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'email_verification_status')"
+                                        value="1" {{ getOption('email_verification_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="email_verification_status" type="checkbox" role="switch"
+                                        id="email_verification_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    @if(!isAddonInstalled('ALUSAAS'))
+                                        <button type="button" class="common_button add_new_button"
+                                            onclick="configureModal('email_verification_status')">
+                                            {{ __('Configure') }}
+                                        </button>
+                                    @endif
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('email_verification_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('E-mail credentials status') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for sending email') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_mail_status')"
+                                        value="1" {{ getOption('app_mail_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="app_mail_status" type="checkbox" role="switch" id="app_mail_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    @if(!isAddonInstalled('ALUSAAS'))
+                                        <button type="button" class="common_button add_new_button"
+                                            onclick="configureModal('app_mail_status')">
+                                            {{ __('Configure') }}
+                                        </button>
+                                    @endif
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('app_mail_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('SMS credentials status') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for sending sms') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_sms_status')"
+                                        value="1" {{ getOption('app_sms_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="app_sms_status" type="checkbox" role="switch" id="app_sms_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('app_sms_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('app_sms_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Pusher credentials status') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for pusher') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'pusher_status')"
+                                        value="1" {{ getOption('pusher_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="pusher_status" type="checkbox" role="switch" id="pusher_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('pusher_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('pusher_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Social Login (Google)') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for Google. User can use our gmail account and sign in') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_login_status')"
+                                        value="1" {{ getOption('google_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="google_login_status" type="checkbox" role="switch" id="google_login_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('google_login_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('google_login_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Social Login (Facebook)') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for Facebook. User can use our facebook account and sign in') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'facebook_login_status')"
+                                        value="1" {{ getOption('facebook_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="facebook_login_status" type="checkbox" role="switch"
+                                        id="facebook_login_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('facebook_login_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('facebook_login_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Google Recaptcha Credentials') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for google recaptcha credentials') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_recaptcha_status')"
+                                        value="1" {{ getOption('google_recaptcha_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="google_recaptcha_status" type="checkbox" role="switch"
+                                        id="google_recaptcha_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('google_recaptcha_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('google_recaptcha_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Google Analytics') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for google analytics.') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_analytics_status')"
+                                        value="1" {{ getOption('google_analytics_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="google_analytics_status" type="checkbox" role="switch"
+                                        id="google_analytics_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('google_analytics_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('google_analytics_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Cookie Consent') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for cookie consent settings. User Can manage cookie consent setting') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'cookie_status')"
+                                        value="1" {{ getOption('cookie_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="cookie_status" type="checkbox" role="switch" id="cookie_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button add_new_button"
+                                        onclick="configureModal('cookie_status')">
+                                        {{ __('Configure') }}
+                                    </button>
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('cookie_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Google 2fa') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for google 2fa. By wearing it you will know how this setting works') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'two_factor_googleauth_status')"
+                                        value="1" {{ getOption('two_factor_googleauth_status', 0)==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="two_factor_googleauth_status" type="checkbox" role="switch"
+                                        id="two_factor_googleauth_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('two_factor_googleauth_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Preloader') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable preloader, the preloader will be show before load the content.') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_preloader_status')"
+                                        value="1" {{ getOption('app_preloader_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="app_preloader_status" type="checkbox" role="switch" id="app_preloader_status">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('app_preloader_status')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Show Language Switcher') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this. The system will enable for show language switcher. By wearing it you will know how this setting works.') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'show_language_switcher')"
+                                        value="1" {{ getOption('show_language_switcher')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="show_language_switcher" type="checkbox" role="switch" id="show_language_switcher">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button btn-cancel"
+                                        onclick="helpModal('show_language_switcher')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('App Debug') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this.No warning message will be shown for any error. By wearing it you will know how this setting works.') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_debug')"
+                                        value="1" {{ getOption('app_debug')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="app_debug" type="checkbox" role="switch" id="app_debug">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button btn-cancel" onclick="helpModal('app_debug')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                {{ __('Force SSL') }}
+                                <div class="label-text">
+                                    ({{ __('If you enable this Force SSL will be enable.') }})
+                                </div>
+                            </th>
+                            <td>
+                                <div class="form-check form-switch dashboard_common_switch">
+                                    <input class="form-check-input" onchange="changeSettingStatus(this,'force_ssl')"
+                                        value="1" {{ getOption('force_ssl')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="force_ssl" type="checkbox" role="switch" id="force_ssl">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="action-btns">
+                                    <button type="button" class="common_button btn-cancel" onclick="helpModal('force_ssl')">
+                                        {{ __('Help') }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+            <!-- Common Table End-->
+        </form>
     </div>
 </div>
+<!-- Settings End -->
 
 <!-- Configuration section start -->
 <div class="modal fade main-modal" id="configureModal" aria-hidden="true" tabindex="-1">
