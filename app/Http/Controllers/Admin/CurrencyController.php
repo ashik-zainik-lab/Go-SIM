@@ -29,6 +29,8 @@ class CurrencyController extends Controller
         $data['title'] = __('Currency Setting');
         $data['showManageApplicationSetting'] = 'show';
         $data['activeCurrenciesSetting'] = 'active-color-one';
+        // For the settings sub-sidebar (general-sidebar)
+        $data['subCurrencySettingActiveClass'] = 'active-color-one';
         return view('admin.setting.currencies.index', $data);
     }
 

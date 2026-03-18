@@ -33,4 +33,9 @@
        href="{{ route('admin.setting.languages.index') }}">
         {{ __('Language Settings') }}
     </a>
+
+    <a class="nav-link {{ @$subCurrencySettingActiveClass }}"
+       href="{{ route('admin.setting.currencies.index') }}">
+        {{ __('Currency Settings') }}
+    </a>
 </div>

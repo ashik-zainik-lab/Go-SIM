@@ -1,45 +1,56 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @push('title')
     {{ $title }}
 @endpush
 @section('content')
     <div class="p-30">
-        <div class="">
-            <h4 class="fs-24 fw-500 lh-34 text-black pb-16">{{ __($title) }}</h4>
-            <div class="row bd-c-ebedf0 bd-half bd-ra-25 bg-white h-100 p-30">
+        <!-- Page title like setting.html -->
+        <div class="dashboard-section-title">
+            <h2 class="title">{{ __($title) }}</h2>
+            <p>{{ __('Manage currency codes, symbols, and placement.') }}</p>
+        </div>
+
+        <!-- Settings layout like html/setting.html -->
+        <div class="d-flex align-items-start settings-grid-container">
+            <!-- Left sidebar -->
+            <aside class="settings-sidebar">
+                @include('admin.setting.partials.general-sidebar')
+            </aside>
+
+            <!-- Right content -->
+            <div class="settings-forms w-100">
                 <input type="hidden" id="currency-route" value="{{ route('admin.setting.currencies.index') }}">
-                <div class="col-lg-12">
-                    <div class="customers__area bg-style mb-30">
-                        <div class="item-title d-flex flex-wrap justify-content-end">
-                            <div class="mb-3">
-                                <button
-                                    class="border-0 fs-15 fw-500 lh-25 text-black py-10 px-26 bg-cdef84 bd-ra-12 hover-bg-one"
-                                    type="button" data-bs-toggle="modal"
-                                    data-bs-target="#add-modal">
-                                    <i class="fa fa-plus"></i> {{ __('Add Currency') }}
-                                </button>
-                            </div>
+
+                <div class="dashboard-settings-card has-min-height">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap item-title justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">{{ __('Currency Settings') }}</h5>
+                            <button class="primary_button d-flex align-items-center gap-2" type="button"
+                                data-bs-toggle="modal" data-bs-target="#add-modal">
+                                <i class="fa fa-plus me-1"></i> {{ __('Add Currency') }}
+                            </button>
                         </div>
-                        <div class="table-responsive zTable-responsive">
+
+                        <div class="dashboard_common_table table-responsive">
                             <table class="table zTable" id="commonDataTable">
-                                <thead>
-                                <tr>
-                                    <th>
-                                        <div>{{ __("SL#") }}</div>
-                                    </th>
-                                    <th>
-                                        <div>{{ __("Code") }}</div>
-                                    </th>
-                                    <th>
-                                        <div>{{ __("Symbol") }}</div>
-                                    </th>
-                                    <th>
-                                        <div>{{ __("Placement") }}</div>
-                                    </th>
-                                    <th>
-                                        <div class="text-center">{{ __("Action") }}</div>
-                                    </th>
-                                </tr>
+                                <thead class="table-heading">
+                                    <tr>
+                                        <th scope="col">
+                                            <div>{{ __("SL#") }}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>{{ __("Code") }}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>{{ __("Symbol") }}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>{{ __("Placement") }}</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="text-center">{{ __("Action") }}</div>
+                                        </th>
+                                    </tr>
                                 </thead>
                             </table>
                         </div>
@@ -50,13 +61,12 @@
     </div>
     <!-- Page content area end -->
     <!-- Add Modal section start -->
-    <div class="modal fade" id="add-modal" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade dashboard-common-modal" id="add-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xs">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ __('Add Currency') }}</h5>
-                    <button type="button" class="border-0 btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                    <h2>{{ __('Add Currency') }}</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="ajax reset" action="{{ route('admin.setting.currencies.store') }}" method="post"
                       data-handler="commonResponseForModal">
@@ -64,35 +74,36 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
-                                <div class="primary-form-group">
-                                    <div class="primary-form-group-wrap">
-                                        <label for="currency_code" class="form-label">{{ __('Currency ISO Code') }}
-                                            <span class="text-danger">*</span></label>
+                                <div class="form-row">
+                                    <div class="dashboard-form-group full-width mb-2">
+                                        <label for="sf-select-currency-add" class="form-label">{{ __('Currency ISO Code') }} <span
+                                                class="text-danger">*</span></label>
                                         <select id="sf-select-currency-add" class="primary-form-control"
-                                                id="currency_code" name="currency_code">
+                                            name="currency_code" required>
                                             @foreach(getCurrency() as $code => $currencyItem)
-                                                <option value="{{$code}}">{{$currencyItem}}</option>
+                                                <option value="{{ $code }}">{{ $currencyItem }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="primary-form-group mt-4">
-                                <div class="primary-form-group-wrap">
-                                    <label for="symbol" class="form-label">{{__('Symbol')}} <span
-                                            class="text-danger">*</span></label>
-                                    <input type="text" name="symbol" id="symbol" placeholder="{{__('Type Symbol')}}"
-                                           class="primary-form-control">
+                            <div class="col-12">
+                                <div class="form-row">
+                                    <div class="dashboard-form-group full-width mb-2">
+                                        <label for="symbol" class="form-label">{{ __('Symbol') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" name="symbol" id="symbol"
+                                            placeholder="{{ __('Type Symbol') }}" class="primary-form-control" required>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class=" mt-4">
-                                <div class="primary-form-group">
-                                    <div class="primary-form-group-wrap">
-                                        <label for="currency_placement" class="form-label">{{__('Currency Placement')}}
+                            <div class="col-12 mt-4">
+                                <div class="form-row">
+                                    <div class="dashboard-form-group full-width mb-2">
+                                        <label for="currency_placement" class="form-label">{{ __('Currency Placement') }}
                                             <span class="text-danger">*</span></label>
-                                        <select class="primary-form-control sf-select-without-search" id="eventType"
-                                                name="currency_placement">
+                                        <select class="primary-form-control sf-select-without-search" id="currency_placement"
+                                            name="currency_placement" required>
                                             <option value="">--{{ __('Select Option') }}--</option>
                                             <option value="before">{{ __('Before Amount') }}</option>
                                             <option value="after">{{ __('After Amount') }}</option>
@@ -100,22 +111,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 mt-4">
-                                <div class="d-flex form-check">
-                                    <div class="zCheck form-check form-switch">
-                                        <input class="form-check-input mt-0" value="1" name="current_currency"
-                                               type="checkbox" id="flexCheckChecked">
+                            <div class="col-12">
+                                <div class="form-row">
+                                    <div class="dashboard-form-group full-width">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" name="current_currency" value="1" id="current_currency">
+                                            <span class="custom-box"></span>
+                                            <span class="text">{{ __('Current Currency') }}</span>
+                                        </label>
                                     </div>
-                                    <label class="form-check-label ps-3 d-flex" for="flexCheckChecked">
-                                        {{ __('Current Currency') }}
-                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit"
-                                class="fs-15 border-0 fw-500 lh-25 text-black py-10 px-26 bg-cdef84 bd-ra-12 hover-bg-one">{{ __('Save') }}</button>
+                    <div class="modal-footer form-actions">
+                        <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal">
+                            {{ __('Cancel') }}
+                        </button>
+                        <button type="submit" class="common_button add_new_button">
+                            {{ __('Save') }}
+                        </button>
                     </div>
                 </form>
             </div>
