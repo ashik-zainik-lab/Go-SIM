@@ -47,7 +47,7 @@
                                     <th scope="col">
                                         <div>{{ __("RTL") }}</div>
                                     </th>
-                                    <th scope="col" class="text-center">
+                                    <th scope="col">
                                         <div>{{ __("Action") }}</div>
                                     </th>
                                 </tr>
