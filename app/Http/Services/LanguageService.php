@@ -76,7 +76,7 @@ class LanguageService
                     </div>
                 ';
             })
-            ->rawColumns(['action', 'language', 'flag', 'font', 'rtl'])
+            ->rawColumns(['action', 'language','iso_code', 'flag', 'rtl'])
             ->make(true);
     }
 
