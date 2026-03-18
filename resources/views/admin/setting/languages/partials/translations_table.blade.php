@@ -24,7 +24,7 @@
                     <textarea type="text" class="val primary-form-control" required>{!! $value !!}</textarea>
                 </td>
                 <td class="text-end">
-                    <button type="button" class="updateLangItem common_button add_new_button">
+                    <button type="button" class="updateLangItem primary_button">
                         {{ __('Update') }}
                     </button>
                 </td>

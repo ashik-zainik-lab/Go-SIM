@@ -49,7 +49,7 @@
                             </form>
                         </div>
                         <button type="button"
-                                class="common_button add_new_button addmore">
+                                class="primary_button addmore">
                             + {{__('Add More')}}
                         </button>
                     </div>

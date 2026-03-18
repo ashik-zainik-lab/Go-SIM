@@ -31,20 +31,20 @@
     // old manual open/edit handlers are no longer needed for the new design,
     // Bootstrap data attributes handle opening modals.
 
-    // Translate
-    $('.addmore').on('click', function (e) {
+    // Translate (delegated because translations table is reloaded via AJAX)
+    $(document).on('click', '.addmore', function (e) {
         e.preventDefault()
         let html = `
                     <tr>
                         <td>
-                            <textarea type="text" name="key" class="key form-control" required></textarea>
+                            <textarea type="text" name="key" class="key primary-form-control" required></textarea>
                         </td>
                         <td>
                             <input type="hidden" value="1" class="is_new">
-                            <textarea type="text" name="value" class="val form-control" required></textarea>
+                            <textarea type="text" name="value" class="val primary-form-control" required></textarea>
                         </td>
                         <td class="text-end col-1">
-                            <button type="button" class="updateLangItem btn btn-primary border-0 fs-15 fw-500 lh-25 py-10 px-26 bd-ra-12 hover-bg-one">Update</button>
+                            <button type="button" class="updateLangItem primary_button">${$('.updateLangItem:first').text() || 'Update'}</button>
                         </td>
                     </tr>
 
