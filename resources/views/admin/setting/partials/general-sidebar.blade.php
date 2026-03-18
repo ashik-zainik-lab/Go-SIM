@@ -1,7 +1,7 @@
 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
     <a class="nav-link {{ @$subApplicationSettingActiveClass }}"
        href="{{ route('admin.setting.application-settings') }}">
-        {{ __('App Settings') }}
+        {{ __('General Settings') }}
     </a>
 
     <a class="nav-link {{ @$subLogoSettingActiveClass }}"
