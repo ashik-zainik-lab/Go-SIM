@@ -432,7 +432,7 @@
 <!-- Configuration section end -->
 <!-- Help section start -->
 <div class="modal fade main-modal" id="helpModal" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog modal-xs modal-dialog-centered">
         <div class="modal-content zModalTwo-content p-5">
 
         </div>
