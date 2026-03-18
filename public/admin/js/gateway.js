@@ -1,24 +1,38 @@
-var getCurrencySymbol = $('#getCurrencySymbol').val();
-var allCurrency = {};
-var supportedCurrency = {};
-
-if ($('#allCurrency').length && $('#supportedCurrency').length) {
-    var allCurrencyVal = $('#allCurrency').val();
-    var supportedCurrencyVal = $('#supportedCurrency').val();
-    if (allCurrencyVal) {
-        allCurrency = JSON.parse(allCurrencyVal);
-    }
-    if (supportedCurrencyVal) {
-        supportedCurrency = JSON.parse(supportedCurrencyVal);
-    }
-}
-    
 (function ($) {
     "use strict";
-    $(document).on('click', '.edit', function (e) {
-        commonAjax('GET', $('#getInfoRoute').val(), getDataEditRes, getDataEditRes, {'id': $(this).data('id')});
+
+    const $editModal = $('#editModal');
+    const getCurrencySymbol = $('#getCurrencySymbol').val() || '';
+
+    let allCurrency = {};
+    let supportedCurrency = {};
+
+    try {
+        const allCurrencyVal = $('#allCurrency').val();
+        const supportedCurrencyVal = $('#supportedCurrency').val();
+        allCurrency = allCurrencyVal ? JSON.parse(allCurrencyVal) : {};
+        supportedCurrency = supportedCurrencyVal ? JSON.parse(supportedCurrencyVal) : {};
+    } catch (e) {
+        allCurrency = {};
+        supportedCurrency = {};
+    }
+
+    const initSelect2 = function () {
+        if (!$('.sf-select-without-search').length) return;
+        $('.sf-select-without-search').select2({
+            dropdownCssClass: "sf-select-dropdown",
+            selectionCssClass: "sf-select-section",
+            dropdownParent: $editModal,
+        });
+    };
+
+    $(document).on('click', '.edit', function () {
+        commonAjax('GET', $('#getInfoRoute').val(), window.getDataEditRes, window.getDataEditRes, {
+            id: $(this).data('id')
+        });
     });
-    $('.add-currency').on('click', function (e) {
+
+    $(document).on('click', '.add-currency', function () {
         var html = '';
         html += '<div class="input-group mb-3 currency-conversation-rate">' +
             '<select name="currency[]" class="form-control currency" required>';
@@ -30,7 +44,7 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
             '<input type="number" step="any" min="0" name="conversion_rate[]" value="" class="form-control" required>' +
             '<input type="hidden" step="any" min="0" name="currency_id[]" value="" class="form-control" required>' +
             '<span class="input-group-text append_currency"></span>' +
-            '<button type="button" class="bg-white border-0 font-24 mr-5 ms-3 removedItem text-danger bg-fafafa border-0" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/></svg></button>' +
+            '<button type="button" class="bg-white border-0 font-24 mr-5 ms-3 removedItem text-danger bg-fafafa" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/></svg></button>' +
             '</div>';
         $('#currencyConversionRateSection').append(html);
         $('.currency').trigger("change");
@@ -48,7 +62,7 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
         $(this).closest('.currency-conversation-rate').find('.append_currency').text(selectedCurrency);
 
         // Fetch the current gateway slug from an element in the #editModal
-        let gatewaySlug = $('#editModal').find('.slug').val();
+        let gatewaySlug = $editModal.find('.slug').val();
 
         // Check if the payment method is not "bank" or "cash"
         if (gatewaySlug !== 'bank' && gatewaySlug !== 'cash') {
@@ -71,12 +85,9 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
     });
 
     // Bank
-    $('.add-bank').on('click', function () {
+    $(document).on('click', '.add-bank', function () {
         $('.bank-div-append').append(addBank());
-        $('.bank-div-append').find('.sf-select-without-search').select2({
-            dropdownCssClass: "sf-select-dropdown",
-            selectionCssClass: "sf-select-section",
-        });
+        initSelect2();
     });
 
     $(document).on('click', '.remove-bank', function () {
@@ -84,11 +95,10 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
     });
 
 
-    window.getDataEditRes = function(response) {
-        console.log(response);
-        const selector = $('#editModal');
+    window.getDataEditRes = function (response) {
+        const selector = $editModal;
         selector.find('.gateway-input').removeClass('d-none');
-        selector.modal('show')
+        selector.modal('show');
         selector.find('.is-invalid').removeClass('is-invalid');
         selector.find('.error-message').remove();
         $('#id').val(response.data.gateway.id)
@@ -100,10 +110,7 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
         selector.find('select[name=mode]').val(response.data.gateway.mode)
         selector.find('input[name=key]').val(response.data.gateway.key)
 
-        $('.sf-select-without-search').select2({
-            dropdownCssClass: "sf-select-dropdown",
-            selectionCssClass: "sf-select-section",
-        });
+        initSelect2();
 
         var gatewaySettings = {};
         if ($('#gatewaySettings').length && $('#gatewaySettings').val()) {
@@ -119,13 +126,16 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
 
         currentGateway.forEach(option => {
             if (option.name == 'url' && option.is_show == 1) {
-                selector.find('input[name=url]').parent().find('.label-text-title').text(option.label);
+                selector.find('input[name=url]').closest('.dashboard-form-group, .primary-form-group, .primary-form-group-wrap')
+                    .find('label.form-label, label.label-text-title').first().text(option.label);
                 $('#gateway-url').removeClass('d-none');
             } else if (option.name == 'key' && option.is_show == 1) {
-                selector.find('input[name=key]').parent().find('.label-text-title').text(option.label);
+                selector.find('input[name=key]').closest('.dashboard-form-group, .primary-form-group, .primary-form-group-wrap')
+                    .find('label.form-label, label.label-text-title').first().text(option.label);
                 $('#gateway-key').removeClass('d-none');
             } else if (option.name == 'secret' && option.is_show == 1) {
-                selector.find('input[name=secret]').parent().find('.label-text-title').text(option.label);
+                selector.find('input[name=secret]').closest('.dashboard-form-group, .primary-form-group, .primary-form-group-wrap')
+                    .find('label.form-label, label.label-text-title').first().text(option.label);
                 $('#gateway-secret').removeClass('d-none');
             }
         });
@@ -210,10 +220,7 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
             }
 
             $('.bank-div-append').html(bankHtml);
-            $('.bank-div-append').find('.sf-select-without-search').select2({
-                dropdownCssClass: "sf-select-dropdown",
-                selectionCssClass: "sf-select-section",
-            });
+            initSelect2();
         } else {
             selector.find('.mode-div').show();
             selector.find('.url-div').show();
@@ -281,9 +288,7 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
                 </div>`;
     }
 
-    window.responseOnGatewaStore = function(response) {
-        var output = '';
-        var type = 'error';
+    window.responseOnGatewaStore = function (response) {
         $('.error-message').remove();
         $('.is-invalid').removeClass('is-invalid');
         if (response['status'] === true) {
@@ -293,12 +298,11 @@ if ($('#allCurrency').length && $('#supportedCurrency').length) {
                 location.reload()
             }, 1000);
 
-
         } else {
             commonHandler(response)
         }
 
     }
 
-
+    initSelect2();
 })(jQuery);
