@@ -16,7 +16,7 @@
 <!-- js file  -->
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{ asset('assets/js/select2.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins.js')}}"></script>
 <script src="{{ asset('assets/js/quill.js')}}"></script>
 {{-- Optional legacy JS (dataTables, summernote) removed – files not present --}}
 <script src="{{ asset('assets/js/script.js')}}"></script>
