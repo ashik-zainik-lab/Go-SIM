@@ -1,7 +1,18 @@
 var getCurrencySymbol = $('#getCurrencySymbol').val();
-var allCurrency = JSON.parse($('#allCurrency').val());
-var supportedCurrency = JSON.parse($('#supportedCurrency').val());
+var allCurrency = {};
+var supportedCurrency = {};
 
+if ($('#allCurrency').length && $('#supportedCurrency').length) {
+    var allCurrencyVal = $('#allCurrency').val();
+    var supportedCurrencyVal = $('#supportedCurrency').val();
+    if (allCurrencyVal) {
+        allCurrency = JSON.parse(allCurrencyVal);
+    }
+    if (supportedCurrencyVal) {
+        supportedCurrency = JSON.parse(supportedCurrencyVal);
+    }
+}
+    
 (function ($) {
     "use strict";
     $(document).on('click', '.edit', function (e) {
@@ -88,7 +99,10 @@ var supportedCurrency = JSON.parse($('#supportedCurrency').val());
 
         $('.sf-select-without-search').niceSelect('update');
 
-        var gatewaySettings = JSON.parse($('#gatewaySettings').val());
+        var gatewaySettings = {};
+        if ($('#gatewaySettings').length && $('#gatewaySettings').val()) {
+            gatewaySettings = JSON.parse($('#gatewaySettings').val());
+        }
         let currentGateway = gatewaySettings[response.data.gateway.slug];
 
         if (typeof currentGateway == 'undefined') {

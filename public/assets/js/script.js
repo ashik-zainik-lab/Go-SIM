@@ -49,8 +49,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // Now initialize your Quill editor as usual
-    const quill = new Quill('#quill-editor', {
+    // Now initialize your Quill editor only if the container exists
+    const quillContainer = document.querySelector('#quill-editor');
+    if (quillContainer) {
+        const quill = new Quill('#quill-editor', {
         theme: 'snow',
         modules: {
             toolbar: {
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-
+    }
 
 
 
