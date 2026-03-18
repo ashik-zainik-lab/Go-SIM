@@ -57,32 +57,36 @@
                     <form class="ajax" action="{{route('admin.setting.maintenance.change')}}" method="POST"
                           enctype="multipart/form-data" data-handler="commonResponseForModal">
                         @csrf
-                        <div class="form-group text-black row mb-3">
-                            <label class="col-lg-3">{{ __('Maintenance Mode') }} <span class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <select name="maintenance_mode" id="" class="form-control maintenance_mode sf-select-without-search">
-                                    <option value="">--{{ __('Select Option') }}--</option>
-                                    <option value="1"
-                                            @if(getOption('maintenance_mode') == 1) selected @endif>{{ __('Maintenance On') }}</option>
-                                    <option value="2"
-                                            @if(getOption('maintenance_mode') != 1) selected @endif>{{ __('Live') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group text-black row mb-3">
-                            <label class="col-lg-3">{{ __('Maintenance Mode Secret Key') }}</label>
-                            <div class="col-lg-9">
-                                <input type="text" name="maintenance_secret_key"
-                                       value="{{ getOption('maintenance_secret_key') }}" minlength="6"
-                                       class="form-control maintenance_secret_key py-16">
-                            </div>
-                        </div>
 
-                        <div class="form-group text-black row mb-3">
-                            <label class="col-lg-3">{{ __('Maintenance Mode Url') }} </label>
-                            <div class="col-lg-9">
-                                <input type="text" name="" value="" class="form-control maintenance_mode_url"
-                                       disabled>
+                        <div class="row g-3">
+                            <div class="col-xxl-4 col-lg-4 col-md-6">
+                                <div class="dashboard-form-group">
+                                    <label class="form-label">{{ __('Maintenance Mode') }} <span class="text-danger">*</span></label>
+                                    <select name="maintenance_mode" class="form-control maintenance_mode sf-select-without-search">
+                                        <option value="">--{{ __('Select Option') }}--</option>
+                                        <option value="1"
+                                                @if(getOption('maintenance_mode') == 1) selected @endif>{{ __('Maintenance On') }}</option>
+                                        <option value="2"
+                                                @if(getOption('maintenance_mode') != 1) selected @endif>{{ __('Live') }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-4 col-lg-4 col-md-6">
+                                <div class="dashboard-form-group">
+                                    <label class="form-label">{{ __('Maintenance Mode Secret Key') }}</label>
+                                    <input type="text" name="maintenance_secret_key"
+                                           value="{{ getOption('maintenance_secret_key') }}" minlength="6"
+                                           class="primary-form-control maintenance_secret_key">
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-4 col-lg-4 col-md-12">
+                                <div class="dashboard-form-group">
+                                    <label class="form-label">{{ __('Maintenance Mode Url') }}</label>
+                                    <input type="text" name="" value="" class="primary-form-control maintenance_mode_url"
+                                           disabled>
+                                </div>
                             </div>
                         </div>
 
