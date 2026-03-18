@@ -51,12 +51,12 @@
                             <td>
                                 <div class="action-btns">
                                     @if(!isAddonInstalled('ALUSAAS'))
-                                        <button type="button" class="common_button add_new_button"
+                                        <button type="button" class="primary_button"
                                             onclick="configureModal('email_verification_status')">
                                             {{ __('Configure') }}
                                         </button>
                                     @endif
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('email_verification_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -81,12 +81,12 @@
                             <td>
                                 <div class="action-btns">
                                     @if(!isAddonInstalled('ALUSAAS'))
-                                        <button type="button" class="common_button add_new_button"
+                                        <button type="button" class="primary_button"
                                             onclick="configureModal('app_mail_status')">
                                             {{ __('Configure') }}
                                         </button>
                                     @endif
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('app_mail_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -110,11 +110,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('app_sms_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('app_sms_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -138,11 +138,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('pusher_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('pusher_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -166,11 +166,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('google_login_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('google_login_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -195,11 +195,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('facebook_login_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('facebook_login_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -224,11 +224,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('google_recaptcha_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('google_recaptcha_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -253,11 +253,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('google_analytics_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('google_analytics_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -281,11 +281,11 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button add_new_button"
+                                    <button type="button" class="primary_button"
                                         onclick="configureModal('cookie_status')">
                                         {{ __('Configure') }}
                                     </button>
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('cookie_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -310,7 +310,7 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('two_factor_googleauth_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -334,7 +334,7 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('app_preloader_status')">
                                         {{ __('Help') }}
                                     </button>
@@ -358,7 +358,7 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button btn-cancel"
+                                    <button type="button" class="primary_button cancel"
                                         onclick="helpModal('show_language_switcher')">
                                         {{ __('Help') }}
                                     </button>
@@ -382,7 +382,7 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button btn-cancel" onclick="helpModal('app_debug')">
+                                    <button type="button" class="primary_button cancel" onclick="helpModal('app_debug')">
                                         {{ __('Help') }}
                                     </button>
                                 </div>
@@ -405,7 +405,7 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="common_button btn-cancel" onclick="helpModal('force_ssl')">
+                                    <button type="button" class="primary_button cancel" onclick="helpModal('force_ssl')">
                                         {{ __('Help') }}
                                     </button>
                                 </div>
