@@ -66,7 +66,7 @@
 
 <!-- Add Modal section start -->
 <div class="modal fade dashboard-common-modal" id="add-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-dialog modal-dialog-centered modal-xs">
         <div class="modal-content">
 
             <!-- Header -->
@@ -84,13 +84,16 @@
 
                     <!-- Row 1 -->
                     <div class="form-row">
-                        <div class="dashboard-form-group">
+                        <div class="dashboard-form-group full-width mb-2">
                             <label class="form-label">{{ __('Language') }} <span class="text-danger">*</span></label>
                             <input type="text" class="primary-form-control" name="language"
                                 placeholder="{{ __('Type language name') }}" required>
                         </div>
+                    </div>
 
-                        <div class="dashboard-form-group">
+                    <!-- Row 2 -->
+                    <div class="form-row">
+                        <div class="dashboard-form-group full-width mb-2">
                             <label class="form-label">{{ __('ISO Code') }} <span class="text-danger">*</span></label>
                             <select name="iso_code" class="primary-form-control" id="sf-select-modal-add" required>
                                 <option value="">--{{ __('Select ISO Code') }}--</option>
@@ -125,9 +128,7 @@
 
                     <!-- Row 3 -->
                     <div class="form-row">
-
-
-                        <div class="dashboard-form-group">
+                        <div class="dashboard-form-group full-width mb-2">
                             <label class="form-label" for="rtl">{{ __('RTL Supported') }} <span
                                     class="text-danger">*</span></label>
                             <select name="rtl" class="primary-form-control" required>
