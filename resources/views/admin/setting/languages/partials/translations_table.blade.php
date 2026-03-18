@@ -29,6 +29,7 @@
                     </button>
                 </td>
             </tr>
+            @empty
 
             @endforelse
         </tbody>
