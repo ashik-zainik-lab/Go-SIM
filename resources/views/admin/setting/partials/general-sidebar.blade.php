@@ -28,4 +28,9 @@
        href="{{ route('admin.setting.cache-settings') }}">
         {{ __('Cache Settings') }}
     </a>
+
+    <a class="nav-link {{ @$subLanguageSettingActiveClass }}"
+       href="{{ route('admin.setting.languages.index') }}">
+        {{ __('Language Settings') }}
+    </a>
 </div>

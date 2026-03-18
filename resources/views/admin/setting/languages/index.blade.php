@@ -1,52 +1,62 @@
-@extends('layouts.app')
-@section('content')
+@extends('admin.layouts.app')
 @push('title')
     {{$title}}
 @endpush
+@section('content')
 <!-- Page content area start -->
 <div class="p-30">
-    <div class="">
-        <h4 class="fs-24 fw-500 lh-34 text-black pb-16">{{ __($title) }}</h4>
-        <div class="row">
+    <!-- Page title like setting.html -->
+    <div class="dashboard-section-title">
+        <h2 class="title">{{ __($title) }}</h2>
+        <p>{{ __('Manage application languages, flags, and RTL support.') }}</p>
+    </div>
+
+    <!-- Settings layout like html/setting.html -->
+    <div class="d-flex align-items-start settings-grid-container">
+        <!-- Left sidebar -->
+        <aside class="settings-sidebar">
+            @include('admin.setting.partials.general-sidebar')
+        </aside>
+
+        <!-- Right content -->
+        <div class="settings-forms w-100">
             <input type="hidden" id="language-route" value="{{ route('admin.setting.languages.index') }}">
-            <div class="col-lg-12">
-                <div class="col-md-12 bg-white bd-half bd-c-ebedf0 bd-ra-25 p-30">
-                    <div class="d-flex flex-wrap item-title justify-content-end mb-3">
-                        <div>
-                            <button
-                                class="fs-15 fw-500 lh-25 text-black py-10 px-26 bg-cdef84 bd-ra-12 hover-bg-one border-0"
-                                type="button" data-bs-toggle="modal" data-bs-target="#add-modal">
-                                <i class="fa fa-plus"></i> {{ __('Add Language') }}
-                            </button>
-                        </div>
+            <div class="dashboard-settings-card has-min-height">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap item-title justify-content-between align-items-center mb-3">
+                        <h5 class="card-title mb-0">{{ __('Language Settings') }}</h5>
+                        <button
+                            class="primary_button d-flex align-items-center gap-2"
+                            type="button" data-bs-toggle="modal" data-bs-target="#add-modal">
+                            <i class="fa fa-plus me-1"></i> {{ __('Add Language') }}
+                        </button>
                     </div>
-                    <div class="customers__table">
-                        <div class="table-responsive zTable-responsive">
-                            <table class="table zTable" id="commonDataTable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">
-                                            <div>{{ __("Flag") }}</div>
-                                        </th>
-                                        <th scope="col">
-                                            <div>{{ __("Language") }}</div>
-                                        </th>
-                                        <th scope="col">
-                                            <div>{{ __("ISO code") }}</div>
-                                        </th>
-                                        <th scope="col">
-                                            <div>{{ __("RTL") }}</div>
-                                        </th>
-                                        <th scope="col">
-                                            <div>{{ __("Font") }}</div>
-                                        </th>
-                                        <th scope="col" class="text-center">
-                                            <div>{{ __("Action") }}</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+
+                    <div class="dashboard_common_table table-responsive">
+                        <table class="table zTable" id="commonDataTable">
+                            <thead class="table-heading">
+                                <tr>
+                                    <th scope="col">
+                                        <div>{{ __("Flag") }}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{{ __("Language") }}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{{ __("ISO code") }}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{{ __("RTL") }}</div>
+                                    </th>
+                                    <th scope="col">
+                                        <div>{{ __("Font") }}</div>
+                                    </th>
+                                    <th scope="col" class="text-center">
+                                        <div>{{ __("Action") }}</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -154,8 +164,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit"
-                        class="fs-15 border-0 fw-500 lh-25 text-black py-10 px-26 bg-cdef84 bd-ra-12 hover-bg-one">{{
-                        __('Save') }}</button>
+                            class="primary_button">
+                        {{ __('Save') }}
+                    </button>
                 </div>
             </form>
         </div>
