@@ -78,8 +78,9 @@ class UserController extends Controller
         }
 
         $data['title'] = 'Admin Users';
-        $data['subNavUserActiveClass'] = 'mm-active';
-        $data['activeUserManagement'] = 'mm-active';
+        // Keep sidebar active-state consistent with other SuperAdmin menus (Settings/Destinations).
+        $data['subNavUserActiveClass'] = 'active';
+        $data['activeUserManagement'] = 'active';
 
         return view('super_admin.user.index', $data);
     }

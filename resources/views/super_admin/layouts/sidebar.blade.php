@@ -131,7 +131,7 @@
         {{-- User Management --}}
         <li class="">
             <span class="category_title">{{ __('User Management') }}</span>
-            <a class="has_arrow" href="{{ route('super_admin.users.index') }}">
+            <a class="has_arrow {{ $activeUserManagement ?? '' }}" href="{{ route('super_admin.users.index') }}">
                 <div class="nav_icon_small">
                     {{-- Manage Users icon --}}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
