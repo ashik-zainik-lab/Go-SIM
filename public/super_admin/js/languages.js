@@ -75,6 +75,31 @@
         dropdownParent: $("#add-modal"),
     });
 
+    // Custom image preview function for the flag upload in add modal
+    window.previewFileForCustomUpload = function(input) {
+        "use strict";
+        var previewImg = input.closest('.upload-img-box').querySelector('.preview-img');
+        var defaultImg = "/assets/images/icon/upload-img-1.svg";
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            if (input.files[0].size > 1.024e7) {
+                alert("Maximum file size is 10MB!");
+                input.value = "";
+                return;
+            }
+            
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+            };
+            
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            previewImg.src = defaultImg;
+        }
+    };
+
     window.languageHandler = function(response) {
         var output = '';
         var type = 'error';
@@ -163,3 +188,4 @@
 
 
 })(jQuery)
+

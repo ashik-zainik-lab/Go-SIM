@@ -76,8 +76,8 @@
 <!-- Page content area end -->
 
 <!-- Add Modal section start -->
-<div class="modal fade dashboard-common-modal" id="add-modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xs">
+<div class="modal fade" id="add-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Header -->
@@ -106,7 +106,7 @@
                     <div class="form-row">
                         <div class="dashboard-form-group full-width mb-2">
                             <label class="form-label">{{ __('ISO Code') }} <span class="text-danger">*</span></label>
-                            <select name="iso_code" class="primary-form-control" id="sf-select-modal-add" required>
+                            <select name="iso_code" class="sf-select-with-search" id="sf-select-modal-add" required>
                                 <option value="">--{{ __('Select ISO Code') }}--</option>
                                 @foreach(languageIsoCode() as $code => $isoCountryName)
                                 <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
@@ -118,20 +118,16 @@
                     <!-- Row 2 -->
                     <div class="form-row">
                         <div class="dashboard-form-group full-width">
-                            <label class="form-label d-block">{{ __('Flag') }} <span
-                                    class="text-mime-type">(jpeg,png,jpg,svg,webp)</span> <span
-                                    class="text-danger">*</span></label>
-                            <div class="zImage-upload-details mw-100">
-                                <div class="zImage-inside">
-                                    <div class="d-flex pb-12">
-                                        <img src="{{ asset('assets/images/icon/upload-img-1.svg')}}" alt="upload" />
-                                    </div>
-                                    <p class="fs-15 fw-500 lh-16 text-1b1c17">{{__('Drag & drop files here')}}</p>
-                                </div>
+                            <label class="form-label d-block">
+                                {{ __('Flag') }}
+                                <span class="text-mime-type">(jpeg,png,jpg,svg,webp)</span> 
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="zImage-upload-details common-image-upload-box">
                                 <div class="upload-img-box">
-                                    <img src="" />
+                                    <img src="{{ asset('assets/images/no-image.jpg')}}" class="preview-img" alt="upload" />
                                     <input type="file" name="flag" id="flag" accept="image/*"
-                                        onchange="previewFile(this)" required />
+                                        onchange="previewFileForCustomUpload(this)" required />
                                 </div>
                             </div>
                         </div>
@@ -142,7 +138,7 @@
                         <div class="dashboard-form-group full-width mb-2">
                             <label class="form-label" for="rtl">{{ __('RTL Supported') }} <span
                                     class="text-danger">*</span></label>
-                            <select name="rtl" class="primary-form-control" required>
+                            <select name="rtl" class="select2-activate-without-search" required>
                                 <option value="0">{{__("No")}}</option>
                                 <option value="1">{{__("Yes")}}</option>
                             </select>
@@ -153,16 +149,15 @@
                     <div class="form-row">
                         <div class="dashboard-form-group full-width">
                             <label class="form-label d-block">{{ __('Default Language') }}</label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="default" value="1">
-                                <span class="custom-box"></span>
-                                <span class="text">{{ __('Set as default language') }}</span>
-                            </label>
+                            <div class="form-check form-switch dashboard_common_switch">
+                                <input class="form-check-input" type="checkbox" name="default" value="1" role="switch" id="default">
+                                <label class="form-label mb-0" for="default">{{ __('Set as default language') }}</label>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Actions -->
-                    <div class="form-actions">
+                    <div class="form-actions mt-3">
                         <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
                             {{ __('Cancel') }}
                         </button>

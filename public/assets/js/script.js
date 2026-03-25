@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".select2-activate-without-search").select2({
         minimumResultsForSearch: Infinity,
     });
-    $(".select2-activate-with-search").select2({
-    });
+    $(".select2-activate-with-search").select2({});
     /* Select2 Initialization  */
 
     // Define the SVG icons
