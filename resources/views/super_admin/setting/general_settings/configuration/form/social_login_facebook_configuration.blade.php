@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h2>{{ __('Social Login (Facebook) Configuration') }}</h2>
+        <h3>{{ __('Social Login (Facebook) Configuration') }}</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 
@@ -20,7 +20,8 @@
 
                 <div class="col-xxl-6 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
-                        <label for="facebook_client_secret" class="form-label">{{ __('Facebook Client Secret') }}</label>
+                        <label for="facebook_client_secret"
+                            class="form-label">{{ __('Facebook Client Secret') }}</label>
                         <input type="text" name="facebook_client_secret" id="facebook_client_secret"
                             value="{{ getOption('facebook_client_secret') }}" class="primary-form-control">
                     </div>

@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h2>{{ __('Mail Configuration') }}</h2>
+        <h3>{{ __('Mail Configuration') }}</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 
@@ -26,15 +26,13 @@
                 <div class="col-xxl-4 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
                         <label class="form-label">{{ __('MAIL HOST') }} <span class="text-danger">*</span></label>
-                        <input type="text" name="MAIL_HOST" value="{{ env('MAIL_HOST') }}"
-                            class="primary-form-control">
+                        <input type="text" name="MAIL_HOST" value="{{ env('MAIL_HOST') }}" class="primary-form-control">
                     </div>
                 </div>
                 <div class="col-xxl-4 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
                         <label class="form-label">{{ __('MAIL PORT') }} <span class="text-danger">*</span></label>
-                        <input type="text" name="MAIL_PORT" value="{{ env('MAIL_PORT') }}"
-                            class="primary-form-control">
+                        <input type="text" name="MAIL_PORT" value="{{ env('MAIL_PORT') }}" class="primary-form-control">
                     </div>
                 </div>
                 <div class="col-xxl-4 col-lg-6 col-md-6">
@@ -53,7 +51,8 @@
                 </div>
                 <div class="col-xxl-4 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
-                        <label for="MAIL_ENCRYPTION" class="form-label">{{ __('MAIL ENCRYPTION') }} <span class="text-danger">*</span></label>
+                        <label for="MAIL_ENCRYPTION" class="form-label">{{ __('MAIL ENCRYPTION') }} <span
+                                class="text-danger">*</span></label>
                         <select name="MAIL_ENCRYPTION" id="MAIL_ENCRYPTION" class="form-control sf-select">
                             <option value="tls" {{ env('MAIL_ENCRYPTION') == 'tls' ? 'selected' : '' }}>
                                 {{ __('tls') }}
@@ -66,7 +65,8 @@
                 </div>
                 <div class="col-xxl-4 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
-                        <label class="form-label">{{ __('MAIL FROM ADDRESS') }} <span class="text-danger">*</span></label>
+                        <label class="form-label">{{ __('MAIL FROM ADDRESS') }} <span
+                                class="text-danger">*</span></label>
                         <input type="text" name="MAIL_FROM_ADDRESS" value="{{ env('MAIL_FROM_ADDRESS') }}"
                             class="primary-form-control">
                     </div>
