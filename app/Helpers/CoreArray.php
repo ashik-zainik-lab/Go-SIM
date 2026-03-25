@@ -267,6 +267,31 @@ function country($input = null)
     }
 }
 
+if (!function_exists("region")) {
+    function region($input = null)
+    {
+        $output = [
+            // Region code -> Region name
+            // (Used for Destinations → Regions unique code dropdown)
+            'AFR' => 'Africa',
+            'SASIA' => 'South Asia',
+            'MIDEAST' => 'Middle East',
+            'EUROPE' => 'Europe',
+            'NAM' => 'North America',
+            'SAM' => 'South America',
+            'OCE' => 'Oceania',
+            'ASIA_PACIFIC' => 'Asia Pacific',
+            'GLOBAL' => 'Global',
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        }
+
+        return $output[$input] ?? '';
+    }
+}
+
 function languageIsoCode($input = null)
 {
     $output = [

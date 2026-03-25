@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SuperAdmin\CurrencyController;
 use App\Http\Controllers\SuperAdmin\DashboardController;
+use App\Http\Controllers\SuperAdmin\DestinationController;
 use App\Http\Controllers\SuperAdmin\GatewayController;
 use App\Http\Controllers\SuperAdmin\LanguageController;
 use App\Http\Controllers\SuperAdmin\ProfileController;
@@ -58,6 +59,15 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
             Route::get('edit/{id}', [CurrencyController::class, 'edit'])->name('edit');
             Route::patch('update/{id}', [CurrencyController::class, 'update'])->name('update');
             Route::post('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
+        });
+
+        Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
+            Route::get('', [DestinationController::class, 'index'])->name('index');
+            Route::post('regions', [DestinationController::class, 'storeRegion'])->name('regions.store');
+            Route::get('regions/edit/{id}', [DestinationController::class, 'editRegion'])->name('regions.edit');
+            Route::patch('regions/update/{id}', [DestinationController::class, 'updateRegion'])->name('regions.update');
+            Route::post('regions/delete/{id}', [DestinationController::class, 'deleteRegion'])->name('regions.delete');
+            Route::post('countries', [DestinationController::class, 'storeCountry'])->name('countries.store');
         });
 
         Route::get('storage-settings', [SettingController::class, 'storageSetting'])->name('storage.index');

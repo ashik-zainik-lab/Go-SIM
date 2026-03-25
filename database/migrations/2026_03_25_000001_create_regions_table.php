@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->unique();
+            $table->string('icon')->nullable();
             $table->longText('description')->nullable();
             $table->unsignedInteger('sort_order')->default(0);
             $table->tinyInteger('status')->default(STATUS_ACTIVE);

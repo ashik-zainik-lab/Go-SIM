@@ -39,7 +39,7 @@
         {{-- ESIM management --}}
         <li class="">
             <span class="category_title">{{ __('Esim management') }}</span>
-            <a class="has_arrow" href="#">
+            <a class="has_arrow {{ $activeDestinations ?? '' }}" href="{{ route('super_admin.setting.destinations.index') }}">
                 <div class="nav_icon_small">
                     {{-- Destinations icon from new design --}}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
