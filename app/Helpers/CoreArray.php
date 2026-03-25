@@ -267,6 +267,31 @@ function country($input = null)
     }
 }
 
+if (!function_exists("region")) {
+    function region($input = null)
+    {
+        $output = [
+            // Region code -> Region name
+            // (Used for Destinations → Regions unique code dropdown)
+            'AFR' => 'Africa',
+            'SASIA' => 'South Asia',
+            'MIDEAST' => 'Middle East',
+            'EUROPE' => 'Europe',
+            'NAM' => 'North America',
+            'SAM' => 'South America',
+            'OCE' => 'Oceania',
+            'ASIA_PACIFIC' => 'Asia Pacific',
+            'GLOBAL' => 'Global',
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        }
+
+        return $output[$input] ?? '';
+    }
+}
+
 function languageIsoCode($input = null)
 {
     $output = [
@@ -621,14 +646,14 @@ if(!function_exists("getRoleName")){
     function getRoleName($input = null)
     {
         $output = [
-            USER_ROLE_ADMIN => __('Admin'),
+            USER_ROLE_SUPER_ADMIN => __('Super Admin'),
+            USER_ROLE_ADMIN       => __('Admin'),
         ];
-
 
         if (is_null($input)) {
             return $output;
         } else {
-            return $output[$input];
+            return $output[$input] ?? '';
         }
     }
 }
@@ -825,3 +850,36 @@ if(!function_exists("getAddonAppNameList")){
     }
 }
 
+if (!function_exists('getPlanType')) {
+    function getPlanType($input = null)
+    {
+        $output = [
+            PLAN_TYPE_LOCAL    => __('Local'),
+            PLAN_TYPE_REGIONAL => __('Regional'),
+            PLAN_TYPE_GLOBAL   => __('Global'),
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        } else {
+            return $output[$input] ?? '';
+        }
+    }
+}
+
+if (!function_exists('getPlanValidityUnit')) {
+    function getPlanValidityUnit($input = null)
+    {
+        $output = [
+            PLAN_VALIDITY_HOURS  => __('Hours'),
+            PLAN_VALIDITY_DAYS   => __('Days'),
+            PLAN_VALIDITY_MONTHS => __('Months'),
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        } else {
+            return $output[$input] ?? '';
+        }
+    }
+}

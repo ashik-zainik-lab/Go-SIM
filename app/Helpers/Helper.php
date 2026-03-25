@@ -216,6 +216,23 @@ if (!function_exists("selectedLanguage")) {
     }
 }
 
+if (!function_exists("getRegionList")) {
+    function getRegionList($input = null)
+    {
+        return region($input);
+    }
+}
+
+if (!function_exists("getRegionIcon")) {
+    function getRegionIcon($path = null): string
+    {
+        if (!empty($path)) {
+            return getFileUrl((int)$path);
+        }
+        return asset('assets/images/icons/maps.svg');
+    }
+}
+
 if (!function_exists("getVideoFile")) {
     function getFile($path, $storageType)
     {

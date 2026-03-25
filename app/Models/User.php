@@ -14,57 +14,67 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'uuid',
         'name',
-        'nick_name',
         'email',
         'mobile',
+        'tenant_id',
+        'role',
         'email_verified_at',
         'password',
-        'image',
-        'role',
         'email_verification_status',
         'phone_verification_status',
+        'verify_token',
+        'otp',
+        'otp_expiry',
         'google_auth_status',
         'google2fa_secret',
         'google_id',
         'facebook_id',
-        'verify_token',
-        'otp',
-        'otp_expiry',
+        'image',
+        'last_seen',
         'show_email_in_public',
         'show_phone_in_public',
-        'last_seen',
         'created_by',
         'status',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
         'google2fa_secret',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'last_seen' => 'datetime'
+        'last_seen'         => 'datetime',
     ];
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (in_array('uuid', $model->getFillable()) && empty($model->uuid)) {
+                $model->uuid = Str::uuid()->toString();
+            }
+        });
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class, 'tenant_id');
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === USER_ROLE_SUPER_ADMIN;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === USER_ROLE_ADMIN;
+    }
 
     public function unseen_message()
     {
@@ -73,15 +83,6 @@ class User extends Authenticatable
 
     public function messages()
     {
-        return $this->hasMany(Chat::class, 'receiver_id')->where('sender_id' , auth()->id());
-    }
-
-
-    protected static function boot(): void
-    {
-        parent::boot();
-        self::creating(function($model){
-            $model->uuid = Str::uuid()->toString();
-        });
+        return $this->hasMany(Chat::class, 'receiver_id')->where('sender_id', auth()->id());
     }
 }
