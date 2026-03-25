@@ -78,37 +78,12 @@ class UserController extends Controller
         }
 
         $data['title'] = 'Admin Users';
-        $data['navUserParentActiveClass'] = 'mm-active';
-        $data['navUserParentShowClass'] = 'mm-show';
         $data['subNavUserActiveClass'] = 'mm-active';
+        $data['activeUserManagement'] = 'mm-active';
 
         return view('super_admin.user.index', $data);
     }
 
-    public function create()
-    {
-        $data['title'] = 'Add User';
-        $data['navUserParentActiveClass'] = 'mm-active';
-        $data['navUserParentShowClass'] = 'mm-show';
-        $data['subNavUserCreateActiveClass'] = 'mm-active';
-        $data['roles'] = Role::all();
-        return view('super_admin.user.create', $data);
-    }
-
-
-    public function store(UserRequest $request)
-    {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->mobile = $request->mobile;
-        
-        $user->password = Hash::make($request->password);
-        $user->email_verified_at = Carbon::now()->format("Y-m-d H:i:s");
-        $user->save();
-        return $this->controlRedirection($request, 'user', 'User');
-
-    }
 
     public function edit($id)
     {
