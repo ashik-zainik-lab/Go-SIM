@@ -38,7 +38,7 @@ class DestinationController extends Controller
         $data['regionOptions'] = region();
         $data['countryOptions'] = country();
 
-        return view('super_admin.setting.destinations.index', $data);
+        return view('super_admin.destinations.index', $data);
     }
 
     public function storeRegion(Request $request)
@@ -58,7 +58,7 @@ class DestinationController extends Controller
     {
         $data['region'] = Region::findOrFail($id);
         $data['regionOptions'] = region();
-        return view('super_admin.setting.destinations.edit-region-form', $data);
+        return view('super_admin.destinations.edit-region-form', $data);
     }
 
     public function updateRegion(Request $request, $id)

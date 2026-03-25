@@ -27,8 +27,8 @@ class DestinationService
                 return '<div class="dashboared-status-badge ' . $badgeClass . '">' . $statusText . '</div>';
             })
             ->addColumn('action', function ($data) {
-                $editRoute = route('super_admin.setting.destinations.regions.edit', $data->id);
-                $deleteRoute = route('super_admin.setting.destinations.regions.delete', $data->id);
+                $editRoute = route('super_admin.destinations.regions.edit', $data->id);
+                $deleteRoute = route('super_admin.destinations.regions.delete', $data->id);
 
                 return '
                     <div class="language-edit d-flex align-items-center text-nowrap">
