@@ -19,11 +19,12 @@
 
         <!-- Right content -->
         <div class="settings-forms w-100">
-            <input type="hidden" id="language-route" value="{{ route('admin.setting.languages.index') }}">
+            <input type="hidden" id="language-route" value="{{ route('super_admin.setting.languages.index') }}">
             <div class="dashboard-settings-card has-min-height">
                 <div class="card-body">
                     <div class="d-flex flex-wrap gap-2 item-title justify-content-end mb-3">
-                        <a class="primary_button" href="{{route('admin.setting.languages.download', $language->id)}}"
+                        <a class="primary_button"
+                            href="{{route('super_admin.setting.languages.download', $language->id)}}"
                             title="{{ __('Download File') }}">
                             {{ __('Download File') }}
                         </a>
@@ -54,7 +55,7 @@
                     </div>
 
                     <div id="translations-container">
-                        @include('admin.setting.languages.partials.translations_table')
+                        @include('super_admin.setting.languages.partials.translations_table')
                     </div>
                 </div>
             </div>

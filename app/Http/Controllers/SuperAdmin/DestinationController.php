@@ -91,4 +91,31 @@ class DestinationController extends Controller
 
         return $this->destinationService->storeCountry($request);
     }
+
+    public function editCountry($id)
+    {
+        $data['country'] = Country::findOrFail($id);
+        $data['regions'] = Region::query()->orderBy('sort_order')->orderBy('name')->get();
+        $data['countryOptions'] = country();
+
+        return view('super_admin.destinations.edit-country-form', $data);
+    }
+
+    public function updateCountry(Request $request, $id)
+    {
+        $request->validate([
+            'country_name' => 'required|string|max:191',
+            'short_name' => 'required|string|max:10',
+            'region_id' => 'nullable|integer',
+            'continent' => 'nullable|string|max:191',
+            'status' => 'nullable|integer',
+        ]);
+
+        return $this->destinationService->updateCountry($request, $id);
+    }
+
+    public function deleteCountry($id)
+    {
+        return $this->destinationService->deleteCountry($id);
+    }
 }
