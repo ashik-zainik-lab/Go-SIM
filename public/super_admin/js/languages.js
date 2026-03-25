@@ -19,7 +19,8 @@
                 next: "<i class='fa-solid fa-angles-right'></i>",
             }
         },
-        dom: 'tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
+        // dom: 'tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
+        dom: 'tr<"tableBottom"<"row align-items-center justify-content-center"<"col-sm-12 text-center"<"tablePagi common-datatable-pagination"p>>>><"clear">',
         columns: [
             {"data": "flag", "name": "flag", searchable: false, responsivePriority: 1},
             {"data": "language", "name": "language"},
