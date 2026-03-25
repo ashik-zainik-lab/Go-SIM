@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Traits\General;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 
@@ -16,13 +17,62 @@ class UserController extends Controller
 {
     use General;
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['title'] = 'All Users';
-        $data['users'] = User::whereRole(1)->paginate(25);
+        if ($request->ajax() && $request->type === 'admins') {
+            $users = User::query()
+                ->where('role', USER_ROLE_ADMIN)
+                ->select('id', 'name', 'email', 'mobile', 'status', 'role')
+                ->orderByDesc('id');
+
+            if ($request->filled('search')) {
+                $search = trim($request->search);
+                $users->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('mobile', 'like', "%{$search}%");
+                });
+            }
+
+            return datatables($users)
+                ->addIndexColumn()
+                ->editColumn('role', function ($u) {
+                    return (int)$u->role === USER_ROLE_ADMIN ? __('Admin') : __('User');
+                })
+                ->editColumn('status', function ($u) {
+                    $badgeClass = ((int)$u->status === USER_STATUS_ACTIVE) ? 'active' : 'pending';
+                    $statusText = ((int)$u->status === USER_STATUS_ACTIVE) ? __('Active') : __('Inactive');
+                    return '<div class="dashboared-status-badge ' . $badgeClass . '">' . $statusText . '</div>';
+                })
+                ->addColumn('action', function ($u) {
+                    $deleteRoute = route('super_admin.users.delete', $u->id);
+
+                    return '
+                        <div class="language-edit d-flex align-items-center text-nowrap">
+                            <button class="dashboard-menu-dots" data-bs-toggle="dropdown"
+                                    aria-expanded="false" type="button">
+                                <img src="' . asset('assets/images/icons/dots.svg') . '" alt="dots">
+                            </button>
+                            <ul class="dropdown-menu dashboared-table-dropdown dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)"
+                                       onclick="deleteItem(\'' . $deleteRoute . '\', \'userDataTable\')">
+                                        <span>' . __("Delete") . '</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    ';
+                })
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        }
+
+        $data['title'] = 'Admin Users';
         $data['navUserParentActiveClass'] = 'mm-active';
         $data['navUserParentShowClass'] = 'mm-show';
         $data['subNavUserActiveClass'] = 'mm-active';
+
         return view('super_admin.user.index', $data);
     }
 
@@ -86,9 +136,22 @@ class UserController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        User::whereId($id)->delete();
+        if ($request->ajax()) {
+            try {
+                User::whereId($id)->where('role', USER_ROLE_ADMIN)->delete();
+                return response()->json([
+                    'message' => 'User has been deleted',
+                ]);
+            } catch (\Exception $e) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 500);
+            }
+        }
+
+        User::whereId($id)->where('role', USER_ROLE_ADMIN)->delete();
 
         $this->showToastrMessage('error', 'User has been deleted');
         return redirect()->back();
