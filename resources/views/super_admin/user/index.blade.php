@@ -44,6 +44,12 @@
 </div>
 @endsection
 
+<div class="modal fade dashboard-common-modal" id="edit-modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
 @push('script')
 <script src="{{ asset('super_admin/js/users.js') }}"></script>
 @endpush

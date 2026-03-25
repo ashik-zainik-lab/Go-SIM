@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SuperAdmin\EditUserRequest;
 use App\Http\Requests\SuperAdmin\UserRequest;
 use App\Models\User;
+use App\Traits\ResponseTrait;
 use App\Traits\General;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -16,13 +17,14 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     use General;
+    use ResponseTrait;
 
     public function index(Request $request)
     {
         if ($request->ajax() && $request->type === 'admins') {
             $users = User::query()
                 ->where('role', USER_ROLE_ADMIN)
-                ->select('id', 'name', 'email', 'mobile', 'status', 'role')
+                ->select('id', 'name', 'email', 'mobile', 'status')
                 ->orderByDesc('id');
 
             if ($request->filled('search')) {
@@ -45,6 +47,7 @@ class UserController extends Controller
                     return '<div class="dashboared-status-badge ' . $badgeClass . '">' . $statusText . '</div>';
                 })
                 ->addColumn('action', function ($u) {
+                    $editRoute = route('super_admin.users.edit', $u->id);
                     $deleteRoute = route('super_admin.users.delete', $u->id);
 
                     return '
@@ -54,6 +57,12 @@ class UserController extends Controller
                                 <img src="' . asset('assets/images/icons/dots.svg') . '" alt="dots">
                             </button>
                             <ul class="dropdown-menu dashboared-table-dropdown dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)"
+                                       onclick="getEditModal(\'' . $editRoute . '\', \'#edit-modal\')">
+                                        <span>' . __("Edit") . '</span>
+                                    </a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="javascript:void(0)"
                                        onclick="deleteItem(\'' . $deleteRoute . '\', \'userDataTable\')">
@@ -93,10 +102,8 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
-        $user->address = $request->address;
+        
         $user->password = Hash::make($request->password);
-        $user->role = 1;
-        $user->assignRole($request->role_name);
         $user->email_verified_at = Carbon::now()->format("Y-m-d H:i:s");
         $user->save();
         return $this->controlRedirection($request, 'user', 'User');
@@ -105,13 +112,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $data['title'] = 'Edit User';
-        $data['navUserParentActiveClass'] = 'mm-active';
-        $data['navUserParentShowClass'] = 'mm-show';
-        $data['subNavUserActiveClass'] = 'mm-active';
-        $data['roles'] = Role::all();
-        $data['user'] = User::find($id);
-        return view('super_admin.user.edit', $data);
+        $data['user'] = User::findOrFail($id);
+        return view('super_admin.user.edit-form', $data);
     }
 
     public function update(EditUserRequest $request, $id)
@@ -119,19 +121,21 @@ class UserController extends Controller
         if (User::whereEmail($request->email)->where('id', '!=', $id)->count() > 0)
         {
             $this->showToastrMessage('warning', 'Email already exist');
+            if ($request->ajax() || $request->wantsJson()) {
+                return $this->error([], 'Email already exist');
+            }
             return redirect()->back();
         }
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
-        if ($request->role_name)
-        {
-            DB::table('model_has_roles')->where('role_id', $user->roles->first()->id)->where('model_id', $id)->delete();
-        }
-        $user->assignRole($request->role_name);
+        $user->mobile = $request->mobile;
+        $user->status = $request->status;
         $user->save();
+        if ($request->ajax() || $request->wantsJson()) {
+            return $this->success([], getMessage(UPDATED_SUCCESSFULLY));
+        }
+
         return $this->controlRedirection($request, 'user', 'User');
 
     }

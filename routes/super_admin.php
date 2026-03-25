@@ -140,6 +140,8 @@ Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
 
 Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
     Route::get('', [UserController::class, 'index'])->name('index');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+    Route::patch('update/{id}', [UserController::class, 'update'])->name('update');
     Route::post('delete/{id}', [UserController::class, 'delete'])->name('delete');
 });
 
