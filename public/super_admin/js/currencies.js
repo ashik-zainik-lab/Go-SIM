@@ -1,9 +1,10 @@
 (function ($) {
     "use strict";
     const currencyTable = $('#commonDataTable').DataTable({
-        pageLength: 25,
+        pageLength: 8,
         ordering: false,
         serverSide: true,
+        paging: true,
         processing: true,
         responsive: true,
         searching: false, // we are using custom search box like setting.html
@@ -19,7 +20,13 @@
                 next: "<i class='fa-solid fa-angles-right'></i>",
             }
         },
-        dom: 'tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
+        dom: 'tr<"tableBottom"<"row align-items-center justify-content-center"<"col-sm-12 text-center"<"tablePagi common-datatable-pagination"p>>>><"clear">',
+        drawCallback: function () {
+            const api = this.api();
+            const pages = api.page.info().pages || 0;
+            // Hide pagination UI when there's only one page
+            $(api.table().container()).find('.tablePagi').toggle(pages > 1);
+        },
         columns: [
             {"data": 'DT_RowIndex', "name": 'DT_RowIndex', searchable: false},
             {"data": "currency_code", "name": "currency_code", responsivePriority: 1},

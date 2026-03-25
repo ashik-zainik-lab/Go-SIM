@@ -10,6 +10,7 @@ use App\Http\Controllers\SuperAdmin\RolePermissionController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\VersionUpdateController;
 use App\Http\Controllers\SuperAdmin\AddonUpdateController;
+use App\Http\Controllers\SuperAdmin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -135,6 +136,13 @@ Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
             Route::get('countries/edit/{id}', [DestinationController::class, 'editCountry'])->name('countries.edit');
             Route::patch('countries/update/{id}', [DestinationController::class, 'updateCountry'])->name('countries.update');
             Route::post('countries/delete/{id}', [DestinationController::class, 'deleteCountry'])->name('countries.delete');
+});
+
+Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+    Route::get('', [UserController::class, 'index'])->name('index');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+    Route::patch('update/{id}', [UserController::class, 'update'])->name('update');
+    Route::post('delete/{id}', [UserController::class, 'delete'])->name('delete');
 });
 
 
