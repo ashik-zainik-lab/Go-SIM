@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h2>{{ __('Cookie Configuration') }}</h2>
+        <h5>{{ __('Cookie Configuration') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 

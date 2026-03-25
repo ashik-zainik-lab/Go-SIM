@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h2>{{ __('Google analytics configuration') }}</h2>
+        <h5>{{ __('Google analytics configuration') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 

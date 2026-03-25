@@ -42,8 +42,9 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'email_verification_status')"
-                                        value="1" {{ getOption('email_verification_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'email_verification_status')" value="1"
+                                        {{ getOption('email_verification_status')==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="email_verification_status" type="checkbox" role="switch"
                                         id="email_verification_status">
                                 </div>
@@ -51,10 +52,10 @@
                             <td>
                                 <div class="action-btns">
                                     @if(!isAddonInstalled('ALUSAAS'))
-                                        <button type="button" class="primary_button"
-                                            onclick="configureModal('email_verification_status')">
-                                            {{ __('Configure') }}
-                                        </button>
+                                    <button type="button" class="primary_button"
+                                        onclick="configureModal('email_verification_status')">
+                                        {{ __('Configure') }}
+                                    </button>
                                     @endif
                                     <button type="button" class="primary_button cancel"
                                         onclick="helpModal('email_verification_status')">
@@ -73,18 +74,19 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_mail_status')"
-                                        value="1" {{ getOption('app_mail_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'app_mail_status')" value="1"
+                                        {{ getOption('app_mail_status')==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="app_mail_status" type="checkbox" role="switch" id="app_mail_status">
                                 </div>
                             </td>
                             <td>
                                 <div class="action-btns">
                                     @if(!isAddonInstalled('ALUSAAS'))
-                                        <button type="button" class="primary_button"
-                                            onclick="configureModal('app_mail_status')">
-                                            {{ __('Configure') }}
-                                        </button>
+                                    <button type="button" class="primary_button"
+                                        onclick="configureModal('app_mail_status')">
+                                        {{ __('Configure') }}
+                                    </button>
                                     @endif
                                     <button type="button" class="primary_button cancel"
                                         onclick="helpModal('app_mail_status')">
@@ -94,7 +96,7 @@
                             </td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">
                                 {{ __('SMS credentials status') }}
                                 <div class="label-text">
@@ -120,7 +122,7 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th scope="row">
@@ -159,9 +161,11 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_login_status')"
-                                        value="1" {{ getOption('google_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
-                                        name="google_login_status" type="checkbox" role="switch" id="google_login_status">
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'google_login_status')" value="1"
+                                        {{ getOption('google_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="google_login_status" type="checkbox" role="switch"
+                                        id="google_login_status">
                                 </div>
                             </td>
                             <td>
@@ -187,8 +191,9 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'facebook_login_status')"
-                                        value="1" {{ getOption('facebook_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'facebook_login_status')" value="1"
+                                        {{ getOption('facebook_login_status')==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="facebook_login_status" type="checkbox" role="switch"
                                         id="facebook_login_status">
                                 </div>
@@ -216,8 +221,9 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_recaptcha_status')"
-                                        value="1" {{ getOption('google_recaptcha_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'google_recaptcha_status')" value="1"
+                                        {{ getOption('google_recaptcha_status')==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="google_recaptcha_status" type="checkbox" role="switch"
                                         id="google_recaptcha_status">
                                 </div>
@@ -245,8 +251,9 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'google_analytics_status')"
-                                        value="1" {{ getOption('google_analytics_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'google_analytics_status')" value="1"
+                                        {{ getOption('google_analytics_status')==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="google_analytics_status" type="checkbox" role="switch"
                                         id="google_analytics_status">
                                 </div>
@@ -302,8 +309,9 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'two_factor_googleauth_status')"
-                                        value="1" {{ getOption('two_factor_googleauth_status', 0)==STATUS_ACTIVE ? 'checked' : '' }}
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'two_factor_googleauth_status')" value="1"
+                                        {{ getOption('two_factor_googleauth_status', 0)==STATUS_ACTIVE ? 'checked' : '' }}
                                         name="two_factor_googleauth_status" type="checkbox" role="switch"
                                         id="two_factor_googleauth_status">
                                 </div>
@@ -327,9 +335,11 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'app_preloader_status')"
-                                        value="1" {{ getOption('app_preloader_status')==STATUS_ACTIVE ? 'checked' : '' }}
-                                        name="app_preloader_status" type="checkbox" role="switch" id="app_preloader_status">
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'app_preloader_status')" value="1"
+                                        {{ getOption('app_preloader_status')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="app_preloader_status" type="checkbox" role="switch"
+                                        id="app_preloader_status">
                                 </div>
                             </td>
                             <td>
@@ -351,9 +361,11 @@
                             </th>
                             <td>
                                 <div class="form-check form-switch dashboard_common_switch">
-                                    <input class="form-check-input" onchange="changeSettingStatus(this,'show_language_switcher')"
-                                        value="1" {{ getOption('show_language_switcher')==STATUS_ACTIVE ? 'checked' : '' }}
-                                        name="show_language_switcher" type="checkbox" role="switch" id="show_language_switcher">
+                                    <input class="form-check-input"
+                                        onchange="changeSettingStatus(this,'show_language_switcher')" value="1"
+                                        {{ getOption('show_language_switcher')==STATUS_ACTIVE ? 'checked' : '' }}
+                                        name="show_language_switcher" type="checkbox" role="switch"
+                                        id="show_language_switcher">
                                 </div>
                             </td>
                             <td>
@@ -382,7 +394,8 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="primary_button cancel" onclick="helpModal('app_debug')">
+                                    <button type="button" class="primary_button cancel"
+                                        onclick="helpModal('app_debug')">
                                         {{ __('Help') }}
                                     </button>
                                 </div>
@@ -405,7 +418,8 @@
                             </td>
                             <td>
                                 <div class="action-btns">
-                                    <button type="button" class="primary_button cancel" onclick="helpModal('force_ssl')">
+                                    <button type="button" class="primary_button cancel"
+                                        onclick="helpModal('force_ssl')">
                                         {{ __('Help') }}
                                     </button>
                                 </div>

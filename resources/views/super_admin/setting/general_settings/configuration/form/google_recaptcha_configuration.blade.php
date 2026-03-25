@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h2>{{ __('Google Recaptcha Credentials') }}</h2>
+        <h5>{{ __('Google Recaptcha Credentials') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 
@@ -12,7 +12,8 @@
             <div class="row g-3">
                 <div class="col-xxl-6 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
-                        <label for="google_recaptcha_site_key" class="form-label">{{ __('Google Recaptcha Site Key') }}</label>
+                        <label for="google_recaptcha_site_key"
+                            class="form-label">{{ __('Google Recaptcha Site Key') }}</label>
                         <input type="text" name="google_recaptcha_site_key" id="google_recaptcha_site_key"
                             value="{{ getOption('google_recaptcha_site_key') }}" class="primary-form-control">
                     </div>
@@ -20,7 +21,8 @@
 
                 <div class="col-xxl-6 col-lg-6 col-md-6">
                     <div class="dashboard-form-group">
-                        <label for="google_recaptcha_secret_key" class="form-label">{{ __('Google Recaptcha Secret Key') }}</label>
+                        <label for="google_recaptcha_secret_key"
+                            class="form-label">{{ __('Google Recaptcha Secret Key') }}</label>
                         <input type="text" name="google_recaptcha_secret_key" id="google_recaptcha_secret_key"
                             value="{{ getOption('google_recaptcha_secret_key') }}" class="primary-form-control">
                     </div>

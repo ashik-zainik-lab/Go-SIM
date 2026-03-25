@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h3>{{ __('Social Login (Google) Configuration') }}</h3>
+        <h5>{{ __('Social Login (Google) Configuration') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 

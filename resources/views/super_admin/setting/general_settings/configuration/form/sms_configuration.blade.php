@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h3>{{ __('SMS Configuration') }}</h3>
+        <h5>{{ __('SMS Configuration') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 

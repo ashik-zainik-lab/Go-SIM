@@ -1,6 +1,6 @@
 <div>
     <div class="modal-header">
-        <h3>{{ __('Mail Configuration') }}</h3>
+        <h5>{{ __('Mail Configuration') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
     </div>
 
@@ -9,11 +9,11 @@
         @csrf
 
         <div class="modal-body">
-            <div class="d-flex justify-content-end mb-3">
+            <!-- <div class="d-flex justify-content-end mb-3">
                 <button type="button" id="sendTestMailBtn" class="primary_button">
                     <i class="fa fa-envelope"></i> {{ __('Send Test Mail') }}
                 </button>
-            </div>
+            </div> -->
 
             <div class="row g-3">
                 <div class="col-xxl-4 col-lg-6 col-md-6">
