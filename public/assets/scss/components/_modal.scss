@@ -184,7 +184,33 @@
             border-color: var(--theme_color);
         }
     }
+    input[type="file"] {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        
+        &::file-selector-button {
+            height: 100%;
+            padding: 0 20px;
+            margin-right: 20px;
+            border: none;
+            border-right: 1px solid var(--border_color);
+            background: #fff; 
+            color: var(--theme_dark);
+            font-weight: 500;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
 
+            &:hover {
+                background: #f1f5f9;
+            }
+        }
+        &::text {
+           color: var(--text_ash);
+        }
+    }
     .checkbox-container {
         display: flex;
         align-items: center;
@@ -356,3 +382,4 @@ label.common-form-label {
     font-size: 14px;
     line-height: 24px;
 }
+

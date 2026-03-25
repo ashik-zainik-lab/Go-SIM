@@ -17,13 +17,13 @@
             @forelse ($translators as $key => $value)
             <tr>
                 <td>
-                    <textarea type="text" class="key primary-form-control" readonly required>{!! $key !!}</textarea>
+                    <textarea type="text" class="key primary-form-control common-textarea" readonly required>{!! $key !!}</textarea>
                 </td>
                 <td>
                     <input type="hidden" value="0" class="is_new">
-                    <textarea type="text" class="val primary-form-control" required>{!! $value !!}</textarea>
+                    <textarea type="text" class="val primary-form-control common-textarea" required>{!! $value !!}</textarea>
                 </td>
-                <td class="text-end">
+                <td class="text-end col-1">
                     <button type="button" class="updateLangItem primary_button">
                         {{ __('Update') }}
                     </button>

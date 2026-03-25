@@ -239,3 +239,20 @@
     row-gap: 20px;
 }
 /* DashBoard Common Form row for gap  End */
+
+
+/* DashBoard Common Textarea style Start */
+textarea.common-textarea {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text_dark);
+    border: 1px solid var(--border_color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+/* DashBoard Common Textarea style End */
+

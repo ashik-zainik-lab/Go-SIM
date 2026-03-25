@@ -45,11 +45,11 @@
         let html = `
                     <tr>
                         <td>
-                            <textarea type="text" name="key" class="key primary-form-control" required></textarea>
+                            <textarea type="text" name="key" class="key primary-form-control common-textarea" required></textarea>
                         </td>
                         <td>
                             <input type="hidden" value="1" class="is_new">
-                            <textarea type="text" name="value" class="val primary-form-control" required></textarea>
+                            <textarea type="text" name="value" class="val primary-form-control common-textarea" required></textarea>
                         </td>
                         <td class="text-end col-1">
                             <button type="button" class="updateLangItem primary_button">${$('.updateLangItem:first').text() || 'Update'}</button>
