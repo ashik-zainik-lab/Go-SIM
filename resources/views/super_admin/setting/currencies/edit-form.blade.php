@@ -40,7 +40,7 @@
                     <div class="dashboard-form-group full-width mb-2">
                         <label for="currency_placement" class="form-label">{{ __('Currency Placement') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="select2-activate-without-search" name="currency_placement"
+                        <select class="common-select2-without-search" name="currency_placement"
                             required>
                             <option value="">--{{ __('Select Option') }}--</option>
                             <option {{ $currency->currency_placement == "before" ? 'selected' : '' }} value="before">
