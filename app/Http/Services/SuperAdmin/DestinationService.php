@@ -89,7 +89,34 @@ class DestinationService
                 $statusText = ((int)$data->status === STATUS_ACTIVE) ? __('Active') : __('Inactive');
                 return '<div class="dashboared-status-badge ' . $badgeClass . '">' . $statusText . '</div>';
             })
-            ->rawColumns(['status'])
+            ->addColumn('action', function ($data) {
+                $editRoute = route('super_admin.destinations.countries.edit', $data->id);
+                $deleteRoute = route('super_admin.destinations.countries.delete', $data->id);
+
+                return '
+                    <div class="language-edit d-flex align-items-center text-nowrap">
+                        <button class="dashboard-menu-dots" data-bs-toggle="dropdown"
+                                aria-expanded="false" type="button">
+                            <img src="' . asset('assets/images/icons/dots.svg') . '" alt="dots">
+                        </button>
+                        <ul class="dropdown-menu dashboared-table-dropdown dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="getEditModal(\'' . $editRoute . '\', \'#edit-modal\')">
+                                    <span>' . __("Edit") . '</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                   onclick="deleteItem(\'' . $deleteRoute . '\', \'countryDataTable\')">
+                                    <span>' . __("Delete") . '</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                ';
+            })
+            ->rawColumns(['status', 'action'])
             ->make(true);
     }
 
@@ -189,6 +216,46 @@ class DestinationService
 
             DB::commit();
             return $this->success([], getMessage(CREATED_SUCCESSFULLY));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return $this->error([], getErrorMessage($e, $e->getMessage()));
+        }
+    }
+
+    public function updateCountry($request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $country = Country::findOrFail($id);
+            $country->region_id = $request->region_id;
+            $country->country_name = $request->country_name;
+            $country->short_name = strtoupper($request->short_name);
+            $country->slug = getSlug($request->country_name);
+            $country->status = $request->status ?? $country->status;
+
+            if ($request->filled('continent')) {
+                $country->continent = $request->continent;
+            }
+
+            $country->save();
+
+            DB::commit();
+            return $this->success([], getMessage(UPDATED_SUCCESSFULLY));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return $this->error([], getErrorMessage($e, $e->getMessage()));
+        }
+    }
+
+    public function deleteCountry($id)
+    {
+        DB::beginTransaction();
+        try {
+            $country = Country::findOrFail($id);
+            $country->delete();
+
+            DB::commit();
+            return $this->success([], getMessage(DELETED_SUCCESSFULLY));
         } catch (Exception $e) {
             DB::rollBack();
             return $this->error([], getErrorMessage($e, $e->getMessage()));

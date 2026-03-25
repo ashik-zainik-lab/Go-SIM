@@ -132,7 +132,13 @@ Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
             Route::patch('regions/update/{id}', [DestinationController::class, 'updateRegion'])->name('regions.update');
             Route::post('regions/delete/{id}', [DestinationController::class, 'deleteRegion'])->name('regions.delete');
             Route::post('countries', [DestinationController::class, 'storeCountry'])->name('countries.store');
-    });
+            Route::get('countries/edit/{id}', [DestinationController::class, 'editCountry'])->name('countries.edit');
+            Route::patch('countries/update/{id}', [DestinationController::class, 'updateCountry'])->name('countries.update');
+            Route::post('countries/delete/{id}', [DestinationController::class, 'deleteCountry'])->name('countries.delete');
+});
+
+
+
 
 /*Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/', [ProfileController::class, 'myProfile'])->name('index');

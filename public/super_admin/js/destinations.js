@@ -29,7 +29,8 @@
             {data: 'country_name', name: 'country_name'},
             {data: 'short_name', name: 'short_name'},
             {data: 'region_name', name: 'region_name'},
-            {data: 'status', name: 'status', searchable: false}
+            {data: 'status', name: 'status', searchable: false},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
 

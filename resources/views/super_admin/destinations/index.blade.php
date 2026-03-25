@@ -120,6 +120,7 @@
                             <th>{{ __('ISO Code') }}</th>
                             <th>{{ __('Region') }}</th>
                             <th>{{ __('Status') }}</th>
+                            <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -143,7 +144,7 @@
                     <div class="form-row">
                         <div class="dashboard-form-group">
                             <label>{{ __('Region Name') }}<span>*</span></label>
-                            <select name="name" required class="select2-activate" id="regionNameSelect">
+                            <select name="name" required class="select2-activate-with-search" id="regionNameSelect">
                                 <option value="" selected disabled>{{ __('Select region name...') }}</option>
                                 @foreach ($regionOptions as $regionKey => $regionName)
                                 <option value="{{ $regionName }}" data-region-code="{{ $regionKey }}">
@@ -154,7 +155,7 @@
                         </div>
                         <div class="dashboard-form-group">
                             <label>{{ __('Unique Code') }}<span>*</span></label>
-                            <select name="code" required class="select2-activate" id="regionCodeSelect">
+                            <select name="code" required class="select2-activate-with-search" id="regionCodeSelect">
                                 <option value="" selected disabled>{{ __('Select unique code...') }}</option>
                                 @foreach ($regionOptions as $regionKey => $regionName)
                                 <option value="{{ $regionKey }}">{{ $regionKey }}</option>
@@ -173,7 +174,7 @@
                     <div class="form-row">
                         <div class="dashboard-form-group">
                             <label>{{ __('Initial Status') }}<span>*</span></label>
-                            <select name="status" required class="select2-activate">
+                            <select name="status" required class="select2-activate-with-search">
                                 <option value="{{ STATUS_ACTIVE }}">{{ __('Active') }}</option>
                                 <option value="{{ STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
                             </select>
@@ -213,7 +214,7 @@
                     <div class="form-row">
                         <div class="dashboard-form-group">
                             <label>{{ __('Country Name') }}<span>*</span></label>
-                            <select name="country_name" class="select2-activate" required>
+                            <select name="country_name" class="select2-activate-with-search" required>
                                 <option value="">{{ __('Select Country') }}</option>
                                 @foreach ($countryOptions as $code => $countryName)
                                 <option value="{{ strtoupper($code) }}">{{ $countryName }}</option>
@@ -224,7 +225,8 @@
                             <div class="dashboard-form-group ">
                                 <label class="form-label">{{ __('ISO Code') }} <span
                                         class="text-danger">*</span></label>
-                                <select name="short_name" class="select2-activate" id="sf-select-modal-add" required>
+                                <select name="short_name" class="select2-activate-with-search" id="sf-select-modal-add"
+                                    required>
                                     <option value="">--{{ __('Select ISO Code') }}--</option>
                                     @foreach(languageIsoCode() as $code => $isoCountryName)
                                     <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
@@ -236,7 +238,7 @@
                     <div class="form-row">
                         <div class="dashboard-form-group ">
                             <label>{{ __('Assign to Region') }}<span>*</span></label>
-                            <select name="region_id" required class="select2-activate">
+                            <select name="region_id" required class="select2-activate-with-search">
                                 <option value="" selected disabled>{{ __('Select a region...') }}</option>
                                 @foreach ($regions as $region)
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
@@ -247,7 +249,7 @@
 
                         <div class="dashboard-form-group">
                             <label>{{ __('Status') }}<span>*</span></label>
-                            <select name="status" required class="select2-activate"
+                            <select name="status" required class="select2-activate-with-search"
                                 data-minimum-results-for-search="Infinity">
                                 <option value="{{ STATUS_ACTIVE }}">{{ __('Active') }}</option>
                                 <option value="{{ STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
