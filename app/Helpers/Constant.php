@@ -18,8 +18,8 @@ const STATUS_SUCCESS    = 1;
 const ACTIVE     = 1;
 const DEACTIVATE = 0;
 
-const USER_STATUS_ACTIVE   = 1;
-const USER_STATUS_INACTIVE = 0;
+const STATUS_ACTIVE   = 1;
+const STATUS_INACTIVE = 0;
 
 const TENANT_STATUS_ACTIVE    = 1;
 const TENANT_STATUS_INACTIVE  = 0;
