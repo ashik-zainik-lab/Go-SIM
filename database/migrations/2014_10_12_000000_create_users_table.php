@@ -15,15 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
             $table->string('name');
-            $table->string('nick_name')->nullable();
             $table->string('email')->unique();
             $table->string('mobile')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('image')->nullable();
-            $table->tinyInteger('role')->default(USER_ROLE_USER);
+            $table->tinyInteger('role')->default(USER_ROLE_ADMIN);
             $table->tinyInteger('email_verification_status')->default(0);
             $table->tinyInteger('phone_verification_status')->default(0);
             $table->tinyInteger('google_auth_status')->default(0);
@@ -33,6 +31,7 @@ return new class extends Migration
             $table->string('verify_token')->nullable();
             $table->integer('otp')->nullable();
             $table->dateTime('otp_expiry')->nullable();
+            $table->dateTime('last_seen')->default(now());
             $table->tinyInteger('show_email_in_public')->default(STATUS_ACTIVE);
             $table->tinyInteger('show_phone_in_public')->default(STATUS_ACTIVE);
             $table->unsignedBigInteger('created_by')->nullable();
@@ -40,6 +39,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
         });
     }
 
