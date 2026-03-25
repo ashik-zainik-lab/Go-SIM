@@ -173,26 +173,41 @@
 
             img.payment-img {
                 position: absolute;
-                max-width: 30px;
+                max-width: 80px;
                 width: 100%;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
 
-            .status {
+            .status-box {
                 position: absolute;
                 bottom: 5px;
                 left: 5px;
-                font-weight: 500;
-                font-size: 12px;
-                line-height: 100%;
-                padding: 6px 15px;
+                display: flex;
+                column-gap: 8px;
 
-                &.active {
-                    color: #0FA958;
-                    background: #EBF3EE;
+                .status {
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 100%;
+                    padding: 6px 15px;
 
+                    &.active {
+                        color: #0FA958;
+                        background: #EBF3EE;
+
+                    }
+
+                    &.pending {
+                        background: #FFF5D5;
+                        color: #FD980B;
+                    }
+
+                    &.inactive {
+                        color: var(--text_dark);
+                        background: #E3E3E3;
+                    }
                 }
             }
         }

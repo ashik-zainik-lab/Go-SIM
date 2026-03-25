@@ -315,10 +315,18 @@
                     });
                 }
 
-                if ($(document).find(modalId).find('.sf-select-without-search').length) {
-                    $(document).find(modalId).find('.sf-select-without-search').select2({
+                if ($(document).find(modalId).find('.sf-select-with-search').length) {
+                    $(document).find(modalId).find('.sf-select-with-search').select2({
                         dropdownCssClass: "sf-select-dropdown",
                         selectionCssClass: "sf-select-section",
+                        dropdownParent: $(modalId),
+                    });
+                }
+                if ($(document).find(modalId).find('.rtl-support-select-without-search').length) {
+                    $(document).find(modalId).find('.rtl-support-select-without-search').select2({
+                        dropdownCssClass: "sf-select-dropdown",
+                        selectionCssClass: "sf-select-section",
+                        minimumResultsForSearch: Infinity,
                         dropdownParent: $(modalId),
                     });
                 }

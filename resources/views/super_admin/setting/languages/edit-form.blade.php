@@ -19,7 +19,7 @@
         <div class="form-row">
             <div class="dashboard-form-group full-width mb-2">
                 <label class="form-label">{{ __('ISO Code') }} <span class="text-danger">*</span></label>
-                <select name="iso_code" class="primary-form-control" id="sf-select-modal-edit" required>
+                <select name="iso_code" class="sf-select-with-search" id="sf-select-modal-edit" required>
                     <option value="">--{{ __('Select ISO Code') }}--</option>
                     @foreach(languageIsoCode() as $code => $isoCountryName)
                     <option value="{{$code}}" {{ $code==$language->iso_code ? 'selected' : ''
@@ -32,15 +32,12 @@
         <!-- Row 3 -->
         <div class="form-row">
             <div class="dashboard-form-group full-width">
-                <label class="form-label d-block">{{ __('Flag') }} <span
-                        class="text-mime-type">(jpeg,png,jpg,svg,webp)</span> <span class="text-danger">*</span></label>
-                <div class="zImage-upload-details mw-100">
-                    <div class="zImage-inside">
-                        <div class="d-flex pb-12">
-                            <img src="{{ asset('assets/images/icon/upload-img-1.svg')}}" alt="upload" />
-                        </div>
-                        <p class="fs-15 fw-500 lh-16 text-1b1c17">{{__('Drag & drop files here')}}</p>
-                    </div>
+                <label class="form-label d-block">
+                    {{ __('Flag') }}
+                    <span class="text-mime-type">(jpeg,png,jpg,svg,webp)</span>
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="zImage-upload-details common-image-upload-box">
                     <div class="upload-img-box">
                         <img src="{{ getFileUrl($language->flag_id) }}" />
                         <input type="file" name="flag" id="flag" accept="image/*" onchange="previewFile(this)" />
@@ -53,7 +50,7 @@
         <div class="form-row">
             <div class="dashboard-form-group full-width mb-2">
                 <label class="form-label" for="rtl">{{ __('RTL Supported') }} <span class="text-danger">*</span></label>
-                <select name="rtl" class="primary-form-control" required>
+                <select name="rtl" class="rtl-support-select-without-search" required>
                     <option {{ $language->rtl == 0 ? 'selected' : '' }} value="0">{{__("No")}}</option>
                     <option {{ $language->rtl == 1 ? 'selected' : '' }} value="1">{{__("Yes")}}</option>
                 </select>
@@ -64,17 +61,16 @@
         <div class="form-row">
             <div class="dashboard-form-group full-width">
                 <label class="form-label d-block">{{ __('Default Language') }}</label>
-                <label class="checkbox-container">
-                    <input type="checkbox" name="default" value="1"
-                        {{ $language->default == STATUS_ACTIVE ? 'checked' : '' }}>
-                    <span class="custom-box"></span>
-                    <span class="text">{{ __('Set as default language') }}</span>
-                </label>
+                <div class="form-check form-switch dashboard_common_switch">
+                    <input class="form-check-input" type="checkbox" name="default" value="1"
+                        {{ $language->default == STATUS_ACTIVE ? 'checked' : '' }} role="switch" id="default">
+                    <label class="form-label mb-0" for="default">{{ __('Set as default language') }}</label>
+                </div>
             </div>
         </div>
 
         <!-- Actions -->
-        <div class="form-actions">
+        <div class="form-actions mt-3">
             <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
                 {{ __('Cancel') }}
             </button>
