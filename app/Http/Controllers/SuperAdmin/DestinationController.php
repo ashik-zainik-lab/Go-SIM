@@ -48,7 +48,6 @@ class DestinationController extends Controller
             'code' => 'required|string|max:50|unique:regions,code',
             'icon' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
             'description' => 'nullable|string',
-            'sort_order' => 'nullable|integer|min:0',
             'status' => 'nullable|integer',
         ]);
 
@@ -69,7 +68,6 @@ class DestinationController extends Controller
             'code' => 'required|string|max:50|unique:regions,code,' . $id,
             'icon' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
             'description' => 'nullable|string',
-            'sort_order' => 'nullable|integer|min:0',
             'status' => 'nullable|integer',
         ]);
 

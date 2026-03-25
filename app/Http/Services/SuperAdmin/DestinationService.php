@@ -113,7 +113,6 @@ class DestinationService
                 'code' => Str::upper($request->code),
                 'icon' => $iconFileId,
                 'description' => $request->description,
-                'sort_order' => $request->sort_order ?? 0,
                 'status' => $request->status ?? STATUS_ACTIVE,
             ]);
 
@@ -149,7 +148,6 @@ class DestinationService
                 }
             }
             $region->description = $request->description;
-            $region->sort_order = $request->sort_order ?? $region->sort_order;
             $region->status = $request->status ?? $region->status;
             $region->save();
 

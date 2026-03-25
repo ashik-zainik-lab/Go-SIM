@@ -37,7 +37,7 @@
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="common_button add_new_button" data-bs-toggle="modal"
+                    <button type="button" class="primary_button" data-bs-toggle="modal"
                         data-bs-target="#addNewRegionModal">+ {{ __('Add Region') }}</button>
                 </div>
 
@@ -135,7 +135,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="ajax reset modal-form" action="{{ route('super_admin.setting.destinations.regions.store') }}"
-                    method="POST" enctype="multipart/form-data" data-handler="commonResponseForModal">
+                    method="POST" enctype="multipart/form-data" data-handler="commonResponseWithPageLoad">
                     @csrf
                     <div class="modal-body">
                         <div class="form-row">
@@ -160,24 +160,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="dashboard-form-group">
-                                <label>{{ __('Region Icon') }}</label>
-                                <input type="file" name="icon" accept="image/*">
-                            </div>
-                        </div>
+                        
                         <div class="form-row">
                             <div class="dashboard-form-group full-width no-gap common_editor_block">
                                 <label>{{ __('Description') }}<span>*</span></label>
-                                <textarea name="description" id="description-input" class="primary-form-control"
-                                    rows="5"></textarea>
+                                <div id="quill-editor" style="height: 280px;"></div>
+                                <input type="hidden" name="description" id="description-input">
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="dashboard-form-group">
-                                <label>{{ __('Priority Order') }}<span>*</span></label>
-                                <input type="number" name="sort_order" value="0" min="0" required>
-                            </div>
                             <div class="dashboard-form-group">
                                 <label>{{ __('Initial Status') }}<span>*</span></label>
                                 <select name="status" required class="select2-activate">
@@ -185,11 +176,19 @@
                                     <option value="{{ STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
                                 </select>
                             </div>
+                    
+                        <div class="form-row">
+                            <div class="dashboard-form-group">
+                                <label>{{ __('Region Icon') }}</label>
+                                <input type="file" name="icon" accept="image/*">
+                            </div>
+                        </div>
+
                         </div>
                         <div class="form-actions">
-                            <button type="button" class="common_button btn-cancel"
+                            <button type="button" class="primary_button cancel"
                                 data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                            <button type="submit" class="common_button add_new_button">{{ __('Save') }}</button>
+                            <button type="submit" class="primary_button">{{ __('Save') }}</button>
                         </div>
                     </div>
                 </form>
@@ -205,7 +204,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="ajax reset" action="{{ route('super_admin.setting.destinations.countries.store') }}"
-                    method="POST" data-handler="commonResponseForModal">
+                    method="POST" data-handler="commonResponseWithPageLoad">
                     @csrf
                     <div class="modal-body">
                         <div class="form-row">

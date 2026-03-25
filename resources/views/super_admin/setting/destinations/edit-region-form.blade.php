@@ -46,10 +46,6 @@
                 @endif
             </div>
             <div class="col-md-6 mb-3">
-                <label class="form-label">{{ __('Sort Order') }}</label>
-                <input type="number" name="sort_order" class="form-control" value="{{ $region->sort_order }}">
-            </div>
-            <div class="col-md-6 mb-3">
                 <label class="form-label">{{ __('Status') }}</label>
                 <select name="status" class="form-control">
                     <option value="{{ STATUS_ACTIVE }}" @selected($region->status == STATUS_ACTIVE)>{{ __('Active') }}
@@ -62,10 +58,10 @@
     </div>
 
     <div class="form-actions">
-        <button type="button" class="common_button btn-cancel" data-bs-dismiss="modal">
+        <button type="button" class="primary_button cancel" data-bs-dismiss="modal">
             {{ __('Cancel') }}
         </button>
-        <button type="submit" class="common_button add_new_button">
+        <button type="submit" class="primary_button">
             {{ __('Update') }}
         </button>
     </div>
