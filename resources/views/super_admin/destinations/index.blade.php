@@ -221,53 +221,51 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-row">
-                            <div class="dashboard-form-group ">
-                                <label class="form-label">{{ __('ISO Code') }} <span
-                                        class="text-danger">*</span></label>
-                                <select name="short_name" class="select2-activate-with-search" id="sf-select-modal-add"
-                                    required>
-                                    <option value="">--{{ __('Select ISO Code') }}--</option>
-                                    @foreach(languageIsoCode() as $code => $isoCountryName)
-                                    <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="dashboard-form-group ">
-                            <label>{{ __('Assign to Region') }}<span>*</span></label>
-                            <select name="region_id" required class="select2-activate-with-search">
-                                <option value="" selected disabled>{{ __('Select a region...') }}</option>
-                                @foreach ($regions as $region)
-                                <option value="{{ $region->id }}">{{ $region->name }}</option>
+
+                        <div class="dashboard-form-group">
+                            <label>{{ __('ISO Code') }}<span>*</span></label>
+                            <select name="short_name" class="select2-activate-with-search" required>
+                                <option value="">--{{ __('Select ISO Code') }}--</option>
+                                @foreach(languageIsoCode() as $code => $isoCountryName)
+                                <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
                                 @endforeach
                             </select>
                         </div>
-
-
-                        <div class="dashboard-form-group">
-                            <label>{{ __('Status') }}<span>*</span></label>
-                            <select name="status" required class="select2-activate-with-search"
-                                data-minimum-results-for-search="Infinity">
-                                <option value="{{ STATUS_ACTIVE }}">{{ __('Active') }}</option>
-                                <option value="{{ STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-actions">
-                        <button type="button" class="primary_button cancel"
-                            data-bs-dismiss="modal">{{ __('Cancel') }}</button>
-                        <button type="submit" class="primary_button">{{ __('Add Country') }}</button>
                     </div>
                 </div>
-            </form>
+                <div class="form-row">
+                    <div class="dashboard-form-group ">
+                        <label>{{ __('Assign to Region') }}<span>*</span></label>
+                        <select name="region_id" required class="select2-activate-with-search">
+                            <option value="" selected disabled>{{ __('Select a region...') }}</option>
+                            @foreach ($regions as $region)
+                            <option value="{{ $region->id }}">{{ $region->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+                    <div class="dashboard-form-group">
+                        <label>{{ __('Status') }}<span>*</span></label>
+                        <select name="status" required class="select2-activate-with-search"
+                            data-minimum-results-for-search="Infinity">
+                            <option value="{{ STATUS_ACTIVE }}">{{ __('Active') }}</option>
+                            <option value="{{ STATUS_INACTIVE }}">{{ __('Inactive') }}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+                    <button type="button" class="primary_button cancel"
+                        data-bs-dismiss="modal">{{ __('Cancel') }}</button>
+                    <button type="submit" class="primary_button">{{ __('Add Country') }}</button>
+                </div>
         </div>
+        </form>
     </div>
+</div>
 </div>
 
 <div class="modal fade dashboard-common-modal" id="edit-modal" aria-hidden="true" tabindex="-1">
