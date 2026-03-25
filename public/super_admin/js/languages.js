@@ -1,8 +1,9 @@
 (function ($) {
     "use strict";
     const languageTable = $('#commonDataTable').DataTable({
-        pageLength: 25,
+        pageLength: 8,
         ordering: false,
+        paging: true,
         serverSide: true,
         processing: true,
         responsive: true,
@@ -21,6 +22,12 @@
         },
         // dom: 'tr<"tableBottom"<"row align-items-center"<"col-sm-6"<"tableInfo"i>><"col-sm-6"<"tablePagi"p>>>><"clear">',
         dom: 'tr<"tableBottom"<"row align-items-center justify-content-center"<"col-sm-12 text-center"<"tablePagi common-datatable-pagination"p>>>><"clear">',
+        drawCallback: function () {
+            const api = this.api();
+            const pages = api.page.info().pages || 0;
+            // Hide pagination UI when there's only one page
+            $(api.table().container()).find('.tablePagi').toggle(pages > 1);
+        },
         columns: [
             {"data": "flag", "name": "flag", searchable: false, responsivePriority: 1},
             {"data": "language", "name": "language"},
