@@ -621,14 +621,14 @@ if(!function_exists("getRoleName")){
     function getRoleName($input = null)
     {
         $output = [
-            USER_ROLE_ADMIN => __('Admin'),
+            USER_ROLE_SUPER_ADMIN => __('Super Admin'),
+            USER_ROLE_ADMIN       => __('Admin'),
         ];
-
 
         if (is_null($input)) {
             return $output;
         } else {
-            return $output[$input];
+            return $output[$input] ?? '';
         }
     }
 }
