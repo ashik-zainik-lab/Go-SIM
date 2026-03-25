@@ -217,7 +217,7 @@
                             <select name="country_name" class="select2-activate-with-search" required>
                                 <option value="">{{ __('Select Country') }}</option>
                                 @foreach ($countryOptions as $code => $countryName)
-                                <option value="{{ strtoupper($code) }}">{{ $countryName }}</option>
+                                <option value="{{ $countryName }}">{{ $countryName }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -226,8 +226,8 @@
                             <label>{{ __('ISO Code') }}<span>*</span></label>
                             <select name="short_name" class="select2-activate-with-search" required>
                                 <option value="">--{{ __('Select ISO Code') }}--</option>
-                                @foreach(languageIsoCode() as $code => $isoCountryName)
-                                <option value="{{$code}}">{{ $isoCountryName.'('.$code.')' }}</option>
+                                @foreach($countryOptions as $code => $countryName)
+                                <option value="{{ strtoupper($code) }}">{{ $countryName.'('.strtoupper($code).')' }}</option>
                                 @endforeach
                             </select>
                         </div>

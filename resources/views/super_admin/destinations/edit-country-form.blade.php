@@ -15,8 +15,8 @@
                 <label class="form-label">{{ __('Country Name') }}<span class="text-danger">*</span></label>
                 <select name="country_name" class="form-control sf-select-edit-modal" required>
                     @foreach ($countryOptions as $code => $countryName)
-                    <option value="{{ strtoupper($code) }}"
-                        {{ strtoupper($country->country_name) === strtoupper($code) ? 'selected' : '' }}>
+                    <option value="{{ $countryName }}"
+                        {{ strtoupper($country->country_name) === strtoupper($countryName) ? 'selected' : '' }}>
                         {{ $countryName }}
                     </option>
                     @endforeach
@@ -26,10 +26,10 @@
             <div class="dashboard-form-group">
                 <label class="form-label">{{ __('ISO Code') }}<span class="text-danger">*</span></label>
                 <select name="short_name" class="form-control sf-select-edit-modal" required>
-                    @foreach(languageIsoCode() as $code => $isoCountryName)
-                    <option value="{{ $code }}"
+                    @foreach($countryOptions as $code => $countryName)
+                    <option value="{{ strtoupper($code) }}"
                         {{ strtoupper($country->short_name) === strtoupper($code) ? 'selected' : '' }}>
-                        {{ $isoCountryName.'('.$code.')' }}
+                        {{ $countryName.'('.strtoupper($code).')' }}
                     </option>
                     @endforeach
                 </select>
