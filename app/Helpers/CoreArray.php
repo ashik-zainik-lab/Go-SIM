@@ -825,3 +825,36 @@ if(!function_exists("getAddonAppNameList")){
     }
 }
 
+if (!function_exists('getPlanType')) {
+    function getPlanType($input = null)
+    {
+        $output = [
+            PLAN_TYPE_LOCAL    => __('Local'),
+            PLAN_TYPE_REGIONAL => __('Regional'),
+            PLAN_TYPE_GLOBAL   => __('Global'),
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        } else {
+            return $output[$input] ?? '';
+        }
+    }
+}
+
+if (!function_exists('getPlanValidityUnit')) {
+    function getPlanValidityUnit($input = null)
+    {
+        $output = [
+            PLAN_VALIDITY_HOURS  => __('Hours'),
+            PLAN_VALIDITY_DAYS   => __('Days'),
+            PLAN_VALIDITY_MONTHS => __('Months'),
+        ];
+
+        if (is_null($input)) {
+            return $output;
+        } else {
+            return $output[$input] ?? '';
+        }
+    }
+}

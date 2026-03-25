@@ -6,6 +6,7 @@ const PAYMENT_STATUS_CANCELLED = 2;
 
 const STATUS_PENDING    = 0;
 const STATUS_ACTIVE     = 1;
+const STATUS_INACTIVE   = 0;
 const STATUS_DRAFT      = 2;
 const STATUS_DISABLE    = 3;
 const STATUS_DEACTIVATE = 3;
@@ -18,9 +19,6 @@ const STATUS_SUCCESS    = 1;
 const ACTIVE     = 1;
 const DEACTIVATE = 0;
 
-const STATUS_ACTIVE   = 1;
-const STATUS_INACTIVE = 0;
-
 const TENANT_STATUS_ACTIVE    = 1;
 const TENANT_STATUS_INACTIVE  = 0;
 const TENANT_STATUS_PENDING   = 2;
@@ -28,6 +26,14 @@ const TENANT_STATUS_CANCELLED = 3;
 
 const USER_ROLE_SUPER_ADMIN = 1;
 const USER_ROLE_ADMIN       = 2;
+
+const PLAN_TYPE_LOCAL     = 'local';
+const PLAN_TYPE_REGIONAL  = 'regional';
+const PLAN_TYPE_GLOBAL    = 'global';
+
+const PLAN_VALIDITY_HOURS  = 'hours';
+const PLAN_VALIDITY_DAYS   = 'days';
+const PLAN_VALIDITY_MONTHS = 'months';
 
 const SOMETHING_WENT_WRONG    = "Something went wrong! Please try again";
 const CREATED_SUCCESSFULLY    = "Created Successfully";
