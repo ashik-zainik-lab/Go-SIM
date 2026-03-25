@@ -54,25 +54,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const quillContainer = document.querySelector('#quill-editor');
     if (quillContainer) {
         const quill = new Quill('#quill-editor', {
-        theme: 'snow',
-        modules: {
-            toolbar: {
-                container: [
-                    ['undo', 'redo'], // Now these will show the SVGs above
-                    [{ 'header': [1, 2, 3, false] }],
-                    ['bold', 'italic'],
-                    [{ 'align': [] }],
-                    [{ 'list': 'bullet' }, { 'list': 'ordered' }],
-                    [{ 'indent': '-1' }, { 'indent': '+1' }],
-                    ['image']
-                ],
-                handlers: {
-                    'undo': function () { this.quill.history.undo(); },
-                    'redo': function () { this.quill.history.redo(); }
+            theme: 'snow',
+            modules: {
+                toolbar: {
+                    container: [
+                        ['undo', 'redo'], // Now these will show the SVGs above
+                        [{ 'header': [1, 2, 3, false] }],
+                        ['bold', 'italic'],
+                        [{ 'align': [] }],
+                        [{ 'list': 'bullet' }, { 'list': 'ordered' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        ['image']
+                    ],
+                    handlers: {
+                        'undo': function () { this.quill.history.undo(); },
+                        'redo': function () { this.quill.history.redo(); }
+                    }
                 }
             }
-        }
-    });
+        });
     }
 
 

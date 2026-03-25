@@ -34,42 +34,41 @@
                     @endforeach
                 </select>
             </div>
+        </div>
+        <div class="form-row">
+            <div class="dashboard-form-group full-width no-gap common_editor_block">
+                <label>{{ __('Description') }}<span>*</span></label>
+                <div id="edit-quill-editor" style="height: 280px;"></div>
+                <input type="hidden" name="description" id="edit-description-input"
+                    value="{{ $region->description }}">
+
+                
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="dashboard-form-group">
+                <label class="form-label">{{ __('Status') }}</label>
+                <select name="status" class="form-control">
+                    <option value="{{ STATUS_ACTIVE }}" @selected($region->status ==
+                        STATUS_ACTIVE)>{{ __('Active') }}
+                    </option>
+                    <option value="{{ STATUS_INACTIVE }}" @selected($region->status ==
+                        STATUS_INACTIVE)>{{ __('Inactive') }}</option>
+                </select>
+            </div>
 
             <div class="dashboard-form-group">
-                <div class="form-row">
-                    <div class="dashboard-form-group full-width no-gap common_editor_block">
-                        <label>{{ __('Description') }}<span>*</span></label>
-                        <div id="edit-quill-editor" style="height: 280px;"></div>
-                        <input type="hidden" name="description" id="edit-description-input"
-                            value="{{ $region->description }}">
-
-                    </div>
+                <label class="form-label">{{ __('Region Icon') }}</label>
+                <input type="file" name="icon" class="form-control" accept="image/*">
+                @if($region->icon)
+                <div class="mt-2">
+                    <img src="{{ getRegionIcon($region->icon) }}" alt="region icon"
+                        style="width: 36px; height: 36px; object-fit: cover;">
                 </div>
+                @endif
             </div>
-            <div class="form-row">
-                <div class="dashboard-form-group">
-                    <label class="form-label">{{ __('Status') }}</label>
-                    <select name="status" class="form-control">
-                        <option value="{{ STATUS_ACTIVE }}" @selected($region->status ==
-                            STATUS_ACTIVE)>{{ __('Active') }}
-                        </option>
-                        <option value="{{ STATUS_INACTIVE }}" @selected($region->status ==
-                            STATUS_INACTIVE)>{{ __('Inactive') }}</option>
-                    </select>
-                </div>
 
-                <div class="dashboard-form-group">
-                    <label class="form-label">{{ __('Region Icon') }}</label>
-                    <input type="file" name="icon" class="form-control" accept="image/*">
-                    @if($region->icon)
-                    <div class="mt-2">
-                        <img src="{{ getRegionIcon($region->icon) }}" alt="region icon"
-                            style="width: 36px; height: 36px; object-fit: cover;">
-                    </div>
-                    @endif
-                </div>
-
-            </div>
         </div>
 
         <div class="form-actions">
