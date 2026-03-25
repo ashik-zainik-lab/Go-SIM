@@ -61,20 +61,16 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
             Route::post('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
         });
 
-        Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
-            Route::get('', [DestinationController::class, 'index'])->name('index');
-            Route::post('regions', [DestinationController::class, 'storeRegion'])->name('regions.store');
-            Route::get('regions/edit/{id}', [DestinationController::class, 'editRegion'])->name('regions.edit');
-            Route::patch('regions/update/{id}', [DestinationController::class, 'updateRegion'])->name('regions.update');
-            Route::post('regions/delete/{id}', [DestinationController::class, 'deleteRegion'])->name('regions.delete');
-            Route::post('countries', [DestinationController::class, 'storeCountry'])->name('countries.store');
-        });
+        
 
         Route::get('storage-settings', [SettingController::class, 'storageSetting'])->name('storage.index');
         Route::post('storage-settings', [SettingController::class, 'storageSettingsUpdate'])->name('storage.update');
         Route::get('google-recaptcha-settings', [SettingController::class, 'googleRecaptchaSetting'])->name('google-recaptcha');
         Route::get('google-analytics-settings', [SettingController::class, 'googleAnalyticsSetting'])->name('google.analytics');
     });
+
+
+    
 
     Route::get('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration');
     Route::post('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration');
@@ -128,6 +124,16 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
     });
 });
 
+
+Route::group(['prefix' => 'destination', 'as' => 'destinations.'], function () {
+            Route::get('', [DestinationController::class, 'index'])->name('index');
+            Route::post('regions', [DestinationController::class, 'storeRegion'])->name('regions.store');
+            Route::get('regions/edit/{id}', [DestinationController::class, 'editRegion'])->name('regions.edit');
+            Route::patch('regions/update/{id}', [DestinationController::class, 'updateRegion'])->name('regions.update');
+            Route::post('regions/delete/{id}', [DestinationController::class, 'deleteRegion'])->name('regions.delete');
+            Route::post('countries', [DestinationController::class, 'storeCountry'])->name('countries.store');
+    });
+
 /*Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/', [ProfileController::class, 'myProfile'])->name('index');
     Route::get('change-password', [ProfileController::class, 'changePassword'])->name('change-password');
@@ -147,5 +153,3 @@ Route::group(['prefix' => 'addon', 'as' => 'addon.'], function () {
     Route::post('execute', [AddonUpdateController::class, 'addonFileExecute'])->name('execute')->withoutMiddleware(['addon']);
     Route::get('delete/{code}', [AddonUpdateController::class, 'addonFileDelete'])->name('delete')->withoutMiddleware(['addon']);
 });
-
-
