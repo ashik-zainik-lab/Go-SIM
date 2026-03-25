@@ -446,6 +446,33 @@ button {
 }
 
 /* DashBoard Common Image Upload Box End */
+/* DashBoard Common Datable Pagination Style Start */
+.common-datatable-pagination {
+  margin-bottom: 5px;
+}
+.common-datatable-pagination .dt-paging .dt-paging-button {
+  position: relative;
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--text_ash);
+  border: 1px solid var(--border_color);
+  background: transparent;
+  width: 35px;
+  height: 35px;
+}
+.common-datatable-pagination .dt-paging .dt-paging-button.next, .common-datatable-pagination .dt-paging .dt-paging-button.previous {
+  display: none;
+}
+.common-datatable-pagination .dt-paging .dt-paging-button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.common-datatable-pagination .dt-paging .dt-paging-button.current {
+  background: var(--theme_color);
+  color: var(--white);
+}
+
+/* DashBoard Common Datable Pagination Style End */
 /* COMMON TAB START */
 .dashboard_common_tabs {
   position: relative;
