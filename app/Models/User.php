@@ -85,12 +85,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Chat::class, 'receiver_id')->where('sender_id', auth()->id());
     }
-
-    protected static function boot(): void
-    {
-        parent::boot();
-        self::creating(function($model){
-            $model->uuid = Str::uuid()->toString();
-        });
-    }
 }
