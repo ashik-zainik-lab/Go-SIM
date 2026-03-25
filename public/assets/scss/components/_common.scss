@@ -231,3 +231,11 @@
 }
 
 /* DashBoard Common Datable Pagination Style End */
+
+/* DashBoard Common Form row for gap Start */
+.coomon-row-gap{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+/* DashBoard Common Form row for gap  End */

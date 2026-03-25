@@ -3,6 +3,13 @@
 
     const destinationUrl = $('#destination-route').val();
 
+    // Initialize Select2 for modals with dropdownParent
+    $('#addNewRegionModal, #addCountryModal, #edit-modal').on('shown.bs.modal', function () {
+        $(this).find('.select2-activate-with-search').select2({
+            dropdownParent: $(this)
+        });
+    });
+
     const countryTable = $('#countryDataTable').DataTable({
         pageLength: 8,
         paging: true,
