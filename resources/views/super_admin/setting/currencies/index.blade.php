@@ -27,7 +27,7 @@
                         <h5 class="card-title mb-0">{{ __('Currency Settings') }}</h5>
                         <button class="primary_button d-flex align-items-center gap-2" type="button"
                             data-bs-toggle="modal" data-bs-target="#add-modal">
-                            <i class="fa fa-plus me-1"></i> {{ __('Add Currency') }}
+                            + {{ __('Add Currency') }}
                         </button>
                     </div>
 
