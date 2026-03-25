@@ -75,7 +75,7 @@
 </div>
 <!-- Page content area end -->
 <!-- Add Modal section start -->
-<div class="modal fade dashboard-common-modal" id="add-modal" tabindex="-1" aria-hidden="true">
+<div class="modal fade " id="add-modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xs">
         <div class="modal-content">
             <div class="modal-header">
@@ -116,7 +116,7 @@
                                 <div class="dashboard-form-group full-width mb-2">
                                     <label for="currency_placement" class="form-label">{{ __('Currency Placement') }}
                                         <span class="text-danger">*</span></label>
-                                    <select class="primary-form-control sf-select-without-search"
+                                    <select class="select2-activate-without-search"
                                         id="currency_placement" name="currency_placement" required>
                                         <option value="">--{{ __('Select Option') }}--</option>
                                         <option value="before">{{ __('Before Amount') }}</option>
@@ -128,13 +128,19 @@
                         <div class="col-12">
                             <div class="form-row">
                                 <div class="dashboard-form-group full-width">
-                                    <label class="checkbox-container">
+                                    <label class="form-label d-block">{{ __('Current Currency') }}</label>
+                                    <div class="form-check form-switch dashboard_common_switch">
+                                        <input class="form-check-input" type="checkbox" name="current_currency" value="1" role="switch" id="current_currency">
+                                        <label class="form-label mb-0" for="default">{{ __('Set as Current Currency') }}</label>
+                                    </div>
+                                    <!-- <label class="checkbox-container">
                                         <input type="checkbox" name="current_currency" value="1" id="current_currency">
                                         <span class="custom-box"></span>
                                         <span class="text">{{ __('Current Currency') }}</span>
-                                    </label>
+                                    </label> -->
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

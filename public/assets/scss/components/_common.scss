@@ -224,6 +224,7 @@
             &.current{
                 background: var(--theme_color);
                 color: var(--white);
+                border: 1px solid var(--theme_color);
             }
         }
     }
