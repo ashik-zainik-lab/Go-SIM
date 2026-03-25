@@ -470,9 +470,18 @@ button {
 .common-datatable-pagination .dt-paging .dt-paging-button.current {
   background: var(--theme_color);
   color: var(--white);
+  border: 1px solid var(--theme_color);
 }
 
 /* DashBoard Common Datable Pagination Style End */
+/* DashBoard Common Form row for gap Start */
+.coomon-row-gap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+/* DashBoard Common Form row for gap  End */
 /* COMMON TAB START */
 .dashboard_common_tabs {
   position: relative;

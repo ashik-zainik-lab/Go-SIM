@@ -331,6 +331,15 @@
                     });
                 }
 
+                if ($(document).find(modalId).find('.common-select2-without-search').length) {
+                    $(document).find(modalId).find('.common-select2-without-search').select2({
+                        dropdownCssClass: "sf-select-dropdown",
+                        selectionCssClass: "sf-select-section",
+                        minimumResultsForSearch: Infinity,
+                        dropdownParent: $(modalId),
+                    });
+                }
+
                 if ($(document).find(modalId).find('.date-time-picker').length) {
                     $(document).find(modalId).find('.date-time-picker').each(function () {
                         $(this).closest(".primary-form-group-wrap").addClass("calendarIcon"); // Add your custom class here

@@ -40,7 +40,7 @@
                     <div class="dashboard-form-group full-width mb-2">
                         <label for="currency_placement" class="form-label">{{ __('Currency Placement') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="sf-select-without-search primary-form-control" name="currency_placement"
+                        <select class="common-select2-without-search" name="currency_placement"
                             required>
                             <option value="">--{{ __('Select Option') }}--</option>
                             <option {{ $currency->currency_placement == "before" ? 'selected' : '' }} value="before">
@@ -56,13 +56,20 @@
             <div class="col-12">
                 <div class="form-row">
                     <div class="dashboard-form-group full-width">
-                        <label class="checkbox-container">
+                        <label class="form-label d-block">{{ __('Current Currency') }}</label>
+                            <div class="form-check form-switch dashboard_common_switch">
+                                <input class="form-check-input" type="checkbox" name="current_currency" value="1"  role="switch"
+                                 {{ $currency->current_currency == STATUS_ACTIVE ? 'checked' : '' }}
+                                  id="current_currency_{{ $currency->id }}">
+                                <label class="form-label mb-0" for="current_currency">{{ __('Set as Current Currency') }}</label>
+                        </div>
+                        <!-- <label class="checkbox-container">
                             <input type="checkbox" name="current_currency" value="1"
                                 {{ $currency->current_currency == STATUS_ACTIVE ? 'checked' : '' }}
                                 id="current_currency_{{ $currency->id }}">
                             <span class="custom-box"></span>
                             <span class="text">{{ __('Current Currency') }}</span>
-                        </label>
+                        </label> -->
                     </div>
                 </div>
             </div>
