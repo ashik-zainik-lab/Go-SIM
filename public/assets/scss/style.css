@@ -274,6 +274,14 @@ button {
 }
 
 /**************** common css start ****************/
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
 /* SECTION TITLE START */
 .dashboard-section-title {
   margin-bottom: 40px;
@@ -1042,6 +1050,54 @@ a.primary_button.cancel:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.form-row-gap-set {
+  row-gap: 30px;
+}
+
+.currency-conversation-rate-wrapper .select2-container {
+  width: 41% !important;
+}
+
+.select2-search--dropdown input {
+  height: 40px;
+  padding: 15px 20px !important;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 130%;
+  color: var(--theme_dark);
+  border-radius: 0px;
+  border: 1px solid var(--border_color) !important;
+  background: #F8FAFC;
+}
+.select2-search--dropdown input::placeholder {
+  color: var(--text_ash);
+}
+.select2-search--dropdown input:focus {
+  outline: none;
+  background: var(--white);
+  border-color: var(--theme_color);
+}
+
+label.common-form-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #0D0D0D;
+}
+label.common-form-label span {
+  color: var(--theme_color);
+}
+@media (max-width: 1180px) {
+  label.common-form-label {
+    font-size: 12px;
+  }
+}
+
+.currency-warning {
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .select2-container--default .select2-selection--single {
   height: 45px;
   padding: 5px 12px;
@@ -1558,24 +1614,36 @@ a.primary_button.cancel:hover {
 }
 .settings-grid-container .dashboard-settings-card .single-payment img.payment-img {
   position: absolute;
-  max-width: 30px;
+  max-width: 80px;
   width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.settings-grid-container .dashboard-settings-card .single-payment .status {
+.settings-grid-container .dashboard-settings-card .single-payment .status-box {
   position: absolute;
   bottom: 5px;
   left: 5px;
+  display: flex;
+  column-gap: 8px;
+}
+.settings-grid-container .dashboard-settings-card .single-payment .status-box .status {
   font-weight: 500;
   font-size: 12px;
   line-height: 100%;
   padding: 6px 15px;
 }
-.settings-grid-container .dashboard-settings-card .single-payment .status.active {
+.settings-grid-container .dashboard-settings-card .single-payment .status-box .status.active {
   color: #0FA958;
   background: #EBF3EE;
+}
+.settings-grid-container .dashboard-settings-card .single-payment .status-box .status.pending {
+  background: #FFF5D5;
+  color: #FD980B;
+}
+.settings-grid-container .dashboard-settings-card .single-payment .status-box .status.inactive {
+  color: var(--text_dark);
+  background: #E3E3E3;
 }
 
 /* COMPONENT CONTENT */

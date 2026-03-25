@@ -26,6 +26,20 @@
         });
     };
 
+    const initCurrencySelect2 = function () {
+        $('.select2-activate-without-search').select2({
+            dropdownCssClass: "sf-select-dropdown",
+            selectionCssClass: "sf-select-section",
+            dropdownParent: $editModal,
+        minimumResultsForSearch: Infinity,
+        });
+        $('.select2-activate-with-search').select2({
+            dropdownCssClass: "sf-select-dropdown",
+            selectionCssClass: "sf-select-section",
+            dropdownParent: $editModal,
+        });
+    };
+
     $(document).on('click', '.edit', function () {
         commonAjax('GET', $('#getInfoRoute').val(), window.getDataEditRes, window.getDataEditRes, {
             id: $(this).data('id')
@@ -34,8 +48,9 @@
 
     $(document).on('click', '.add-currency', function () {
         var html = '';
-        html += '<div class="input-group mb-3 currency-conversation-rate">' +
-            '<select name="currency[]" class="form-control currency" required>';
+        html += '<div class="currency-conversation-rate-wrapper mb-3">' +
+            '<div class="input-group mb-3 currency-conversation-rate">' +
+            '<select name="currency[]" class="form-control currency select2-activate-with-search" required>';
         Object.entries(allCurrency).forEach((currency) => {
             html += '<option value="' + currency[0] + '">' + currency[1] + '</option>';
         });
@@ -45,13 +60,15 @@
             '<input type="hidden" step="any" min="0" name="currency_id[]" value="" class="form-control" required>' +
             '<span class="input-group-text append_currency"></span>' +
             '<button type="button" class="bg-white border-0 font-24 mr-5 ms-3 removedItem text-danger bg-fafafa" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/></svg></button>' +
+            '</div>' +
             '</div>';
         $('#currencyConversionRateSection').append(html);
         $('.currency').trigger("change");
+        initCurrencySelect2();
     })
 
     $(document).on('click', '.removedItem', function () {
-        $(this).closest('.currency-conversation-rate').remove();
+        $(this).closest('.currency-conversation-rate-wrapper').remove();
     });
 
     $(document).on('change', '.currency', function () {
@@ -59,7 +76,7 @@
         let selectedCurrency = $(this).val();
 
         // Find the closest currency conversion rate container and update the appended currency text
-        $(this).closest('.currency-conversation-rate').find('.append_currency').text(selectedCurrency);
+        $(this).closest('.currency-conversation-rate-wrapper').find('.append_currency').text(selectedCurrency);
 
         // Fetch the current gateway slug from an element in the #editModal
         let gatewaySlug = $editModal.find('.slug').val();
@@ -69,18 +86,18 @@
             // Check if the selected currency is supported by the current gateway
             if (supportedCurrency[gatewaySlug] && supportedCurrency[gatewaySlug].includes(selectedCurrency)) {
                 // If the currency is supported, remove any existing warning notes
-                $(this).closest('.currency-conversation-rate').find('.currency-warning').remove();
+                $(this).closest('.currency-conversation-rate-wrapper').find('.currency-warning').remove();
             } else {
                 // If the currency is not supported, add a warning note
                 let warningNote = '<div class="fs-14 currency-warning text-danger">Currency not supported, please check and add carefully.</div>';
                 // Check if the warning note already exists to avoid duplicates
-                if ($(this).closest('.currency-conversation-rate').find('.currency-warning').length === 0) {
-                    $(this).closest('.currency-conversation-rate').append(warningNote);
+                if ($(this).closest('.currency-conversation-rate-wrapper').find('.currency-warning').length === 0) {
+                    $(this).closest('.currency-conversation-rate-wrapper').append(warningNote);
                 }
             }
         } else {
             // If payment method is "bank" or "cash", remove any existing warning notes
-            $(this).closest('.currency-conversation-rate').find('.currency-warning').remove();
+            $(this).closest('.currency-conversation-rate-wrapper').find('.currency-warning').remove();
         }
     });
 
@@ -229,8 +246,9 @@
         }
         var html = '';
         response.data.currencies.map(function (data) {
-            html += '<div class="input-group mb-3 currency-conversation-rate">' +
-                '<select name="currency[]" class="form-control currency" required>';
+            html += '<div class="currency-conversation-rate-wrapper mb-3">' +
+                '<div class="input-group mb-3 currency-conversation-rate">' +
+                '<select name="currency[]" class="form-control currency select2-activate-with-search" required>';
             Object.entries(allCurrency).forEach((currency) => {
                 if (currency[0] == data.currency) {
                     html += '<option value="' + currency[0] + '" selected>' + currency[1] + '</option>';
@@ -244,9 +262,12 @@
                 '<input type="hidden" step="any" min="0" name="currency_id[]" value="' + data.id + '" class="form-control" required>' +
                 '<span class="input-group-text append_currency">' + data.currency + '</span>' +
                 '<button type="button" class="bg-white border-0 font-24 mr-5 ms-3 removedItem text-danger" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/></svg></button>' +
+                '</div>' +
                 '</div>';
         });
         $('#currencyConversionRateSection').html(html);
+        $('.currency').trigger('change');
+        initCurrencySelect2();
     }
 
     window.addBank = function() {

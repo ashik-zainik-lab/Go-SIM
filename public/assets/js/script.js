@@ -33,8 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Select2 Initialization Start  */
 
-    $(".select2-activate").select2({
+    $(".select2-activate-without-search").select2({
         minimumResultsForSearch: Infinity,
+    });
+    $(".select2-activate-with-search").select2({
     });
     /* Select2 Initialization  */
 

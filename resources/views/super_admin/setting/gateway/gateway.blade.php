@@ -17,8 +17,8 @@
         <div class="settings-forms w-100">
             <div class="dashboard-settings-card has-min-height">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between gap-2">
-                        <h5 class="card-title mb-0">{{ __('Payment Settings') }}</h5>
+                    <h5 class="card-title mb-0">{{ __('Payment Settings') }}</h5>
+                    <div class="d-flex align-items-center justify-content-between">
                         <a title="{{ __('Sync missing gateway') }}" href="{{ route('super_admin.setting.gateway.syncs') }}"
                             class="bd-ra-12 bg-cdef84 d-none d-sm-inline-block fs-15 fw-500 hover-bg-one lh-25 px-26 py-1 text-black"
                             onclick="return confirm('{{ __('Are you sure you want to sync gateways?') }}');">
@@ -45,11 +45,17 @@
 
                                 <img class="payment-img" src="{{ asset($gateway->image) }}" alt="{{ $gateway->title }}">
 
-                                <div class="status {{ $gateway->status == ACTIVE ? 'active' : '' }}">
-                                    {{ $gateway->status == ACTIVE ? __('Active') : __('Deactivate') }}
+                                <div class="status-box">
+                                    <div class="status {{ $gateway->status == ACTIVE ? 'active' : 'pending' }}">
+                                        {{ $gateway->status == ACTIVE ? __('Active') : __('Deactivate') }}
+                                    </div>
                                     @if ($gateway->slug != 'bank')
-                                    - {{ $gateway->mode == GATEWAY_MODE_LIVE ? __('Live') : __('Sandbox') }}
+                                    <div class="status {{ $gateway->mode == GATEWAY_MODE_LIVE ? 'active' : 'inactive' }}">                                        
+                                        {{ $gateway->mode == GATEWAY_MODE_LIVE ? __('Live') : __('Sandbox') }}
+                                    </div>
                                     @endif
+
+
                                 </div>
                             </div>
                             <div class="mt-2">
@@ -91,7 +97,7 @@
                             </div>
                         </div>
 
-                        <div class="row g-3">
+                        <div class="row form-row-gap-set">
                             <div class="col-md-6">
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('Title') }}</label>
@@ -109,7 +115,7 @@
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('Status') }}</label>
                                     <select name="status" id="status"
-                                        class="primary-form-control sf-select-without-search">
+                                        class="primary-form-control select2-activate-without-search">
                                         <option value="0">{{ __('Deactivate') }}</option>
                                         <option value="1">{{ __('Active') }}</option>
                                     </select>
@@ -118,7 +124,7 @@
                             <div class="col-md-6 mode-div">
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('Mode') }}</label>
-                                    <select name="mode" id="mode" class="primary-form-control sf-select-without-search">
+                                    <select name="mode" id="mode" class="primary-form-control select2-activate-without-search">
                                         <option value="1">{{ __('Live') }}</option>
                                         <option value="2">{{ __('Sandbox') }}</option>
                                     </select>
@@ -147,7 +153,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row key-secret-div">
+                        <div class="row key-secret-div mt-30 from-row-gap-set">
                             <div class="col-md-12 gateway-input" id="gateway-key">
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('Key') }}</label>
@@ -157,7 +163,7 @@
                                     }}</small>
                             </div>
                             <div class="col-md-12 gateway-input" id="gateway-secret">
-                                <div class="dashboard-form-group">
+                                <div class="dashboard-form-group mt-30">
                                     <label class="form-label">{{ __('Secret') }}</label>
                                     <input class="primary-form-control" type="text" name="secret">
                                 </div>
@@ -165,10 +171,10 @@
                                     }}</small>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row mt-30">
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                                    <label class="form-label mb-0">{{ __('Conversion Rate') }}</label>
+                                    <label class="common-form-label">{{ __('Conversion Rate') }}</label>
                                     <button type="button" class="primary_button add-currency">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                             viewBox="0 0 21 21">
