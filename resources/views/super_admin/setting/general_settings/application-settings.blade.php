@@ -36,7 +36,7 @@
                                 </div>
                             </div>
 
-                            @if(!isAddonInstalled('ALUSAAS'))
+
                             <div class="col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('App URL') }} <span
@@ -45,7 +45,7 @@
                                         class="primary-form-control">
                                 </div>
                             </div>
-                            @endif
+
 
                             <div class="col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard-form-group">
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                            @if(!isAddonInstalled('ALUSAAS'))
+
                             <div class="col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard-form-group">
                                     <label class="form-label">{{ __('App Copyright') }} <span
@@ -92,7 +92,7 @@
                                         class="primary-form-control">
                                 </div>
                             </div>
-                            @endif
+
 
                             <div class="col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard-form-group">
