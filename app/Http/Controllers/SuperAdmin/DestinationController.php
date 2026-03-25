@@ -30,7 +30,6 @@ class DestinationController extends Controller
         }
 
         $data['title'] = __('Destinations');
-        $data['showManageApplicationSetting'] = 'show';
         $data['activeDestinationSetting'] = 'active-color-one';
         $data['activeDestinations'] = 'active';
         $data['regions'] = Region::query()->orderBy('sort_order')->orderBy('name')->get();

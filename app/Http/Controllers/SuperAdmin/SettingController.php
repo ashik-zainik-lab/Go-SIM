@@ -40,7 +40,6 @@ class SettingController extends Controller
     public function configurationSetting()
     {
         $data['title'] = __("Configuration Setting");
-        $data['showManageApplicationSetting'] = 'show';
         // Used for highlighting the main sidebar "System configuration" menu
         $data['activeConfigurationSetting'] = 'active';
         return view('super_admin.setting.general_settings.configuration')->with($data);
