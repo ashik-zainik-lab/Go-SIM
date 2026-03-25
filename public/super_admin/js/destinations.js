@@ -4,7 +4,9 @@
     const destinationUrl = $('#destination-route').val();
 
     const countryTable = $('#countryDataTable').DataTable({
-        pageLength: 25,
+        pageLength: 8,
+        paging: true,
+        lengthChange: false,
         ordering: false,
         order: [],
         columnDefs: [
@@ -28,6 +30,12 @@
             }
         },
         dom: 'tr<"tableBottom"<"row align-items-center justify-content-center"<"col-sm-12 text-center"<"tablePagi common-datatable-pagination"p>>>><"clear">',
+        drawCallback: function () {
+            const api = this.api();
+            const pages = api.page.info().pages || 0;
+            // Hide pagination UI when there's only one page
+            $(api.table().container()).find('.tablePagi').toggle(pages > 1);
+        },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false},
             {data: 'country_name', name: 'country_name'},
