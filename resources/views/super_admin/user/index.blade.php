@@ -17,10 +17,8 @@
         <div class="serach_field_area">
             <form action="#" id="userSearchForm">
                 <div class="search_field">
-                    <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}"
-                        alt="search icon">
-                    <input type="text" placeholder="{{ __('Search Users...') }}" id="userSearchInput"
-                        name="search">
+                    <img class="search-image" src="{{ asset('assets/images/icons/search.svg') }}" alt="search icon">
+                    <input type="text" placeholder="{{ __('Search Users...') }}" id="userSearchInput" name="search">
                 </div>
             </form>
         </div>
@@ -44,7 +42,7 @@
 </div>
 @endsection
 
-<div class="modal fade dashboard-common-modal" id="edit-modal" aria-hidden="true" tabindex="-1">
+<div class="modal fade " id="edit-modal" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content"></div>
     </div>
@@ -53,4 +51,3 @@
 @push('script')
 <script src="{{ asset('super_admin/js/users.js') }}"></script>
 @endpush
-

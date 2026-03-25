@@ -9,37 +9,45 @@
         @csrf
         @method('PATCH')
 
-        <div class="form-row">
-            <div class="dashboard-form-group">
-                <label class="form-label">{{ __('Name') }}<span>*</span></label>
-                <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="dashboard-form-group">
+                    <label class="form-label">{{ __('Name') }}<span>*</span></label>
+                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+                </div>
             </div>
 
-            <div class="dashboard-form-group">
-                <label class="form-label">{{ __('Email') }}<span>*</span></label>
-                <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
+            <div class="col-md-12">
+                <div class="dashboard-form-group">
+                    <label class="form-label">{{ __('Email') }}<span>*</span></label>
+                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="dashboard-form-group">
+                    <label class="form-label">{{ __('Mobile') }}<span>*</span></label>
+                    <input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}" required>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="dashboard-form-group">
+                    <label class="form-label">{{ __('Status') }}<span>*</span></label>
+                    <select name="status" class="form-control" required>
+                        <option value="{{ USER_STATUS_ACTIVE }}" @selected((int)$user->status === USER_STATUS_ACTIVE)>
+                            {{ __('Active') }}
+                        </option>
+                        <option value="{{ USER_STATUS_INACTIVE }}" @selected((int)$user->status ===
+                            USER_STATUS_INACTIVE)>
+                            {{ __('Inactive') }}
+                        </option>
+                    </select>
+                </div>
             </div>
         </div>
 
-        <div class="form-row">
-            <div class="dashboard-form-group">
-                <label class="form-label">{{ __('Mobile') }}<span>*</span></label>
-                <input type="text" name="mobile" class="form-control" value="{{ $user->mobile }}" required>
-            </div>
 
-            <div class="dashboard-form-group">
-                <label class="form-label">{{ __('Status') }}<span>*</span></label>
-                <select name="status" class="form-control" required>
-                    <option value="{{ USER_STATUS_ACTIVE }}" @selected((int)$user->status === USER_STATUS_ACTIVE)>
-                        {{ __('Active') }}
-                    </option>
-                    <option value="{{ USER_STATUS_INACTIVE }}" @selected((int)$user->status === USER_STATUS_INACTIVE)>
-                        {{ __('Inactive') }}
-                    </option>
-                </select>
-            </div>
-
-        </div>
 
 
 
