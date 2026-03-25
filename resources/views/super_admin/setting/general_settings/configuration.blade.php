@@ -423,7 +423,7 @@
 <!-- Configuration section start -->
 <div class="modal fade main-modal" id="configureModal" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content zModalTwo-content p-5">
+        <div class="modal-content zModalTwo-content p-1">
 
         </div>
     </div>
@@ -433,7 +433,7 @@
 <!-- Help section start -->
 <div class="modal fade main-modal" id="helpModal" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-xs modal-dialog-centered">
-        <div class="modal-content zModalTwo-content p-5">
+        <div class="modal-content zModalTwo-content p-1">
 
         </div>
     </div>
@@ -443,7 +443,7 @@
 <!-- Test Email section start -->
 <div class="modal fade" id="sendTestMail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content zModalTwo-content p-5">
+        <div class="modal-content zModalTwo-content p-1">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Test Mail') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -482,7 +482,7 @@
 <!-- TEST SMS section start -->
 <div class="modal fade" id="sendTestSMS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content zModalTwo-content p-5">
+        <div class="modal-content zModalTwo-content p-1">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Test SMS') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
